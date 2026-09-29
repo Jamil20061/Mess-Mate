@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="Mess-Mate - Smart Mess Management & Meal Tracking App">
+
+  <title>Mess-Mate</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      min-height: 100vh;
+    }
+
+    .app {
+      max-width: 480px;
+      min-height: 100vh;
+      margin: auto;
+      background: #ffffff;
+    }
+
+    .header {
+      background: #2563eb;
+      color: white;
+      padding: 28px 22px;
+      border-radius: 0 0 24px 24px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #dbe2ea;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .input:focus {
+      border-color: #2563eb;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn.secondary {
+      background: #e8eefc;
+      color: #2563eb;
+      margin-top: 10px;
+    }
+
+    .message {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .message.success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .message.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="header">
+      <h1>Mess-Mate 🍽️</h1>
+      <p>Smart Mess Management & Meal Tracking</p>
+    </div>
+
+    <div class="content">
+
+      <!-- LOGIN / SIGNUP -->
+      <div id="authSection">
+
+        <div class="card">
+          <h2>Welcome Back 👋</h2>
+
+          <input
+            type="email"
+            id="email"
+            class="input"
+            placeholder="Email address"
+          >
+
+          <input
+            type="password"
+            id="password"
+            class="input"
+            placeholder="Password"
+          >
+
+          <button class="btn" onclick="login()">
+            Login
+          </button>
+
+          <button class="btn secondary" onclick="signup()">
+            Create Account
+          </button>
+
+          <div id="authMessage" class="message"></div>
+        </div>
+
+      </div>
+
+
+      <!-- LOGGED IN -->
+      <div id="homeSection" class="hidden">
+
+        <div class="card">
+          <h2>Welcome to Mess-Mate 🎉</h2>
+
+          <p id="userEmail"></p>
+
+          <button class="btn" onclick="logout()">
+            Logout
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer">
+      Mess-Mate © 2026
+    </div>
+
+  </div>
+
+
+  <!-- Firebase -->
+  <script type="module">
+
+    import { initializeApp } from
+      "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged
+    } from
+      "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+
+    // ==============================
+    // FIREBASE CONFIG
+    // ==============================
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC1co4VUZoqTJAJnmprEjYE9F3JkFx6YJo",
+      authDomain: "mess-mate-2942b.firebaseapp.com",
+      projectId: "mess-mate-2942b",
+      storageBucket: "mess-mate-2942b.firebasestorage.app",
+      messagingSenderId: "661215494906",
+      appId: "1:661215494906:web:6b4eb1d938fb7bba11ff43"
+    };
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+
+    // ==============================
+    // MESSAGE
+    // ==============================
+
+    function showMessage(text, type) {
+
+      const message =
+        document.getElementById("authMessage");
+
+      message.textContent = text;
+
+      message.className =
+        "message " + type;
+    }
+
+
+    // ==============================
+    // SIGN UP
+    // ==============================
+
+    window.signup = async function() {
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+
+      if (!email || !password) {
+
+        showMessage(
+          "Please enter email and password.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      if (password.length < 6) {
+
+        showMessage(
+          "Password must be at least 6 characters.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      try {
+
+        await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        showMessage(
+          "Account created successfully! 🎉",
+          "success"
+        );
+
+      } catch (error) {
+
+        showMessage(
+          error.message,
+          "error"
+        );
+
+      }
+
+    };
+
+
+    // ==============================
+    // LOGIN
+    // ==============================
+
+    window.login = async function() {
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+
+      if (!email || !password) {
+
+        showMessage(
+          "Please enter email and password.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      try {
+
+        await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+      } catch (error) {
+
+        showMessage(
+          "Login failed: " + error.message,
+          "error"
+        );
+
+      }
+
+    };
+
+
+    // ==============================
+    // LOGOUT
+    // ==============================
+
+    window.logout = async function() {
+
+      try {
+
+        await signOut(auth);
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
+
+    };
+
+
+    // ==============================
+    // AUTH STATE
+    // ==============================
+
+    onAuthStateChanged(auth, (user) => {
+
+      const authSection =
+        document.getElementById("authSection");
+
+      const homeSection =
+        document.getElementById("homeSection");
+
+      const userEmail =
+        document.getElementById("userEmail");
+
+
+      if (user) {
+
+        authSection.classList.add("hidden");
+
+        homeSection.classList.remove("hidden");
+
+        userEmail.textContent =
+          "Logged in as: " + user.email;
+
+      } else {
+
+        authSection.classList.remove("hidden");
+
+        homeSection.classList.add("hidden");
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
