@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#2563eb">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
+  <meta
+    name="theme-color"
+    content="#2563eb"
+  >
 
   <title>Mess-Mate</title>
 
+
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -21,14 +34,23 @@
       min-height: 100vh;
     }
 
+
     button,
     input {
       font: inherit;
     }
 
+
     button {
       cursor: pointer;
     }
+
+
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
 
     .app {
       width: 100%;
@@ -38,15 +60,34 @@
       background: #f4f7fb;
     }
 
+
     /* ================= HEADER ================= */
 
     .header {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      background: linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+      );
+
       color: white;
-      padding: 22px 20px 26px;
-      border-radius: 0 0 28px 28px;
-      box-shadow: 0 8px 25px rgba(37, 99, 235, .20);
+
+      padding:
+        22px
+        20px
+        26px;
+
+      border-radius:
+        0
+        0
+        28px
+        28px;
+
+      box-shadow:
+        0 8px 25px
+        rgba(37, 99, 235, .20);
     }
+
 
     .brand {
       display: flex;
@@ -54,20 +95,28 @@
       gap: 12px;
     }
 
+
     .brand-icon {
       width: 48px;
       height: 48px;
+
       border-radius: 15px;
-      background: rgba(255,255,255,.18);
+
+      background:
+        rgba(255,255,255,.18);
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       font-size: 25px;
     }
+
 
     .brand h1 {
       font-size: 25px;
     }
+
 
     .brand p {
       font-size: 13px;
@@ -75,20 +124,27 @@
       margin-top: 3px;
     }
 
+
     /* ================= MAIN ================= */
 
     main {
-      padding: 20px 16px 35px;
+      padding:
+        20px
+        16px
+        35px;
     }
+
 
     .welcome {
       margin-bottom: 18px;
     }
 
+
     .welcome h2 {
       font-size: 24px;
       margin-bottom: 6px;
     }
+
 
     .welcome p {
       font-size: 14px;
@@ -96,15 +152,23 @@
       line-height: 1.5;
     }
 
+
     /* ================= CARD ================= */
 
     .card {
       background: white;
+
       border-radius: 20px;
+
       padding: 20px;
+
       margin-bottom: 16px;
-      box-shadow: 0 5px 20px rgba(15,23,42,.07);
+
+      box-shadow:
+        0 5px 20px
+        rgba(15,23,42,.07);
     }
+
 
     .card-title {
       font-size: 18px;
@@ -112,363 +176,884 @@
       margin-bottom: 16px;
     }
 
+
     /* ================= INPUT ================= */
 
     .input-group {
       margin-bottom: 15px;
     }
 
+
     .input-group label {
       display: block;
+
       font-size: 13px;
+
       font-weight: 600;
+
       color: #475569;
+
       margin-bottom: 7px;
     }
 
+
     .input-group input {
       width: 100%;
+
       padding: 14px;
-      border: 1px solid #dbe2ea;
+
+      border:
+        1px solid
+        #dbe2ea;
+
       border-radius: 12px;
+
       background: #f8fafc;
+
       outline: none;
     }
 
+
     .input-group input:focus {
       border-color: #2563eb;
+
       background: white;
-      box-shadow: 0 0 0 3px rgba(37,99,235,.10);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(37,99,235,.10);
     }
+
 
     /* ================= BUTTONS ================= */
 
     .primary-btn {
       width: 100%;
+
       border: none;
+
       padding: 14px;
+
       border-radius: 13px;
+
       color: white;
+
       font-weight: 700;
-      background: linear-gradient(135deg,#2563eb,#1d4ed8);
-      box-shadow: 0 7px 15px rgba(37,99,235,.20);
+
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #1d4ed8
+        );
+
+      box-shadow:
+        0 7px 15px
+        rgba(37,99,235,.20);
     }
+
 
     .secondary-btn {
       width: 100%;
-      border: 1px solid #dbe2ea;
+
+      border:
+        1px solid
+        #dbe2ea;
+
       padding: 13px;
+
       border-radius: 13px;
+
       background: white;
+
       color: #334155;
+
       font-weight: 700;
     }
 
+
     .danger-btn {
       width: 100%;
+
       border: none;
+
       padding: 13px;
+
       border-radius: 13px;
+
       background: #fee2e2;
+
       color: #dc2626;
+
       font-weight: 700;
     }
+
+
+    .small-btn {
+      border: none;
+
+      padding:
+        8px
+        11px;
+
+      border-radius: 9px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+    }
+
+
+    .approve-btn {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+
+    .reject-btn {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+
+    .admin-btn {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
 
     /* ================= STATUS ================= */
 
     .status {
       display: none;
-      padding: 12px 14px;
+
+      padding:
+        12px
+        14px;
+
       border-radius: 12px;
+
       margin-bottom: 15px;
+
       font-size: 13px;
+
       line-height: 1.5;
     }
 
+
     .status.success {
       display: block;
+
       background: #ecfdf5;
+
       color: #047857;
-      border: 1px solid #a7f3d0;
+
+      border:
+        1px solid
+        #a7f3d0;
     }
+
 
     .status.error {
       display: block;
+
       background: #fef2f2;
+
       color: #b91c1c;
-      border: 1px solid #fecaca;
+
+      border:
+        1px solid
+        #fecaca;
     }
+
 
     .status.info {
       display: block;
+
       background: #eff6ff;
+
       color: #1d4ed8;
-      border: 1px solid #bfdbfe;
+
+      border:
+        1px solid
+        #bfdbfe;
     }
+
+
+    .status.warning {
+      display: block;
+
+      background: #fffbeb;
+
+      color: #b45309;
+
+      border:
+        1px solid
+        #fde68a;
+    }
+
 
     /* ================= AUTH ================= */
 
     .auth-tabs {
       display: flex;
+
       background: #eef2ff;
+
       padding: 4px;
+
       border-radius: 13px;
+
       margin-bottom: 20px;
     }
 
+
     .auth-tab {
       flex: 1;
+
       border: none;
+
       background: transparent;
+
       padding: 11px;
+
       border-radius: 10px;
+
       color: #64748b;
+
       font-weight: 600;
     }
 
+
     .auth-tab.active {
       background: white;
+
       color: #2563eb;
-      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+
+      box-shadow:
+        0 2px 8px
+        rgba(0,0,0,.06);
     }
+
 
     /* ================= DASHBOARD ================= */
 
     #dashboardSection,
     #createMessSection,
+    #joinMessSection,
     #messSection {
       display: none;
     }
 
+
     .user-card {
       display: flex;
+
       align-items: center;
+
       gap: 13px;
     }
+
 
     .avatar {
       width: 52px;
       height: 52px;
+
       border-radius: 16px;
+
       background: #dbeafe;
+
       color: #2563eb;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
+
       font-weight: 800;
+
       font-size: 21px;
+
+      flex-shrink: 0;
     }
+
 
     .user-info {
       flex: 1;
       min-width: 0;
     }
 
+
     .user-info h3 {
       font-size: 17px;
       margin-bottom: 4px;
     }
 
+
     .user-info p {
       font-size: 12px;
+
       color: #64748b;
+
       overflow: hidden;
+
       white-space: nowrap;
+
       text-overflow: ellipsis;
     }
 
+
     .logout-btn {
       border: none;
+
       background: #fee2e2;
+
       color: #dc2626;
-      padding: 9px 12px;
+
+      padding:
+        9px
+        12px;
+
       border-radius: 10px;
+
       font-size: 12px;
+
       font-weight: 700;
     }
+
 
     /* ================= MESS CARD ================= */
 
     .mess-main-card {
-      background: linear-gradient(135deg,#2563eb,#1d4ed8);
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #1d4ed8
+        );
+
       color: white;
+
       border-radius: 22px;
+
       padding: 21px;
+
       margin-bottom: 16px;
-      box-shadow: 0 10px 25px rgba(37,99,235,.22);
+
+      box-shadow:
+        0 10px 25px
+        rgba(37,99,235,.22);
     }
+
 
     .mess-label {
       font-size: 12px;
+
       opacity: .8;
+
       margin-bottom: 5px;
     }
 
+
     .mess-name {
       font-size: 25px;
+
       font-weight: 800;
+
       margin-bottom: 12px;
+
       word-break: break-word;
     }
 
+
     .mess-role {
       display: inline-flex;
+
       align-items: center;
+
       gap: 5px;
-      background: rgba(255,255,255,.17);
-      padding: 7px 11px;
+
+      background:
+        rgba(255,255,255,.17);
+
+      padding:
+        7px
+        11px;
+
       border-radius: 10px;
+
       font-size: 12px;
+
       font-weight: 700;
     }
+
 
     /* ================= INVITE ================= */
 
     .invite-box {
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 10px;
+
       background: #eff6ff;
-      border: 1px solid #bfdbfe;
+
+      border:
+        1px solid
+        #bfdbfe;
+
       border-radius: 14px;
+
       padding: 13px;
     }
 
+
     .invite-code {
       font-size: 21px;
+
       font-weight: 800;
+
       letter-spacing: 3px;
+
       color: #1d4ed8;
     }
 
+
     .copy-btn {
       border: none;
+
       background: #2563eb;
+
       color: white;
-      padding: 9px 12px;
+
+      padding:
+        9px
+        12px;
+
       border-radius: 9px;
+
       font-size: 12px;
+
       font-weight: 700;
     }
+
 
     /* ================= CYCLE ================= */
 
     .cycle-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
       gap: 12px;
     }
 
+
     .cycle-item {
       background: #f8fafc;
-      border: 1px solid #edf1f5;
+
+      border:
+        1px solid
+        #edf1f5;
+
       padding: 14px;
+
       border-radius: 14px;
     }
 
+
     .cycle-item span {
       display: block;
+
       color: #64748b;
+
       font-size: 11px;
+
       margin-bottom: 5px;
     }
+
 
     .cycle-item strong {
       font-size: 14px;
     }
 
+
     /* ================= FEATURES ================= */
 
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(2,1fr);
+
+      grid-template-columns:
+        repeat(2,1fr);
+
       gap: 12px;
     }
 
+
     .feature {
-      border: 1px solid #edf1f5;
+      border:
+        1px solid
+        #edf1f5;
+
       background: #f8fafc;
+
       border-radius: 15px;
-      padding: 16px 12px;
+
+      padding:
+        16px
+        12px;
+
       text-align: left;
     }
 
+
     .feature-icon {
       font-size: 23px;
+
       margin-bottom: 8px;
     }
 
+
     .feature h4 {
       font-size: 14px;
+
       margin-bottom: 3px;
     }
 
+
     .feature p {
       color: #64748b;
+
       font-size: 11px;
     }
+
+
+    /* ================= MEMBER ================= */
+
+    .member-item {
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      padding:
+        13px
+        0;
+
+      border-bottom:
+        1px solid
+        #eef2f7;
+    }
+
+
+    .member-item:last-child {
+      border-bottom: none;
+    }
+
+
+    .member-avatar {
+      width: 43px;
+      height: 43px;
+
+      border-radius: 13px;
+
+      background: #dbeafe;
+
+      color: #2563eb;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 800;
+
+      flex-shrink: 0;
+    }
+
+
+    .member-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+
+    .member-info strong {
+      display: block;
+
+      font-size: 14px;
+
+      margin-bottom: 3px;
+    }
+
+
+    .member-info span {
+      display: block;
+
+      font-size: 11px;
+
+      color: #64748b;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+    }
+
+
+    .member-badge {
+      display: inline-block;
+
+      margin-top: 4px;
+
+      padding:
+        3px
+        7px;
+
+      border-radius: 6px;
+
+      background: #eff6ff;
+
+      color: #2563eb;
+
+      font-size: 9px;
+
+      font-weight: 700;
+    }
+
+
+    .member-actions {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 5px;
+
+      align-items: flex-end;
+    }
+
+
+    /* ================= REQUEST ================= */
+
+    .request-item {
+      background: #f8fafc;
+
+      border:
+        1px solid
+        #edf1f5;
+
+      border-radius: 14px;
+
+      padding: 13px;
+
+      margin-bottom: 10px;
+    }
+
+
+    .request-item:last-child {
+      margin-bottom: 0;
+    }
+
+
+    .request-top {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+    }
+
+
+    .request-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+
+    .request-info strong {
+      display: block;
+
+      font-size: 14px;
+
+      margin-bottom: 3px;
+    }
+
+
+    .request-info span {
+      font-size: 11px;
+
+      color: #64748b;
+    }
+
+
+    .request-actions {
+      display: flex;
+
+      gap: 6px;
+
+      margin-top: 11px;
+    }
+
+
+    .request-actions button {
+      flex: 1;
+    }
+
+
+    /* ================= EMPTY ================= */
+
+    .empty {
+      text-align: center;
+
+      padding:
+        18px
+        8px;
+
+      color: #94a3b8;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+
+    .empty-icon {
+      font-size: 30px;
+
+      margin-bottom: 7px;
+    }
+
+
+    /* ================= DIVIDER ================= */
+
+    .divider {
+      height: 1px;
+
+      background: #eef2f7;
+
+      margin:
+        17px
+        0;
+    }
+
 
     /* ================= LOADING ================= */
 
     .loading {
       position: fixed;
+
       inset: 0;
-      background: rgba(255,255,255,.97);
+
+      background:
+        rgba(255,255,255,.97);
+
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
+
       justify-content: center;
+
       z-index: 9999;
     }
+
 
     .loading-logo {
       width: 65px;
       height: 65px;
+
       border-radius: 20px;
+
       background: #2563eb;
+
       color: white;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
+
       font-size: 32px;
+
       margin-bottom: 15px;
-      animation: pulse 1.2s infinite;
+
+      animation:
+        pulse
+        1.2s
+        infinite;
     }
+
 
     .loading p {
       color: #64748b;
+
       font-size: 13px;
     }
 
+
     @keyframes pulse {
-      0%,100% {
+
+      0%,
+      100% {
         transform: scale(1);
       }
 
       50% {
         transform: scale(1.08);
       }
+
     }
+
 
     footer {
       text-align: center;
+
       color: #94a3b8;
+
       font-size: 11px;
-      padding: 10px 0 25px;
+
+      padding:
+        10px
+        0
+        25px;
     }
+
+
   </style>
+
 </head>
+
 
 <body>
 
-<div class="loading" id="loadingScreen">
-  <div class="loading-logo">🍽️</div>
-  <p>Loading Mess-Mate...</p>
+
+<div
+  class="loading"
+  id="loadingScreen"
+>
+
+  <div class="loading-logo">
+    🍽️
+  </div>
+
+  <p>
+    Loading Mess-Mate...
+  </p>
+
 </div>
 
 
+
 <div class="app">
+
 
   <!-- ================= HEADER ================= -->
 
@@ -481,8 +1066,15 @@
       </div>
 
       <div>
-        <h1>Mess-Mate</h1>
-        <p>Smart Mess Management</p>
+
+        <h1>
+          Mess-Mate
+        </h1>
+
+        <p>
+          Smart Mess Management
+        </p>
+
       </div>
 
     </div>
@@ -490,7 +1082,9 @@
   </header>
 
 
+
   <main>
+
 
     <!-- ================================================= -->
     <!-- AUTH -->
@@ -498,9 +1092,12 @@
 
     <section id="authSection">
 
+
       <div class="welcome">
 
-        <h2>Welcome 👋</h2>
+        <h2>
+          Welcome 👋
+        </h2>
 
         <p>
           Manage your mess, meals, deposits and expenses
@@ -510,7 +1107,9 @@
       </div>
 
 
+
       <div class="card">
+
 
         <div class="auth-tabs">
 
@@ -521,6 +1120,7 @@
           >
             Login
           </button>
+
 
           <button
             class="auth-tab"
@@ -533,12 +1133,19 @@
         </div>
 
 
-        <div id="authStatus" class="status"></div>
+
+        <div
+          id="authStatus"
+          class="status"
+        ></div>
+
 
 
         <div class="input-group">
 
-          <label>Email</label>
+          <label>
+            Email
+          </label>
 
           <input
             type="email"
@@ -549,9 +1156,12 @@
         </div>
 
 
+
         <div class="input-group">
 
-          <label>Password</label>
+          <label>
+            Password
+          </label>
 
           <input
             type="password"
@@ -562,6 +1172,7 @@
         </div>
 
 
+
         <button
           class="primary-btn"
           id="authButton"
@@ -570,9 +1181,12 @@
           Login
         </button>
 
+
       </div>
 
+
     </section>
+
 
 
     <!-- ================================================= -->
@@ -581,9 +1195,12 @@
 
     <section id="dashboardSection">
 
+
       <div class="card">
 
+
         <div class="user-card">
+
 
           <div
             class="avatar"
@@ -591,6 +1208,7 @@
           >
             U
           </div>
+
 
           <div class="user-info">
 
@@ -604,6 +1222,7 @@
 
           </div>
 
+
           <button
             class="logout-btn"
             onclick="logoutUser()"
@@ -611,9 +1230,12 @@
             Logout
           </button>
 
+
         </div>
 
+
       </div>
+
 
 
       <div class="welcome">
@@ -622,27 +1244,34 @@
           Dashboard 📊
         </h2>
 
-        <p>
+        <p id="dashboardSubtitle">
           Manage your mess from here.
         </p>
 
       </div>
 
 
+
+      <!-- ================================================= -->
       <!-- CREATE MESS -->
+      <!-- ================================================= -->
 
       <section id="createMessSection">
 
+
         <div class="card">
+
 
           <div class="card-title">
             🏠 Create Your Mess
           </div>
 
+
           <div
             id="messStatus"
             class="status"
           ></div>
+
 
 
           <div class="input-group">
@@ -661,6 +1290,7 @@
           </div>
 
 
+
           <div class="input-group">
 
             <label>
@@ -677,7 +1307,9 @@
           </div>
 
 
+
           <div class="cycle-grid">
+
 
             <div class="input-group">
 
@@ -706,20 +1338,35 @@
 
             </div>
 
+
           </div>
 
 
-          <div class="card-title" style="margin-top:10px;">
+
+          <div
+            class="card-title"
+            style="margin-top:10px;"
+          >
             ⏰ Meal Update Window
           </div>
 
-          <p style="font-size:12px;color:#64748b;margin-bottom:14px;line-height:1.5;">
-            Members can change their meal status only during this time.
-            Admin can change it anytime.
+
+          <p
+            style="
+              font-size:12px;
+              color:#64748b;
+              margin-bottom:14px;
+              line-height:1.5;
+            "
+          >
+            Members can change their meal status only during
+            this time. Admin can change it anytime.
           </p>
 
 
+
           <div class="cycle-grid">
+
 
             <div class="input-group">
 
@@ -750,7 +1397,9 @@
 
             </div>
 
+
           </div>
+
 
 
           <button
@@ -761,9 +1410,128 @@
             Create Mess
           </button>
 
+
         </div>
 
+
       </section>
+
+
+
+      <!-- ================================================= -->
+      <!-- JOIN MESS -->
+      <!-- ================================================= -->
+
+      <section id="joinMessSection">
+
+
+        <div class="card">
+
+
+          <div class="card-title">
+            🔑 Join a Mess
+          </div>
+
+
+          <p
+            style="
+              font-size:13px;
+              color:#64748b;
+              line-height:1.5;
+              margin-bottom:14px;
+            "
+          >
+            Enter the invite code given by your mess admin.
+            Your request will be sent to the admin for approval.
+          </p>
+
+
+
+          <div
+            id="joinStatus"
+            class="status"
+          ></div>
+
+
+
+          <div class="input-group">
+
+            <label>
+              Your Name
+            </label>
+
+            <input
+              type="text"
+              id="memberName"
+              placeholder="Enter your name"
+              maxlength="50"
+            >
+
+          </div>
+
+
+
+          <div class="input-group">
+
+            <label>
+              Invite Code
+            </label>
+
+            <input
+              type="text"
+              id="joinInviteCode"
+              placeholder="Example: A7K92P"
+              maxlength="6"
+              style="
+                text-transform:uppercase;
+                letter-spacing:3px;
+                font-weight:700;
+              "
+            >
+
+          </div>
+
+
+
+          <button
+            class="primary-btn"
+            id="joinMessButton"
+            onclick="joinMess()"
+          >
+            Send Join Request
+          </button>
+
+
+        </div>
+
+
+        <!-- PENDING REQUEST -->
+
+        <div
+          class="card"
+          id="pendingJoinCard"
+          style="display:none;"
+        >
+
+          <div class="card-title">
+            ⏳ Join Request
+          </div>
+
+
+          <div
+            id="pendingJoinContent"
+            class="status info"
+            style="display:block;"
+          >
+            Waiting for admin approval...
+          </div>
+
+
+        </div>
+
+
+      </section>
+
 
 
       <!-- ================================================= -->
@@ -772,11 +1540,16 @@
 
       <section id="messSection">
 
+
+        <!-- MESS HEADER -->
+
         <div class="mess-main-card">
+
 
           <div class="mess-label">
             CURRENT MESS
           </div>
+
 
           <div
             class="mess-name"
@@ -785,27 +1558,50 @@
             My Mess
           </div>
 
-          <div class="mess-role">
-            👑 Admin
+
+          <div
+            class="mess-role"
+            id="displayMessRole"
+          >
+            👤 Member
           </div>
+
 
         </div>
 
 
-        <!-- INVITE CODE -->
 
-        <div class="card">
+        <!-- ================================================= -->
+        <!-- ADMIN INVITE -->
+        <!-- ================================================= -->
+
+        <div
+          class="card"
+          id="adminInviteCard"
+        >
+
 
           <div class="card-title">
             🔑 Invite Members
           </div>
 
-          <p style="font-size:13px;color:#64748b;margin-bottom:13px;line-height:1.5;">
+
+          <p
+            style="
+              font-size:13px;
+              color:#64748b;
+              margin-bottom:13px;
+              line-height:1.5;
+            "
+          >
             Share this invite code with people who want to
             join your mess.
           </p>
 
+
+
           <div class="invite-box">
+
 
             <div
               class="invite-code"
@@ -814,6 +1610,7 @@
               ------
             </div>
 
+
             <button
               class="copy-btn"
               onclick="copyInviteCode()"
@@ -821,20 +1618,28 @@
               Copy
             </button>
 
+
           </div>
+
 
         </div>
 
 
+
+        <!-- ================================================= -->
         <!-- CYCLE -->
+        <!-- ================================================= -->
 
         <div class="card">
+
 
           <div class="card-title">
             📅 Current Cycle
           </div>
 
+
           <div class="cycle-grid">
+
 
             <div class="cycle-item">
 
@@ -861,22 +1666,162 @@
 
             </div>
 
+
           </div>
+
 
         </div>
 
 
+
+        <!-- ================================================= -->
+        <!-- ADMIN PANEL -->
+        <!-- ================================================= -->
+
+        <div
+          class="card"
+          id="adminPanel"
+          style="display:none;"
+        >
+
+
+          <div class="card-title">
+            👑 Admin Controls
+          </div>
+
+
+          <p
+            style="
+              font-size:12px;
+              color:#64748b;
+              line-height:1.5;
+              margin-bottom:15px;
+            "
+          >
+            Manage join requests and active members from here.
+          </p>
+
+
+
+          <!-- PENDING REQUESTS -->
+
+          <div>
+
+            <h4
+              style="
+                font-size:14px;
+                margin-bottom:10px;
+              "
+            >
+              📩 Pending Requests
+            </h4>
+
+
+            <div id="requestList">
+
+              <div class="empty">
+
+                <div class="empty-icon">
+                  📭
+                </div>
+
+                No pending requests.
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="divider"></div>
+
+
+
+          <!-- MEMBERS -->
+
+          <div>
+
+            <h4
+              style="
+                font-size:14px;
+                margin-bottom:10px;
+              "
+            >
+              👥 Active Members
+            </h4>
+
+
+            <div id="memberList">
+
+              <div class="empty">
+
+                <div class="empty-icon">
+                  👥
+                </div>
+
+                Loading members...
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- MEMBER INFO -->
+        <!-- ================================================= -->
+
+        <div
+          class="card"
+          id="memberInfoCard"
+          style="display:none;"
+        >
+
+
+          <div class="card-title">
+            👤 My Mess
+          </div>
+
+
+          <div
+            id="memberInfoContent"
+            class="status info"
+            style="display:block;"
+          >
+            You are a member of this mess.
+          </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
         <!-- FEATURES -->
+        <!-- ================================================= -->
 
         <div class="card">
+
 
           <div class="card-title">
             Mess Management
           </div>
 
+
           <div class="feature-grid">
 
-            <button class="feature">
+
+            <button
+              class="feature"
+              onclick="featureComingSoon('Meals')"
+            >
 
               <div class="feature-icon">
                 🍛
@@ -893,7 +1838,11 @@
             </button>
 
 
-            <button class="feature">
+
+            <button
+              class="feature"
+              onclick="scrollToMembers()"
+            >
 
               <div class="feature-icon">
                 👥
@@ -910,7 +1859,11 @@
             </button>
 
 
-            <button class="feature">
+
+            <button
+              class="feature"
+              onclick="featureComingSoon('Deposits')"
+            >
 
               <div class="feature-icon">
                 💰
@@ -927,7 +1880,11 @@
             </button>
 
 
-            <button class="feature">
+
+            <button
+              class="feature"
+              onclick="featureComingSoon('Expenses')"
+            >
 
               <div class="feature-icon">
                 🛒
@@ -944,7 +1901,11 @@
             </button>
 
 
-            <button class="feature">
+
+            <button
+              class="feature"
+              onclick="featureComingSoon('Notices')"
+            >
 
               <div class="feature-icon">
                 📢
@@ -961,7 +1922,11 @@
             </button>
 
 
-            <button class="feature">
+
+            <button
+              class="feature"
+              onclick="featureComingSoon('Settings')"
+            >
 
               <div class="feature-icon">
                 ⚙️
@@ -977,22 +1942,30 @@
 
             </button>
 
+
           </div>
+
 
         </div>
 
+
       </section>
 
+
     </section>
+
 
 
     <footer>
       Mess-Mate © 2026
     </footer>
 
+
   </main>
 
+
 </div>
+
 
 
 <!-- ===================================================== -->
@@ -1001,9 +1974,12 @@
 
 <script type="module">
 
+
   import {
     initializeApp
-  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  }
+  from
+    "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 
   import {
@@ -1012,7 +1988,9 @@
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
-  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+  }
+  from
+    "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 
   import {
@@ -1021,12 +1999,13 @@
     setDoc,
     getDoc,
     collection,
-    query,
-    where,
     getDocs,
     serverTimestamp,
     runTransaction
-  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+  }
+  from
+    "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
 
 
   // =====================================================
@@ -1056,6 +2035,7 @@
   };
 
 
+
   // =====================================================
   // INITIALIZE
   // =====================================================
@@ -1063,8 +2043,10 @@
   const app =
     initializeApp(firebaseConfig);
 
+
   const auth =
     getAuth(app);
+
 
   const db =
     getFirestore(app);
@@ -1076,44 +2058,91 @@
 
   let currentGroupId = null;
 
+  let currentMemberRole = null;
+
+
 
   // =====================================================
   // HELPERS
   // =====================================================
 
-  function showAuthStatus(message,type) {
+  function showAuthStatus(
+    message,
+    type
+  ) {
 
     const box =
-      document.getElementById("authStatus");
+      document.getElementById(
+        "authStatus"
+      );
 
-    box.textContent = message;
+    box.textContent =
+      message;
 
     box.className =
       "status " + type;
+
   }
 
 
-  function showMessStatus(message,type) {
+
+  function showMessStatus(
+    message,
+    type
+  ) {
 
     const box =
-      document.getElementById("messStatus");
+      document.getElementById(
+        "messStatus"
+      );
 
-    box.textContent = message;
+    if(!box) return;
+
+    box.textContent =
+      message;
 
     box.className =
       "status " + type;
+
   }
 
 
-  function clearMessStatus() {
+
+  function showJoinStatus(
+    message,
+    type
+  ) {
 
     const box =
-      document.getElementById("messStatus");
+      document.getElementById(
+        "joinStatus"
+      );
 
-    box.textContent = "";
+    box.textContent =
+      message;
 
-    box.className = "status";
+    box.className =
+      "status " + type;
+
   }
+
+
+
+  function clearJoinStatus() {
+
+    const box =
+      document.getElementById(
+        "joinStatus"
+      );
+
+    box.textContent =
+      "";
+
+    box.className =
+      "status";
+
+  }
+
 
 
   function generateInviteCode() {
@@ -1123,39 +2152,62 @@
 
     let code = "";
 
-    for(let i = 0; i < 6; i++) {
+
+    for(
+      let i = 0;
+      i < 6;
+      i++
+    ) {
 
       code +=
         chars.charAt(
           Math.floor(
-            Math.random() * chars.length
+            Math.random() *
+            chars.length
           )
         );
 
     }
 
+
     return code;
+
   }
 
 
-  function minutesFromTime(time) {
+
+  function minutesFromTime(
+    time
+  ) {
 
     const parts =
       time.split(":");
 
+
     return (
       Number(parts[0]) * 60
-      + Number(parts[1])
+      +
+      Number(parts[1])
     );
+
   }
 
 
-  function formatDate(value) {
 
-    if(!value) return "-";
+  function formatDate(
+    value
+  ) {
+
+    if(!value)
+      return "-";
+
 
     const date =
-      new Date(value + "T00:00:00");
+      new Date(
+        value +
+        "T00:00:00"
+      );
+
 
     return date.toLocaleDateString(
       "en-GB",
@@ -1165,220 +2217,337 @@
         year: "numeric"
       }
     );
+
   }
+
+
+
+  function initials(
+    name
+  ) {
+
+    if(!name)
+      return "U";
+
+
+    const clean =
+      name.trim();
+
+
+    if(!clean)
+      return "U";
+
+
+    return clean
+      .charAt(0)
+      .toUpperCase();
+
+  }
+
+
+
+  function escapeHtml(
+    value
+  ) {
+
+    if(value === null ||
+       value === undefined) {
+
+      return "";
+
+    }
+
+
+    return String(value)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+
+  }
+
 
 
   // =====================================================
   // AUTH TABS
   // =====================================================
 
-  window.showLogin = function() {
+  window.showLogin =
+    function() {
 
-    isLoginMode = true;
-
-    document
-      .getElementById("loginTab")
-      .classList.add("active");
-
-    document
-      .getElementById("signupTab")
-      .classList.remove("active");
-
-    document
-      .getElementById("authButton")
-      .textContent = "Login";
-
-    document
-      .getElementById("authStatus")
-      .className = "status";
-
-  };
+      isLoginMode =
+        true;
 
 
-  window.showSignup = function() {
+      document
+        .getElementById(
+          "loginTab"
+        )
+        .classList
+        .add("active");
 
-    isLoginMode = false;
 
-    document
-      .getElementById("signupTab")
-      .classList.add("active");
+      document
+        .getElementById(
+          "signupTab"
+        )
+        .classList
+        .remove("active");
 
-    document
-      .getElementById("loginTab")
-      .classList.remove("active");
 
-    document
-      .getElementById("authButton")
-      .textContent =
-        "Create Account";
+      document
+        .getElementById(
+          "authButton"
+        )
+        .textContent =
+          "Login";
 
-    document
-      .getElementById("authStatus")
-      .className = "status";
 
-  };
+      document
+        .getElementById(
+          "authStatus"
+        )
+        .className =
+          "status";
+
+    };
+
+
+
+  window.showSignup =
+    function() {
+
+      isLoginMode =
+        false;
+
+
+      document
+        .getElementById(
+          "signupTab"
+        )
+        .classList
+        .add("active");
+
+
+      document
+        .getElementById(
+          "loginTab"
+        )
+        .classList
+        .remove("active");
+
+
+      document
+        .getElementById(
+          "authButton"
+        )
+        .textContent =
+          "Create Account";
+
+
+      document
+        .getElementById(
+          "authStatus"
+        )
+        .className =
+          "status";
+
+    };
+
 
 
   // =====================================================
   // LOGIN / SIGNUP
   // =====================================================
 
-  window.handleAuth = async function() {
-
-    const email =
-      document
-        .getElementById("email")
-        .value
-        .trim();
-
-    const password =
-      document
-        .getElementById("password")
-        .value;
+  window.handleAuth =
+    async function() {
 
 
-    if(!email) {
-
-      showAuthStatus(
-        "Please enter your email.",
-        "error"
-      );
-
-      return;
-    }
+      const email =
+        document
+          .getElementById("email")
+          .value
+          .trim();
 
 
-    if(password.length < 6) {
-
-      showAuthStatus(
-        "Password must be at least 6 characters.",
-        "error"
-      );
-
-      return;
-    }
+      const password =
+        document
+          .getElementById("password")
+          .value;
 
 
-    const button =
-      document.getElementById("authButton");
+      if(!email) {
 
-    button.disabled = true;
-
-
-    try {
-
-      if(isLoginMode) {
-
-        await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
+        showAuthStatus(
+          "Please enter your email.",
+          "error"
         );
 
-      } else {
+        return;
 
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
+      }
+
+
+      if(password.length < 6) {
+
+        showAuthStatus(
+          "Password must be at least 6 characters.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      const button =
+        document.getElementById(
+          "authButton"
+        );
+
+
+      button.disabled =
+        true;
+
+
+      try {
+
+
+        if(isLoginMode) {
+
+
+          await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+        } else {
+
+
+          await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+        }
+
+
+      }
+
+
+      catch(error) {
+
+
+        console.error(
+          error
+        );
+
+
+        let message =
+          "Something went wrong.";
+
+
+        if(
+          error.code ===
+          "auth/invalid-credential"
+        ) {
+
+          message =
+            "Email or password is incorrect.";
+
+        }
+
+
+        else if(
+          error.code ===
+          "auth/email-already-in-use"
+        ) {
+
+          message =
+            "This email is already registered.";
+
+        }
+
+
+        else if(
+          error.code ===
+          "auth/invalid-email"
+        ) {
+
+          message =
+            "Please enter a valid email.";
+
+        }
+
+
+        else if(
+          error.code ===
+          "auth/weak-password"
+        ) {
+
+          message =
+            "Password is too weak.";
+
+        }
+
+
+        showAuthStatus(
+          message,
+          "error"
         );
 
       }
 
-    }
 
-    catch(error) {
+      finally {
 
-      console.error(error);
 
-      let message =
-        "Something went wrong.";
+        button.disabled =
+          false;
 
-      if(
-        error.code ===
-        "auth/invalid-credential"
-      ) {
 
-        message =
-          "Email or password is incorrect.";
+        button.textContent =
+          isLoginMode
+            ? "Login"
+            : "Create Account";
 
-      } else if(
-        error.code ===
-        "auth/email-already-in-use"
-      ) {
-
-        message =
-          "This email is already registered.";
-
-      } else if(
-        error.code ===
-        "auth/invalid-email"
-      ) {
-
-        message =
-          "Please enter a valid email.";
-
-      } else if(
-        error.code ===
-        "auth/weak-password"
-      ) {
-
-        message =
-          "Password is too weak.";
 
       }
 
-      showAuthStatus(
-        message,
-        "error"
-      );
 
-    }
+    };
 
-    finally {
-
-      button.disabled = false;
-
-      button.textContent =
-        isLoginMode
-          ? "Login"
-          : "Create Account";
-
-    }
-
-  };
 
 
   // =====================================================
   // LOGOUT
   // =====================================================
 
-  window.logoutUser = async function() {
+  window.logoutUser =
+    async function() {
 
-    await signOut(auth);
-
-  };
-
-
-  // =====================================================
-  // FIND USER'S MESS
-  // =====================================================
-
-  async function findUserMess(uid) {
-
-    const membersRef =
-      collection(
-        db,
-        "groups"
+      await signOut(
+        auth
       );
 
-    /*
-      We do not query members subcollections here because
-      Firestore rules are designed for group-isolated access.
+    };
 
-      Instead, this version stores the user's active group
-      reference inside the user document.
-    */
+
+
+  // =====================================================
+  // FIND USER MESS
+  // =====================================================
+
+  async function findUserMess(
+    uid
+  ) {
+
 
     const userRef =
       doc(
@@ -1387,8 +2556,11 @@
         uid
       );
 
+
     const userSnap =
-      await getDoc(userRef);
+      await getDoc(
+        userRef
+      );
 
 
     if(!userSnap.exists()) {
@@ -1398,196 +2570,21 @@
     }
 
 
-    const data =
+    const userData =
       userSnap.data();
 
 
-    if(!data.activeGroupId) {
+    // -------------------------------------------------
+    // ACTIVE GROUP
+    // -------------------------------------------------
 
-      return null;
+    if(
+      userData.activeGroupId
+    ) {
 
-    }
-
-
-    const groupRef =
-      doc(
-        db,
-        "groups",
-        data.activeGroupId
-      );
-
-    const groupSnap =
-      await getDoc(groupRef);
-
-
-    if(!groupSnap.exists()) {
-
-      return null;
-
-    }
-
-
-    return {
-      id: groupSnap.id,
-      data: groupSnap.data()
-    };
-
-  }
-
-
-  // =====================================================
-  // CREATE MESS
-  // =====================================================
-
-  window.createMess = async function() {
-
-    if(!currentUser) {
-
-      showMessStatus(
-        "Please login first.",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    const name =
-      document
-        .getElementById("messName")
-        .value
-        .trim();
-
-    const adminName =
-      document
-        .getElementById("adminName")
-        .value
-        .trim();
-
-    const cycleStart =
-      document
-        .getElementById("cycleStart")
-        .value;
-
-    const cycleEnd =
-      document
-        .getElementById("cycleEnd")
-        .value;
-
-    const mealOpen =
-      document
-        .getElementById("mealOpen")
-        .value;
-
-    const mealClose =
-      document
-        .getElementById("mealClose")
-        .value;
-
-
-    if(!name) {
-
-      showMessStatus(
-        "Please enter your mess name.",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    if(!adminName) {
-
-      showMessStatus(
-        "Please enter your name.",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    if(!cycleStart || !cycleEnd) {
-
-      showMessStatus(
-        "Please select cycle start and end dates.",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    if(cycleEnd <= cycleStart) {
-
-      showMessStatus(
-        "Cycle end date must be after start date.",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    if(!mealOpen || !mealClose) {
-
-      showMessStatus(
-        "Please select meal opening and closing times.",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    const button =
-      document.getElementById(
-        "createMessButton"
-      );
-
-    button.disabled = true;
-
-    button.textContent =
-      "Creating Mess...";
-
-
-    try {
-
-      const groupRef =
-        doc(
-          collection(
-            db,
-            "groups"
-          )
-        );
 
       const groupId =
-        groupRef.id;
-
-
-      const inviteCode =
-        generateInviteCode();
-
-
-      const mealOpenMinute =
-        minutesFromTime(mealOpen);
-
-      const mealCloseMinute =
-        minutesFromTime(mealClose);
-
-
-      const userRef =
-        doc(
-          db,
-          "users",
-          currentUser.uid
-        );
+        userData.activeGroupId;
 
 
       const memberRef =
@@ -1596,176 +2593,1162 @@
           "groups",
           groupId,
           "members",
-          currentUser.uid
+          uid
         );
 
 
-      const settingsRef =
+      const memberSnap =
+        await getDoc(
+          memberRef
+        );
+
+
+      if(
+        memberSnap.exists()
+        &&
+        memberSnap.data()
+          .status === "active"
+      ) {
+
+
+        const groupRef =
+          doc(
+            db,
+            "groups",
+            groupId
+          );
+
+
+        const groupSnap =
+          await getDoc(
+            groupRef
+          );
+
+
+        if(
+          groupSnap.exists()
+        ) {
+
+
+          return {
+
+            id:
+              groupSnap.id,
+
+            data:
+              groupSnap.data(),
+
+            member:
+              memberSnap.data()
+
+          };
+
+        }
+
+      }
+
+
+    }
+
+
+
+    // -------------------------------------------------
+    // PENDING / APPROVED GROUP
+    // -------------------------------------------------
+
+    if(
+      userData.pendingGroupId
+    ) {
+
+
+      const groupId =
+        userData.pendingGroupId;
+
+
+      const memberRef =
         doc(
           db,
           "groups",
           groupId,
-          "settings",
-          "main"
+          "members",
+          uid
         );
 
 
-      const cycleRef =
-        doc(
-          db,
-          "groups",
-          groupId,
-          "cycles",
-          "current"
+      const memberSnap =
+        await getDoc(
+          memberRef
         );
 
 
-      const inviteRef =
-        doc(
-          db,
-          "inviteCodes",
-          inviteCode
-        );
+      // Approved member.
+      // Activate this group automatically.
+      if(
+        memberSnap.exists()
+        &&
+        memberSnap.data()
+          .status === "active"
+      ) {
 
 
-      await runTransaction(
-        db,
-        async(transaction) => {
-
-          // GROUP
-
-          transaction.set(
-            groupRef,
-            {
-              name: name,
-              adminUid: currentUser.uid,
-              inviteCode: inviteCode,
-              createdAt: serverTimestamp()
-            }
+        const groupRef =
+          doc(
+            db,
+            "groups",
+            groupId
           );
 
 
-          // ADMIN MEMBER
-
-          transaction.set(
-            memberRef,
-            {
-              uid: currentUser.uid,
-              name: adminName,
-              email: currentUser.email || "",
-              role: "admin",
-              status: "active",
-              joinedAt: serverTimestamp(),
-              updatedAt: serverTimestamp()
-            }
+        const groupSnap =
+          await getDoc(
+            groupRef
           );
 
 
-          // SETTINGS
-
-          transaction.set(
-            settingsRef,
-            {
-              mealWindowEnabled: true,
-              mealOpenMinute: mealOpenMinute,
-              mealCloseMinute: mealCloseMinute,
-              updatedAt: serverTimestamp()
-            }
-          );
+        if(
+          groupSnap.exists()
+        ) {
 
 
-          // CURRENT CYCLE
-
-          transaction.set(
-            cycleRef,
-            {
-              name: cycleStart + " - " + cycleEnd,
-              startDate: cycleStart,
-              endDate: cycleEnd,
-              status: "active",
-              createdAt: serverTimestamp(),
-              updatedAt: serverTimestamp()
-            }
-          );
-
-
-          // INVITE CODE
-
-          transaction.set(
-            inviteRef,
-            {
-              groupId: groupId,
-              createdAt: serverTimestamp()
-            }
-          );
-
-
-          // USER PROFILE
-
-          transaction.set(
+          await setDoc(
             userRef,
             {
-              name: adminName,
-              email: currentUser.email || "",
-              activeGroupId: groupId,
-              updatedAt: serverTimestamp()
+
+              activeGroupId:
+                groupId,
+
+              pendingGroupId:
+                null,
+
+              updatedAt:
+                serverTimestamp()
+
             },
             {
               merge: true
             }
           );
 
+
+          return {
+
+            id:
+              groupSnap.id,
+
+            data:
+              groupSnap.data(),
+
+            member:
+              memberSnap.data()
+
+          };
+
         }
-      );
 
-
-      currentGroupId =
-        groupId;
-
-
-      showMessStatus(
-        "Mess created successfully! 🎉",
-        "success"
-      );
-
-
-      await loadMess(
-        groupId
-      );
+      }
 
     }
 
-    catch(error) {
 
-      console.error(
-        "Create mess error:",
-        error
+    return null;
+
+  }
+
+
+
+  // =====================================================
+  // SHOW NO MESS SCREEN
+  // =====================================================
+
+  async function showNoMessScreen() {
+
+
+    document
+      .getElementById(
+        "createMessSection"
+      )
+      .style.display =
+        "block";
+
+
+    document
+      .getElementById(
+        "joinMessSection"
+      )
+      .style.display =
+        "block";
+
+
+    document
+      .getElementById(
+        "messSection"
+      )
+      .style.display =
+        "none";
+
+
+    const userRef =
+      doc(
+        db,
+        "users",
+        currentUser.uid
       );
 
-      showMessStatus(
-        "Could not create mess. Please try again.",
-        "error"
+
+    const userSnap =
+      await getDoc(
+        userRef
       );
+
+
+    if(
+      userSnap.exists()
+      &&
+      userSnap.data()
+        .pendingGroupId
+    ) {
+
+
+      const groupId =
+        userSnap.data()
+          .pendingGroupId;
+
+
+      const requestRef =
+        doc(
+          db,
+          "groups",
+          groupId,
+          "joinRequests",
+          currentUser.uid
+        );
+
+
+      const requestSnap =
+        await getDoc(
+          requestRef
+        );
+
+
+      const pendingCard =
+        document.getElementById(
+          "pendingJoinCard"
+        );
+
+
+      const pendingContent =
+        document.getElementById(
+          "pendingJoinContent"
+        );
+
+
+      if(
+        requestSnap.exists()
+      ) {
+
+
+        const request =
+          requestSnap.data();
+
+
+        if(
+          request.status ===
+          "pending"
+        ) {
+
+
+          pendingCard.style.display =
+            "block";
+
+
+          pendingContent.className =
+            "status info";
+
+
+          pendingContent.style.display =
+            "block";
+
+
+          pendingContent.textContent =
+            "⏳ Your join request is waiting for admin approval.";
+
+        }
+
+
+      }
 
     }
 
-    finally {
+  }
 
-      button.disabled = false;
+
+
+  // =====================================================
+  // CREATE MESS
+  // =====================================================
+
+  window.createMess =
+    async function() {
+
+
+      if(!currentUser) {
+
+        showMessStatus(
+          "Please login first.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      const name =
+        document
+          .getElementById("messName")
+          .value
+          .trim();
+
+
+      const adminName =
+        document
+          .getElementById("adminName")
+          .value
+          .trim();
+
+
+      const cycleStart =
+        document
+          .getElementById("cycleStart")
+          .value;
+
+
+      const cycleEnd =
+        document
+          .getElementById("cycleEnd")
+          .value;
+
+
+      const mealOpen =
+        document
+          .getElementById("mealOpen")
+          .value;
+
+
+      const mealClose =
+        document
+          .getElementById("mealClose")
+          .value;
+
+
+
+      if(!name) {
+
+        showMessStatus(
+          "Please enter your mess name.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if(!adminName) {
+
+        showMessStatus(
+          "Please enter your name.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if(
+        !cycleStart ||
+        !cycleEnd
+      ) {
+
+        showMessStatus(
+          "Please select cycle start and end dates.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if(
+        cycleEnd <= cycleStart
+      ) {
+
+        showMessStatus(
+          "Cycle end date must be after start date.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if(
+        !mealOpen ||
+        !mealClose
+      ) {
+
+        showMessStatus(
+          "Please select meal opening and closing times.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      const button =
+        document.getElementById(
+          "createMessButton"
+        );
+
+
+      button.disabled =
+        true;
+
 
       button.textContent =
-        "Create Mess";
+        "Creating Mess...";
 
-    }
 
-  };
+      try {
+
+
+        const groupRef =
+          doc(
+            collection(
+              db,
+              "groups"
+            )
+          );
+
+
+        const groupId =
+          groupRef.id;
+
+
+        const inviteCode =
+          generateInviteCode();
+
+
+        const mealOpenMinute =
+          minutesFromTime(
+            mealOpen
+          );
+
+
+        const mealCloseMinute =
+          minutesFromTime(
+            mealClose
+          );
+
+
+        const userRef =
+          doc(
+            db,
+            "users",
+            currentUser.uid
+          );
+
+
+        const memberRef =
+          doc(
+            db,
+            "groups",
+            groupId,
+            "members",
+            currentUser.uid
+          );
+
+
+        const settingsRef =
+          doc(
+            db,
+            "groups",
+            groupId,
+            "settings",
+            "main"
+          );
+
+
+        const cycleRef =
+          doc(
+            db,
+            "groups",
+            groupId,
+            "cycles",
+            "current"
+          );
+
+
+        const inviteRef =
+          doc(
+            db,
+            "inviteCodes",
+            inviteCode
+          );
+
+
+
+        await runTransaction(
+          db,
+          async(transaction) => {
+
+
+            // GROUP
+
+            transaction.set(
+              groupRef,
+              {
+
+                name:
+                  name,
+
+                adminUid:
+                  currentUser.uid,
+
+                inviteCode:
+                  inviteCode,
+
+                createdAt:
+                  serverTimestamp()
+
+              }
+            );
+
+
+
+            // ADMIN MEMBER
+
+            transaction.set(
+              memberRef,
+              {
+
+                uid:
+                  currentUser.uid,
+
+                name:
+                  adminName,
+
+                email:
+                  currentUser.email || "",
+
+                role:
+                  "admin",
+
+                status:
+                  "active",
+
+                joinedAt:
+                  serverTimestamp(),
+
+                updatedAt:
+                  serverTimestamp()
+
+              }
+            );
+
+
+
+            // SETTINGS
+
+            transaction.set(
+              settingsRef,
+              {
+
+                mealWindowEnabled:
+                  true,
+
+                mealOpenMinute:
+                  mealOpenMinute,
+
+                mealCloseMinute:
+                  mealCloseMinute,
+
+                mealOpenMinutes:
+                  mealOpenMinute,
+
+                mealCloseMinutes:
+                  mealCloseMinute,
+
+                updatedAt:
+                  serverTimestamp()
+
+              }
+            );
+
+
+
+            // CURRENT CYCLE
+
+            transaction.set(
+              cycleRef,
+              {
+
+                name:
+                  cycleStart +
+                  " - " +
+                  cycleEnd,
+
+                startDate:
+                  cycleStart,
+
+                endDate:
+                  cycleEnd,
+
+                status:
+                  "active",
+
+                createdAt:
+                  serverTimestamp(),
+
+                updatedAt:
+                  serverTimestamp()
+
+              }
+            );
+
+
+
+            // INVITE CODE
+
+            transaction.set(
+              inviteRef,
+              {
+
+                groupId:
+                  groupId,
+
+                createdAt:
+                  serverTimestamp()
+
+              }
+            );
+
+
+
+            // USER PROFILE
+
+            transaction.set(
+              userRef,
+              {
+
+                name:
+                  adminName,
+
+                email:
+                  currentUser.email || "",
+
+                activeGroupId:
+                  groupId,
+
+                pendingGroupId:
+                  null,
+
+                updatedAt:
+                  serverTimestamp()
+
+              },
+              {
+                merge: true
+              }
+            );
+
+
+          }
+        );
+
+
+        currentGroupId =
+          groupId;
+
+
+        showMessStatus(
+          "Mess created successfully! 🎉",
+          "success"
+        );
+
+
+        await loadMess(
+          groupId
+        );
+
+
+      }
+
+
+      catch(error) {
+
+
+        console.error(
+          "Create mess error:",
+          error
+        );
+
+
+        showMessStatus(
+          "Could not create mess. Please try again.",
+          "error"
+        );
+
+
+      }
+
+
+      finally {
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          "Create Mess";
+
+
+      }
+
+
+    };
+
+
+
+  // =====================================================
+  // JOIN MESS
+  // =====================================================
+
+  window.joinMess =
+    async function() {
+
+
+      if(!currentUser) {
+
+        showJoinStatus(
+          "Please login first.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      const name =
+        document
+          .getElementById(
+            "memberName"
+          )
+          .value
+          .trim();
+
+
+      const code =
+        document
+          .getElementById(
+            "joinInviteCode"
+          )
+          .value
+          .trim()
+          .toUpperCase();
+
+
+
+      if(!name) {
+
+        showJoinStatus(
+          "Please enter your name.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if(
+        code.length !== 6
+      ) {
+
+        showJoinStatus(
+          "Invite code must be 6 characters.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+
+      const button =
+        document.getElementById(
+          "joinMessButton"
+        );
+
+
+      button.disabled =
+        true;
+
+
+      button.textContent =
+        "Checking Code...";
+
+
+      try {
+
+
+        // -------------------------------------------------
+        // FIND INVITE CODE
+        // -------------------------------------------------
+
+        const inviteRef =
+          doc(
+            db,
+            "inviteCodes",
+            code
+          );
+
+
+        const inviteSnap =
+          await getDoc(
+            inviteRef
+          );
+
+
+        if(
+          !inviteSnap.exists()
+        ) {
+
+          showJoinStatus(
+            "Invalid invite code.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        const invite =
+          inviteSnap.data();
+
+
+        const groupId =
+          invite.groupId;
+
+
+        if(!groupId) {
+
+          showJoinStatus(
+            "This invite code is not valid.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+
+        // -------------------------------------------------
+        // CHECK GROUP
+        // -------------------------------------------------
+
+        const groupRef =
+          doc(
+            db,
+            "groups",
+            groupId
+          );
+
+
+        const groupSnap =
+          await getDoc(
+            groupRef
+          );
+
+
+        if(
+          !groupSnap.exists()
+        ) {
+
+          showJoinStatus(
+            "This mess no longer exists.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        const group =
+          groupSnap.data();
+
+
+
+        // -------------------------------------------------
+        // CHECK EXISTING MEMBER
+        // -------------------------------------------------
+
+        const memberRef =
+          doc(
+            db,
+            "groups",
+            groupId,
+            "members",
+            currentUser.uid
+          );
+
+
+        const memberSnap =
+          await getDoc(
+            memberRef
+          );
+
+
+        if(
+          memberSnap.exists()
+          &&
+          memberSnap.data()
+            .status === "active"
+        ) {
+
+          showJoinStatus(
+            "You are already a member of this mess.",
+            "info"
+          );
+
+          return;
+
+        }
+
+
+
+        // -------------------------------------------------
+        // CHECK EXISTING REQUEST
+        // -------------------------------------------------
+
+        const requestRef =
+          doc(
+            db,
+            "groups",
+            groupId,
+            "joinRequests",
+            currentUser.uid
+          );
+
+
+        const requestSnap =
+          await getDoc(
+            requestRef
+          );
+
+
+        if(
+          requestSnap.exists()
+        ) {
+
+
+          const request =
+            requestSnap.data();
+
+
+          if(
+            request.status ===
+            "pending"
+          ) {
+
+            showJoinStatus(
+              "You already have a pending request for this mess.",
+              "info"
+            );
+
+            return;
+
+          }
+
+
+          // If old request is not pending,
+          // user needs admin to remove it before re-requesting.
+          showJoinStatus(
+            "A previous request already exists for this mess. Ask the admin to remove the old request first.",
+            "warning"
+          );
+
+          return;
+
+        }
+
+
+
+        button.textContent =
+          "Sending Request...";
+
+
+
+        // -------------------------------------------------
+        // USER PROFILE
+        // -------------------------------------------------
+
+        const userRef =
+          doc(
+            db,
+            "users",
+            currentUser.uid
+          );
+
+
+        // -------------------------------------------------
+        // JOIN REQUEST
+        // -------------------------------------------------
+
+        await runTransaction(
+          db,
+          async(transaction) => {
+
+
+            transaction.set(
+              userRef,
+              {
+
+                name:
+                  name,
+
+                email:
+                  currentUser.email || "",
+
+                pendingGroupId:
+                  groupId,
+
+                updatedAt:
+                  serverTimestamp()
+
+              },
+              {
+                merge: true
+              }
+            );
+
+
+            transaction.set(
+              requestRef,
+              {
+
+                requesterUid:
+                  currentUser.uid,
+
+                requesterName:
+                  name,
+
+                requesterEmail:
+                  currentUser.email || "",
+
+                groupId:
+                  groupId,
+
+                groupName:
+                  group.name || "Mess",
+
+                status:
+                  "pending",
+
+                createdAt:
+                  serverTimestamp(),
+
+                updatedAt:
+                  serverTimestamp()
+
+              }
+            );
+
+
+          }
+        );
+
+
+        showJoinStatus(
+          "Join request sent successfully! ⏳",
+          "success"
+        );
+
+
+        document
+          .getElementById(
+            "pendingJoinCard"
+          )
+          .style.display =
+            "block";
+
+
+        document
+          .getElementById(
+            "pendingJoinContent"
+          )
+          .textContent =
+            "⏳ Waiting for admin approval.";
+
+
+      }
+
+
+      catch(error) {
+
+
+        console.error(
+          "Join error:",
+          error
+        );
+
+
+        showJoinStatus(
+          "Could not send join request. Please try again.",
+          "error"
+        );
+
+
+      }
+
+
+      finally {
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          "Send Join Request";
+
+
+      }
+
+
+    };
+
 
 
   // =====================================================
   // LOAD MESS
   // =====================================================
 
-  async function loadMess(groupId) {
+  async function loadMess(
+    groupId
+  ) {
+
 
     const groupRef =
       doc(
@@ -1776,10 +3759,14 @@
 
 
     const groupSnap =
-      await getDoc(groupRef);
+      await getDoc(
+        groupRef
+      );
 
 
-    if(!groupSnap.exists()) {
+    if(
+      !groupSnap.exists()
+    ) {
 
       return;
 
@@ -1790,33 +3777,138 @@
       groupSnap.data();
 
 
+
+    // -------------------------------------------------
+    // MEMBER DATA
+    // -------------------------------------------------
+
+    const memberRef =
+      doc(
+        db,
+        "groups",
+        groupId,
+        "members",
+        currentUser.uid
+      );
+
+
+    const memberSnap =
+      await getDoc(
+        memberRef
+      );
+
+
+    if(
+      !memberSnap.exists()
+    ) {
+
+      return;
+
+    }
+
+
+    const member =
+      memberSnap.data();
+
+
     currentGroupId =
       groupId;
 
 
+    currentMemberRole =
+      member.role || "member";
+
+
+
+    // -------------------------------------------------
+    // SHOW / HIDE SECTIONS
+    // -------------------------------------------------
+
     document
-      .getElementById("createMessSection")
-      .style.display = "none";
+      .getElementById(
+        "createMessSection"
+      )
+      .style.display =
+        "none";
 
 
     document
-      .getElementById("messSection")
-      .style.display = "block";
+      .getElementById(
+        "joinMessSection"
+      )
+      .style.display =
+        "none";
 
 
     document
-      .getElementById("displayMessName")
+      .getElementById(
+        "messSection"
+      )
+      .style.display =
+        "block";
+
+
+
+    // -------------------------------------------------
+    // MESS NAME
+    // -------------------------------------------------
+
+    document
+      .getElementById(
+        "displayMessName"
+      )
       .textContent =
-        group.name || "My Mess";
+        group.name ||
+        "My Mess";
 
+
+
+    // -------------------------------------------------
+    // ROLE
+    // -------------------------------------------------
+
+    const roleBox =
+      document.getElementById(
+        "displayMessRole"
+      );
+
+
+    if(
+      currentMemberRole ===
+      "admin"
+    ) {
+
+      roleBox.textContent =
+        "👑 Admin";
+
+    }
+
+    else {
+
+      roleBox.textContent =
+        "👤 Member";
+
+    }
+
+
+
+    // -------------------------------------------------
+    // INVITE CODE
+    // -------------------------------------------------
 
     document
-      .getElementById("displayInviteCode")
+      .getElementById(
+        "displayInviteCode"
+      )
       .textContent =
-        group.inviteCode || "------";
+        group.inviteCode ||
+        "------";
 
 
+
+    // -------------------------------------------------
     // CURRENT CYCLE
+    // -------------------------------------------------
 
     const cycleRef =
       doc(
@@ -1829,17 +3921,24 @@
 
 
     const cycleSnap =
-      await getDoc(cycleRef);
+      await getDoc(
+        cycleRef
+      );
 
 
-    if(cycleSnap.exists()) {
+    if(
+      cycleSnap.exists()
+    ) {
+
 
       const cycle =
         cycleSnap.data();
 
 
       document
-        .getElementById("displayCycleStart")
+        .getElementById(
+          "displayCycleStart"
+        )
         .textContent =
           formatDate(
             cycle.startDate
@@ -1847,7 +3946,9 @@
 
 
       document
-        .getElementById("displayCycleEnd")
+        .getElementById(
+          "displayCycleEnd"
+        )
         .textContent =
           formatDate(
             cycle.endDate
@@ -1855,183 +3956,495 @@
 
     }
 
+
+
+    // -------------------------------------------------
+    // ADMIN / MEMBER UI
+    // -------------------------------------------------
+
+    if(
+      currentMemberRole ===
+      "admin"
+    ) {
+
+
+      document
+        .getElementById(
+          "adminInviteCard"
+        )
+        .style.display =
+          "block";
+
+
+      document
+        .getElementById(
+          "adminPanel"
+        )
+        .style.display =
+          "block";
+
+
+      document
+        .getElementById(
+          "memberInfoCard"
+        )
+        .style.display =
+          "none";
+
+
+      await loadAdminData(
+        groupId
+      );
+
+
+    }
+
+    else {
+
+
+      document
+        .getElementById(
+          "adminInviteCard"
+        )
+        .style.display =
+          "none";
+
+
+      document
+        .getElementById(
+          "adminPanel"
+        )
+        .style.display =
+          "none";
+
+
+      document
+        .getElementById(
+          "memberInfoCard"
+        )
+        .style.display =
+          "block";
+
+
+      document
+        .getElementById(
+          "memberInfoContent"
+        )
+        .textContent =
+          "You are an active member of this mess. 👤";
+
+
+    }
+
+
   }
 
 
+
   // =====================================================
-  // COPY INVITE CODE
+  // LOAD ADMIN DATA
   // =====================================================
 
-  window.copyInviteCode = async function() {
+  async function loadAdminData(
+    groupId
+  ) {
 
-    const code =
-      document
-        .getElementById(
-          "displayInviteCode"
-        )
-        .textContent;
+
+    await loadJoinRequests(
+      groupId
+    );
+
+
+    await loadMembers(
+      groupId
+    );
+
+  }
+
+
+
+  // =====================================================
+  // LOAD JOIN REQUESTS
+  // =====================================================
+
+  async function loadJoinRequests(
+    groupId
+  ) {
+
+
+    const list =
+      document.getElementById(
+        "requestList"
+      );
+
+
+    list.innerHTML =
+      `
+        <div class="empty">
+          <div class="empty-icon">⏳</div>
+          Loading requests...
+        </div>
+      `;
+
 
 
     try {
 
-      await navigator.clipboard.writeText(
-        code
+
+      const requestsRef =
+        collection(
+          db,
+          "groups",
+          groupId,
+          "joinRequests"
+        );
+
+
+      const snapshot =
+        await getDocs(
+          requestsRef
+        );
+
+
+      const pending =
+        [];
+
+
+      snapshot.forEach(
+        (docSnap) => {
+
+
+          const data =
+            docSnap.data();
+
+
+          if(
+            data.status ===
+            "pending"
+          ) {
+
+
+            pending.push({
+
+              id:
+                docSnap.id,
+
+              data:
+                data
+
+            });
+
+          }
+
+
+        }
       );
 
-      alert(
-        "Invite code copied: " + code
-      );
-
-    }
-
-    catch(error) {
-
-      alert(
-        "Invite code: " + code
-      );
-
-    }
-
-  };
 
 
-  // =====================================================
-  // AUTH STATE
-  // =====================================================
-
-  onAuthStateChanged(
-    auth,
-    async(user) => {
-
-      document
-        .getElementById(
-          "loadingScreen"
-        )
-        .style.display = "none";
+      if(
+        pending.length ===
+        0
+      ) {
 
 
-      if(!user) {
+        list.innerHTML =
+          `
+            <div class="empty">
+              <div class="empty-icon">📭</div>
+              No pending requests.
+            </div>
+          `;
 
-        currentUser = null;
-
-        document
-          .getElementById(
-            "authSection"
-          )
-          .style.display = "block";
-
-        document
-          .getElementById(
-            "dashboardSection"
-          )
-          .style.display = "none";
 
         return;
 
       }
 
 
-      currentUser =
-        user;
+
+      list.innerHTML =
+        pending
+          .map(
+            item => {
 
 
-      document
-        .getElementById(
-          "authSection"
+              const data =
+                item.data;
+
+
+              return `
+
+                <div class="request-item">
+
+                  <div class="request-top">
+
+                    <div class="member-avatar">
+                      ${escapeHtml(
+                        initials(
+                          data.requesterName
+                        )
+                      )}
+                    </div>
+
+                    <div class="request-info">
+
+                      <strong>
+                        ${escapeHtml(
+                          data.requesterName ||
+                          "Unknown User"
+                        )}
+                      </strong>
+
+                      <span>
+                        ${escapeHtml(
+                          data.requesterEmail ||
+                          ""
+                        )}
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="request-actions">
+
+                    <button
+                      class="small-btn approve-btn"
+                      onclick="approveRequest(
+                        '${item.id}'
+                      )"
+                    >
+                      ✓ Approve
+                    </button>
+
+
+                    <button
+                      class="small-btn reject-btn"
+                      onclick="rejectRequest(
+                        '${item.id}'
+                      )"
+                    >
+                      ✕ Reject
+                    </button>
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join("");
+
+
+    }
+
+
+    catch(error) {
+
+
+      console.error(
+        "Requests error:",
+        error
+      );
+
+
+      list.innerHTML =
+        `
+          <div class="empty">
+            Could not load requests.
+          </div>
+        `;
+
+
+    }
+
+
+  }
+
+
+
+  // =====================================================
+  // APPROVE REQUEST
+  // =====================================================
+
+  window.approveRequest =
+    async function(
+      requestId
+    ) {
+
+
+      if(
+        !currentGroupId ||
+        currentMemberRole !==
+        "admin"
+      ) {
+
+        return;
+
+      }
+
+
+      if(
+        !confirm(
+          "Approve this member?"
         )
-        .style.display = "none";
+      ) {
 
+        return;
 
-      document
-        .getElementById(
-          "dashboardSection"
-        )
-        .style.display = "block";
+      }
 
-
-      document
-        .getElementById(
-          "userEmail"
-        )
-        .textContent =
-          user.email || "";
-
-
-      document
-        .getElementById(
-          "userName"
-        )
-        .textContent =
-          user.email
-            ? user.email.split("@")[0]
-            : "User";
-
-
-      document
-        .getElementById(
-          "userAvatar"
-        )
-        .textContent =
-          user.email
-            ? user.email
-                .charAt(0)
-                .toUpperCase()
-            : "U";
 
 
       try {
 
-        const mess =
-          await findUserMess(
-            user.uid
+
+        const requestRef =
+          doc(
+            db,
+            "groups",
+            currentGroupId,
+            "joinRequests",
+            requestId
           );
 
 
-        if(mess) {
-
-          await loadMess(
-            mess.id
+        const requestSnap =
+          await getDoc(
+            requestRef
           );
 
-        }
 
-        else {
+        if(
+          !requestSnap.exists()
+        ) {
 
-          document
-            .getElementById(
-              "createMessSection"
-            )
-            .style.display = "block";
+          alert(
+            "Request no longer exists."
+          );
 
-          document
-            .getElementById(
-              "messSection"
-            )
-            .style.display = "none";
+          return;
 
         }
 
-      }
 
-      catch(error) {
+        const request =
+          requestSnap.data();
 
-        console.error(
-          "Loading mess:",
-          error
+
+        if(
+          request.status !==
+          "pending"
+        ) {
+
+          alert(
+            "This request is no longer pending."
+          );
+
+          return;
+
+        }
+
+
+
+        const memberRef =
+          doc(
+            db,
+            "groups",
+            currentGroupId,
+            "members",
+            requestId
+          );
+
+
+
+        await runTransaction(
+          db,
+          async(transaction) => {
+
+
+            const memberSnap =
+              await transaction.get(
+                memberRef
+              );
+
+
+            if(
+              memberSnap.exists()
+              &&
+              memberSnap.data()
+                .status === "active"
+            ) {
+
+              throw new Error(
+                "Member already exists."
+              );
+
+            }
+
+
+            transaction.set(
+              memberRef,
+              {
+
+                uid:
+                  request.requesterUid,
+
+                name:
+                  request.requesterName ||
+                  "Member",
+
+                email:
+                  request.requesterEmail ||
+                  "",
+
+                role:
+                  "member",
+
+                status:
+                  "active",
+
+                joinedAt:
+                  serverTimestamp(),
+
+                updatedAt:
+                  serverTimestamp()
+
+              }
+            );
+
+
+            transaction.update(
+              requestRef,
+              {
+
+                status:
+                  "approved",
+
+                reviewedBy:
+                  currentUser.uid,
+
+                reviewedAt:
+                  serverTimestamp(),
+
+                updatedAt:
+                  serverTimestamp()
+
+              }
+            );
+
+
+          }
         );
 
-        document
-          .getElementById(
-            "createMessSection"
-          )
-          .style.display = "block";
 
-      }
+        alert(
+          "Member approved successfully! ✅"
+        );
 
-    }
-  );
 
-</script>
-
-</body>
-              </html>
+        await loadAdminData(
