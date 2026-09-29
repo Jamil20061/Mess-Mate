@@ -1,128 +1,863 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<meta name="theme-color"
+content="#2563eb">
 
 <title>Mess-Mate</title>
 
 <style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
 body{
-  margin:0;
-  min-height:100vh;
-  background:#f3f6fb;
-  font-family:Arial,sans-serif;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+font-family:Arial,sans-serif;
+background:#f3f6fb;
+color:#172033;
+min-height:100vh;
 }
 
-.card{
-  width:85%;
-  max-width:400px;
-  background:white;
-  padding:25px 20px;
-  border-radius:22px;
-  box-shadow:0 8px 30px #0001;
-}
-
-.logo{
-  width:65px;
-  height:65px;
-  border-radius:20px;
-  background:#2563eb;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  font-weight:bold;
-  margin:0 auto 15px;
-}
-
-h1{
-  text-align:center;
-  color:#2563eb;
-  margin:0;
-}
-
-.sub{
-  text-align:center;
-  color:#888;
-  font-size:13px;
-  margin:7px 0 22px;
-}
-
-input{
-  width:100%;
-  padding:13px;
-  box-sizing:border-box;
-  border:1px solid #ddd;
-  border-radius:12px;
-  margin-bottom:12px;
-  outline:none;
+button,input{
+font:inherit;
 }
 
 button{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:12px;
-  background:#2563eb;
-  color:white;
-  font-weight:bold;
-  font-size:15px;
+cursor:pointer;
 }
 
-#status{
-  margin-top:15px;
-  text-align:center;
-  font-size:12px;
-  color:#777;
-  line-height:1.5;
+.hidden{
+display:none!important;
 }
+
+.card{
+background:#fff;
+border-radius:20px;
+padding:22px;
+box-shadow:0 8px 30px #0000000c;
+}
+
+.auth{
+width:90%;
+max-width:430px;
+margin:60px auto;
+}
+
+.logo{
+width:68px;
+height:68px;
+border-radius:21px;
+background:#2563eb;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+font-weight:900;
+margin:0 auto 15px;
+}
+
+h1{
+text-align:center;
+color:#2563eb;
+font-size:30px;
+}
+
+.subtitle{
+text-align:center;
+color:#888;
+font-size:13px;
+margin:7px 0 22px;
+}
+
+.tabs{
+display:flex;
+background:#edf2f8;
+padding:4px;
+border-radius:12px;
+margin-bottom:18px;
+}
+
+.tab{
+flex:1;
+border:0;
+background:transparent;
+padding:10px;
+border-radius:9px;
+font-weight:700;
+color:#667085;
+}
+
+.tab.active{
+background:#fff;
+color:#2563eb;
+box-shadow:0 2px 8px #0000000d;
+}
+
+.form{
+margin-bottom:13px;
+}
+
+label{
+display:block;
+font-size:12px;
+font-weight:700;
+margin-bottom:6px;
+}
+
+input{
+width:100%;
+padding:13px;
+border:1px solid #dce2eb;
+border-radius:12px;
+outline:none;
+background:#fff;
+}
+
+input:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 3px #2563eb12;
+}
+
+.btn{
+width:100%;
+border:0;
+border-radius:12px;
+padding:13px;
+font-weight:700;
+}
+
+.primary{
+background:#2563eb;
+color:white;
+}
+
+.success{
+background:#16a34a;
+color:white;
+}
+
+.secondary{
+background:#edf2f8;
+color:#344054;
+}
+
+.danger{
+background:#dc2626;
+color:white;
+}
+
+.status{
+text-align:center;
+font-size:12px;
+color:#777;
+margin-top:15px;
+line-height:1.6;
+}
+
+.app{
+width:100%;
+max-width:850px;
+margin:auto;
+padding:20px 14px 50px;
+}
+
+.hero{
+background:linear-gradient(
+135deg,
+#2563eb,
+#4f8cff
+);
+color:#fff;
+border-radius:22px;
+padding:23px 18px;
+margin-bottom:15px;
+}
+
+.hero h2{
+font-size:23px;
+margin-bottom:7px;
+}
+
+.hero p{
+font-size:13px;
+opacity:.9;
+}
+
+.title{
+font-size:18px;
+font-weight:800;
+margin-bottom:15px;
+}
+
+.grid2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.stat{
+background:#f7f9fd;
+border:1px solid #edf1f6;
+border-radius:15px;
+padding:15px;
+}
+
+.stat small{
+display:block;
+color:#7b8495;
+font-size:11px;
+margin-bottom:7px;
+}
+
+.stat b{
+font-size:20px;
+}
+
+.invite{
+margin-top:15px;
+padding:15px;
+background:#f4f7ff;
+border:1px dashed #9db9f8;
+border-radius:14px;
+}
+
+.code{
+font-size:25px;
+font-weight:900;
+letter-spacing:4px;
+color:#2563eb;
+margin:8px 0 12px;
+}
+
+.muted{
+color:#7b8495;
+font-size:13px;
+line-height:1.5;
+}
+
+.topbar{
+background:#fff;
+padding:12px 15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #e5eaf2;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.brandIcon{
+width:40px;
+height:40px;
+border-radius:13px;
+background:#2563eb;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+}
+
+.brandText b{
+font-size:17px;
+}
+
+.brandText small{
+display:block;
+font-size:10px;
+color:#8992a3;
+margin-top:2px;
+}
+
+.avatar{
+width:40px;
+height:40px;
+border:0;
+border-radius:50%;
+background:#e8efff;
+color:#2563eb;
+font-weight:900;
+}
+
+@media(max-width:420px){
+
+.grid2{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
 </style>
 
 </head>
 
+
 <body>
 
-<div class="card">
 
-  <div class="logo">
-    M
-  </div>
+<!-- =========================
+     HEADER
+========================= -->
 
-  <h1>Mess-Mate</h1>
+<header id="header"
+class="topbar hidden">
 
-  <div class="sub">
-    Smart Mess Management
-  </div>
+<div class="brand">
 
-  <input
-    id="email"
-    type="email"
-    placeholder="Email"
-  >
+<div class="brandIcon">
+M
+</div>
 
-  <input
-    id="password"
-    type="password"
-    placeholder="Password"
-  >
+<div class="brandText">
 
-  <button onclick="login()">
-    Login
-  </button>
+<b>Mess-Mate</b>
 
-  <div id="status">
-    Connecting to Firebase...
-  </div>
+<small>
+Smart Mess Management
+</small>
+
+</div>
 
 </div>
 
 
-<!-- Firebase -->
+<button
+id="avatar"
+class="avatar"
+onclick="logout()">
+
+U
+
+</button>
+
+</header>
+
+
+
+<!-- =========================
+     AUTH
+========================= -->
+
+<section
+id="authPage">
+
+<div class="auth">
+
+<div class="card">
+
+
+<div class="logo">
+M
+</div>
+
+
+<h1>
+Mess-Mate
+</h1>
+
+
+<div class="subtitle">
+Smart Mess Management & Meal Tracking
+</div>
+
+
+
+<div class="tabs">
+
+<button
+id="loginTab"
+class="tab active"
+onclick="showAuth('login')">
+
+Login
+
+</button>
+
+
+<button
+id="signupTab"
+class="tab"
+onclick="showAuth('signup')">
+
+Sign Up
+
+</button>
+
+</div>
+
+
+
+<!-- LOGIN -->
+
+<form
+id="loginForm">
+
+<div class="form">
+
+<label>
+Email
+</label>
+
+<input
+id="loginEmail"
+type="email"
+placeholder="your@email.com"
+required>
+
+</div>
+
+
+<div class="form">
+
+<label>
+Password
+</label>
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Password"
+required>
+
+</div>
+
+
+<button
+class="btn primary">
+
+Login
+
+</button>
+
+</form>
+
+
+
+<!-- SIGN UP -->
+
+<form
+id="signupForm"
+class="hidden">
+
+
+<div class="form">
+
+<label>
+Name
+</label>
+
+<input
+id="signupName"
+placeholder="Your name"
+required>
+
+</div>
+
+
+<div class="form">
+
+<label>
+Email
+</label>
+
+<input
+id="signupEmail"
+type="email"
+placeholder="your@email.com"
+required>
+
+</div>
+
+
+<div class="form">
+
+<label>
+Password
+</label>
+
+<input
+id="signupPassword"
+type="password"
+placeholder="Minimum 6 characters"
+minlength="6"
+required>
+
+</div>
+
+
+<button
+class="btn primary">
+
+Create Account
+
+</button>
+
+</form>
+
+
+
+<div
+id="status"
+class="status">
+
+Connecting to Firebase...
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     NO MESS
+========================= -->
+
+<section
+id="noMessPage"
+class="hidden">
+
+<div class="app">
+
+
+<div class="hero">
+
+<h2 id="welcome">
+Welcome 👋
+</h2>
+
+<p>
+Create a new mess to get started.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">
+Create New Mess
+</div>
+
+
+<form
+id="createMessForm">
+
+
+<div class="form">
+
+<label>
+Mess Name
+</label>
+
+<input
+id="messName"
+placeholder="Example: Jamil Mess"
+required>
+
+</div>
+
+
+<div class="grid2">
+
+<div class="form">
+
+<label>
+Cycle Start
+</label>
+
+<input
+id="cycleStart"
+type="date"
+required>
+
+</div>
+
+
+<div class="form">
+
+<label>
+Cycle End
+</label>
+
+<input
+id="cycleEnd"
+type="date"
+required>
+
+</div>
+
+</div>
+
+
+<button
+class="btn primary">
+
++ Create Mess
+
+</button>
+
+</form>
+
+</div>
+
+
+
+<div
+id="messCreated"
+class="card hidden">
+
+<div class="title">
+🎉 Mess Created!
+</div>
+
+<p
+class="muted">
+
+Your Mess has been created successfully.
+
+</p>
+
+
+<div class="invite">
+
+<div class="muted">
+Your Invite Code
+</div>
+
+<div
+id="inviteCode"
+class="code">
+
+------
+
+</div>
+
+
+<button
+class="btn secondary"
+onclick="copyCode()">
+
+Copy Invite Code
+
+</button>
+
+</div>
+
+<br>
+
+
+<button
+class="btn primary"
+onclick="location.reload()">
+
+Open My Mess
+
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     MESS DASHBOARD
+========================= -->
+
+<section
+id="messPage"
+class="hidden">
+
+<div class="app">
+
+
+<div class="hero">
+
+<h2
+id="messNameDisplay">
+
+My Mess
+
+</h2>
+
+<p
+id="cycleDisplay">
+
+Current Cycle
+
+</p>
+
+</div>
+
+
+
+<div class="grid2">
+
+
+<div class="stat">
+
+<small>
+Current Money
+</small>
+
+<b>
+৳0
+</b>
+
+</div>
+
+
+<div class="stat">
+
+<small>
+Total Deposit
+</small>
+
+<b>
+৳0
+</b>
+
+</div>
+
+
+<div class="stat">
+
+<small>
+Total Expense
+</small>
+
+<b>
+৳0
+</b>
+
+</div>
+
+
+<div class="stat">
+
+<small>
+Meal Rate
+</small>
+
+<b>
+৳0
+</b>
+
+</div>
+
+
+</div>
+
+
+
+<div
+class="card"
+style="margin-top:15px">
+
+<div class="title">
+Mess Information
+</div>
+
+
+<p
+class="muted">
+
+Mess successfully connected with Firebase.
+
+</p>
+
+
+<div
+class="invite">
+
+<div class="muted">
+Invite Code
+</div>
+
+<div
+id="dashboardInvite"
+class="code">
+
+------
+
+</div>
+
+
+<button
+class="btn secondary"
+onclick="copyDashboardCode()">
+
+Copy Code
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">
+Account
+</div>
+
+
+<p
+id="accountInfo"
+class="muted">
+
+</p>
+
+
+<br>
+
+
+<button
+class="btn danger"
+onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FIREBASE
+========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-app-compat.js"></script>
 
@@ -133,111 +868,1036 @@ button{
 
 <script>
 
+/* =====================================
+   FIREBASE CONFIG
+===================================== */
+
 const firebaseConfig = {
 
-  apiKey:
-  "AIzaSyC1co4VUZoqTJAJnmprEjYE9FJ3kFx6YJo",
+apiKey:
+"AIzaSyC1co4VUZoqTJAJnmprEjYE9FJ3kFx6YJo",
 
-  authDomain:
-  "mess-mate-2942b.firebaseapp.com",
+authDomain:
+"mess-mate-2942b.firebaseapp.com",
 
-  projectId:
-  "mess-mate-2942b",
+projectId:
+"mess-mate-2942b",
 
-  storageBucket:
-  "mess-mate-2942b.firebasestorage.app",
+storageBucket:
+"mess-mate-2942b.firebasestorage.app",
 
-  messagingSenderId:
-  "661215494906",
+messagingSenderId:
+"661215494906",
 
-  appId:
-  "1:661215494906:web:6b4eb1d938fb7bba11ff43"
+appId:
+"1:661215494906:web:6b4eb1d938fb7bba11ff43"
 
 };
 
 
+firebase.initializeApp(
+firebaseConfig
+);
+
+
+const auth =
+firebase.auth();
+
+const db =
+firebase.firestore();
+
+
+let currentUser=null;
+
+let currentGroup=null;
+
+
+/* =====================================
+   HELPERS
+===================================== */
+
+function $(id){
+
+return document.getElementById(id);
+
+}
+
+
+function today(){
+
+const d=new Date();
+
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
+
+}
+
+
+function randomCode(){
+
+const chars=
+"ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+let code="";
+
+for(let i=0;i<6;i++){
+
+code+=chars[
+Math.floor(
+Math.random()*chars.length
+)
+];
+
+}
+
+return code;
+
+}
+
+
+function showStatus(text){
+
+$("status").innerHTML=text;
+
+}
+
+
+function errorMessage(error){
+
+if(!error)
+return "Something went wrong.";
+
+if(
+error.code==="auth/email-already-in-use"
+)
+return "This email is already registered.";
+
+if(
+error.code==="auth/invalid-email"
+)
+return "Invalid email address.";
+
+if(
+error.code==="auth/weak-password"
+)
+return "Password must be at least 6 characters.";
+
+if(
+error.code==="auth/invalid-credential"
+)
+return "Email or password is incorrect.";
+
+if(
+error.code==="permission-denied"
+)
+return "Firestore permission denied.";
+
+return error.message ||
+"Something went wrong.";
+
+}
+
+
+/* =====================================
+   AUTH TABS
+===================================== */
+
+function showAuth(type){
+
+if(type==="login"){
+
+$("loginForm")
+.classList.remove("hidden");
+
+$("signupForm")
+.classList.add("hidden");
+
+$("loginTab")
+.classList.add("active");
+
+$("signupTab")
+.classList.remove("active");
+
+}else{
+
+$("loginForm")
+.classList.add("hidden");
+
+$("signupForm")
+.classList.remove("hidden");
+
+$("loginTab")
+.classList.remove("active");
+
+$("signupTab")
+.classList.add("active");
+
+}
+
+}
+
+
+/* =====================================
+   LOGIN
+===================================== */
+
+$("loginForm")
+.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+
+showStatus(
+"Logging in..."
+);
+
+
 try{
 
-  firebase.initializeApp(firebaseConfig);
+await auth.signInWithEmailAndPassword(
 
-  const auth =
-    firebase.auth();
+$("loginEmail").value.trim(),
 
+$("loginPassword").value
 
-  document.getElementById("status").innerHTML =
-    "✅ Firebase connected.<br>" +
-    "Login system ready.";
-
-
-  auth.onAuthStateChanged(function(user){
-
-    if(user){
-
-      document.getElementById("status").innerHTML =
-        "✅ Logged in as:<br>" +
-        user.email;
-
-    }
-
-  });
-
-
-  window.login = async function(){
-
-    const email =
-      document.getElementById("email").value.trim();
-
-    const password =
-      document.getElementById("password").value;
-
-
-    if(!email || !password){
-
-      document.getElementById("status").innerHTML =
-        "Please enter email and password.";
-
-      return;
-
-    }
-
-
-    document.getElementById("status").innerHTML =
-      "Logging in...";
-
-
-    try{
-
-      await auth.signInWithEmailAndPassword(
-        email,
-        password
-      );
-
-
-      document.getElementById("status").innerHTML =
-        "✅ Login successful!";
-
-
-    }catch(error){
-
-      console.error(error);
-
-      document.getElementById("status").innerHTML =
-        "❌ "+error.message;
-
-    }
-
-  };
+);
 
 
 }catch(error){
 
-  document.getElementById("status").innerHTML =
-    "❌ Firebase error:<br>"+
-    error.message;
+console.error(error);
+
+showStatus(
+"❌ "+
+errorMessage(error)
+);
 
 }
+
+});
+
+
+/* =====================================
+   SIGN UP
+===================================== */
+
+$("signupForm")
+.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+
+const name=
+$("signupName")
+.value
+.trim();
+
+const email=
+$("signupEmail")
+.value
+.trim();
+
+const password=
+$("signupPassword")
+.value;
+
+
+showStatus(
+"Creating account..."
+);
+
+
+try{
+
+
+const result=
+await auth.createUserWithEmailAndPassword(
+
+email,
+password
+
+);
+
+
+await result.user.updateProfile({
+
+displayName:name
+
+});
+
+
+await db
+.collection("users")
+.doc(result.user.uid)
+.set({
+
+name:name,
+
+email:email,
+
+photoURL:"",
+
+activeGroupId:null,
+
+pendingGroupId:null,
+
+createdAt:
+firebase.firestore.FieldValue
+.serverTimestamp(),
+
+updatedAt:
+firebase.firestore.FieldValue
+.serverTimestamp()
+
+});
+
+
+showStatus(
+"✅ Account created successfully."
+);
+
+
+}catch(error){
+
+console.error(error);
+
+showStatus(
+"❌ "+
+errorMessage(error)
+);
+
+}
+
+});
+
+
+/* =====================================
+   AUTH STATE
+===================================== */
+
+auth.onAuthStateChanged(
+async function(user){
+
+currentUser=user;
+
+
+if(!user){
+
+$("authPage")
+.classList.remove("hidden");
+
+$("noMessPage")
+.classList.add("hidden");
+
+$("messPage")
+.classList.add("hidden");
+
+$("header")
+.classList.add("hidden");
+
+return;
+
+}
+
+
+$("authPage")
+.classList.add("hidden");
+
+$("header")
+.classList.remove("hidden");
+
+
+$("avatar").textContent=
+
+(
+user.displayName ||
+user.email ||
+"U"
+)
+.charAt(0)
+.toUpperCase();
+
+
+$("welcome").textContent=
+"Welcome, "+
+(user.displayName||"User")+
+" 👋";
+
+
+try{
+
+
+const userSnap=
+await db
+.collection("users")
+.doc(user.uid)
+.get();
+
+
+if(!userSnap.exists){
+
+await db
+.collection("users")
+.doc(user.uid)
+.set({
+
+name:user.displayName||"User",
+
+email:user.email||"",
+
+activeGroupId:null,
+
+pendingGroupId:null,
+
+createdAt:
+firebase.firestore.FieldValue
+.serverTimestamp(),
+
+updatedAt:
+firebase.firestore.FieldValue
+.serverTimestamp()
+
+});
+
+
+$("noMessPage")
+.classList.remove("hidden");
+
+return;
+
+}
+
+
+const userData=
+userSnap.data();
+
+
+if(userData.activeGroupId){
+
+await loadMess(
+userData.activeGroupId
+);
+
+}else{
+
+$("noMessPage")
+.classList.remove("hidden");
+
+$("messPage")
+.classList.add("hidden");
+
+}
+
+
+}catch(error){
+
+console.error(error);
+
+showStatus(
+"❌ "+
+errorMessage(error)
+);
+
+}
+
+});
+
+
+/* =====================================
+   CREATE MESS
+===================================== */
+
+$("createMessForm")
+.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+
+if(!currentUser){
+
+return;
+
+}
+
+
+const name=
+$("messName")
+.value
+.trim();
+
+const start=
+$("cycleStart")
+.value;
+
+const end=
+$("cycleEnd")
+.value;
+
+
+if(start>=end){
+
+alert(
+"Cycle End date must be after Start date."
+);
+
+return;
+
+}
+
+
+const button=
+this.querySelector("button");
+
+button.disabled=true;
+
+button.textContent=
+"Creating Mess...";
+
+
+try{
+
+
+/* GROUP */
+
+const groupRef=
+db.collection("groups").doc();
+
+const groupId=
+groupRef.id;
+
+
+/* INVITE */
+
+const inviteCode=
+randomCode();
+
+
+const inviteRef=
+db.collection("inviteCodes")
+.doc(inviteCode);
+
+
+/* MEMBER */
+
+const memberRef=
+groupRef
+.collection("members")
+.doc(currentUser.uid);
+
+
+/* SETTINGS */
+
+const settingsRef=
+groupRef
+.collection("settings")
+.doc("main");
+
+
+/* CYCLE */
+
+const cycleRef=
+groupRef
+.collection("cycles")
+.doc(
+start+"_"+end
+);
+
+
+/* USER */
+
+const userRef=
+db.collection("users")
+.doc(currentUser.uid);
+
+
+/* BATCH */
+
+const batch=
+db.batch();
+
+
+/* GROUP */
+
+batch.set(
+groupRef,
+{
+
+name:name,
+
+adminUid:
+currentUser.uid,
+
+createdBy:
+currentUser.uid,
+
+inviteCode:
+inviteCode,
+
+active:true,
+
+createdAt:
+firebase.firestore.FieldValue
+.serverTimestamp(),
+
+updatedAt:
+firebase.firestore.FieldValue
+.serverTimestamp()
+
+}
+);
+
+
+/* ADMIN MEMBER */
+
+batch.set(
+memberRef,
+{
+
+uid:
+currentUser.uid,
+
+name:
+currentUser.displayName ||
+name,
+
+email:
+currentUser.email ||
+"",
+
+role:"admin",
+
+active:true,
+
+joinedAt:
+firebase.firestore.FieldValue
+.serverTimestamp(),
+
+updatedAt:
+firebase.firestore.FieldValue
+.serverTimestamp()
+
+}
+);
+
+
+/* SETTINGS */
+
+batch.set(
+settingsRef,
+{
+
+mealDeadlineHour:10,
+
+mealDeadlineMinute:0,
+
+breakfastEnabled:true,
+
+lunchEnabled:true,
+
+dinnerEnabled:true,
+
+currency:"BDT",
+
+createdAt:
+firebase.firestore.FieldValue
+.serverTimestamp(),
+
+updatedAt:
+firebase.firestore.FieldValue
+.serverTimestamp()
+
+}
+);
+
+
+/* CYCLE */
+
+batch.set(
+cycleRef,
+{
+
+name:
+start+
+" - "+
+end,
+
+startDate:start,
+
+endDate:end,
+
+status:"active",
+
+createdBy:
+currentUser.uid,
+
+createdAt:
+firebase.firestore.FieldValue
+.serverTimestamp()
+
+}
+);
+
+
+/* INVITE */
+
+batch.set(
+inviteRef,
+{
+
+code:
+inviteCode,
+
+groupId:
+groupId,
+
+createdBy:
+currentUser.uid,
+
+active:true,
+
+createdAt:
+firebase.firestore.FieldValue
+.serverTimestamp()
+
+}
+);
+
+
+/* USER */
+
+batch.set(
+userRef,
+{
+
+name:
+currentUser.displayName ||
+name,
+
+email:
+currentUser.email ||
+"",
+
+activeGroupId:
+groupId,
+
+pendingGroupId:null,
+
+updatedAt:
+firebase.firestore.FieldValue
+.serverTimestamp()
+
+},
+{merge:true}
+);
+
+
+/* COMMIT */
+
+await batch.commit();
+
+
+$("inviteCode")
+.textContent=
+inviteCode;
+
+
+$("messCreated")
+.classList.remove("hidden");
+
+
+$("createMessForm")
+.classList.add("hidden");
+
+
+currentGroup={
+id:groupId,
+name:name,
+inviteCode:inviteCode,
+start:start,
+end:end
+};
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Create Mess failed:\n\n"+
+errorMessage(error)
+);
+
+button.disabled=false;
+
+button.textContent=
+"+ Create Mess";
+
+}
+
+});
+
+
+/* =====================================
+   LOAD MESS
+===================================== */
+
+async function loadMess(groupId){
+
+try{
+
+
+const groupSnap=
+await db
+.collection("groups")
+.doc(groupId)
+.get();
+
+
+if(!groupSnap.exists){
+
+await db
+.collection("users")
+.doc(currentUser.uid)
+.set({
+
+activeGroupId:null
+
+},
+{merge:true});
+
+
+$("noMessPage")
+.classList.remove("hidden");
+
+return;
+
+}
+
+
+const group=
+groupSnap.data();
+
+
+const memberSnap=
+await db
+.collection("groups")
+.doc(groupId)
+.collection("members")
+.doc(currentUser.uid)
+.get();
+
+
+if(!memberSnap.exists){
+
+$("noMessPage")
+.classList.remove("hidden");
+
+return;
+
+}
+
+
+const member=
+memberSnap.data();
+
+
+currentGroup={
+
+id:groupId,
+
+...group,
+
+...{
+role:member.role
+}
+
+};
+
+
+$("noMessPage")
+.classList.add("hidden");
+
+$("messPage")
+.classList.remove("hidden");
+
+
+$("messNameDisplay")
+.textContent=
+group.name;
+
+
+$("cycleDisplay")
+.textContent=
+"Invite code: "+
+group.inviteCode;
+
+
+$("dashboardInvite")
+.textContent=
+group.inviteCode;
+
+
+$("accountInfo").innerHTML=
+
+"<b>"+
+(userSafe(currentUser.displayName)||
+"User")+
+"</b><br>"+
+currentUser.email+
+"<br><br>"+
+"Role: "+
+member.role;
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not load Mess:\n\n"+
+errorMessage(error)
+);
+
+}
+
+}
+
+
+/* =====================================
+   COPY CODE
+===================================== */
+
+function copyCode(){
+
+if(!currentGroup)
+return;
+
+
+navigator.clipboard
+.writeText(
+currentGroup.inviteCode
+)
+.then(function(){
+
+alert(
+"Invite code copied!"
+);
+
+})
+.catch(function(){
+
+alert(
+"Invite Code: "+
+currentGroup.inviteCode
+);
+
+});
+
+}
+
+
+function copyDashboardCode(){
+
+if(!currentGroup)
+return;
+
+
+navigator.clipboard
+.writeText(
+currentGroup.inviteCode
+)
+.then(function(){
+
+alert(
+"Invite code copied!"
+);
+
+});
+
+}
+
+
+/* =====================================
+   SAFE TEXT
+===================================== */
+
+function userSafe(text){
+
+return String(text||"")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;");
+
+}
+
+
+/* =====================================
+   LOGOUT
+===================================== */
+
+async function logout(){
+
+await auth.signOut();
+
+}
+
+
+/* =====================================
+   DEFAULT DATES
+===================================== */
+
+(function(){
+
+const start=
+$("cycleStart");
+
+const end=
+$("cycleEnd");
+
+
+const d=
+new Date();
+
+
+start.value=
+today();
+
+
+d.setMonth(
+d.getMonth()+1
+);
+
+
+end.value=
+d.getFullYear()+
+"-"+
+String(
+d.getMonth()+1
+).padStart(2,"0")+
+"-"+
+String(
+d.getDate()
+).padStart(2,"0");
+
+})();
+
+
+/* =====================================
+   FIREBASE READY
+===================================== */
+
+showStatus(
+"✅ Firebase connected.<br>"+
+"Login system ready."
+);
 
 </script>
 
 </body>
-</html>
+  </html>
