@@ -1,10 +1,1296 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mess-Mate Test</title>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
+  <meta name="theme-color" content="#2563eb">
+
+  <meta
+    name="description"
+    content="Mess-Mate - Smart Mess Management & Meal Tracking App"
+  >
+
+  <title>Mess-Mate</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+      min-height: 100vh;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 520px;
+      margin: auto;
+      min-height: 100vh;
+      background: #f4f7fb;
+    }
+
+    /* ================= HEADER ================= */
+
+    .top-header {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      padding: 22px 20px 28px;
+      border-radius: 0 0 28px 28px;
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.20);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+    }
+
+    .brand h1 {
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .brand p {
+      font-size: 13px;
+      opacity: 0.85;
+      margin-top: 3px;
+    }
+
+    /* ================= MAIN ================= */
+
+    main {
+      padding: 22px 16px 35px;
+    }
+
+    .welcome {
+      margin-bottom: 20px;
+    }
+
+    .welcome h2 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .welcome p {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ================= CARD ================= */
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 5px 20px rgba(15, 23, 42, 0.07);
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    /* ================= AUTH ================= */
+
+    .auth-tabs {
+      display: flex;
+      background: #eef2ff;
+      border-radius: 13px;
+      padding: 4px;
+      margin-bottom: 20px;
+    }
+
+    .auth-tab {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 11px;
+      border-radius: 10px;
+      color: #64748b;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .auth-tab.active {
+      background: white;
+      color: #2563eb;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .input-group {
+      margin-bottom: 14px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 7px;
+      color: #475569;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #dbe2ea;
+      border-radius: 12px;
+      outline: none;
+      background: #f8fafc;
+      color: #172033;
+      transition: 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #2563eb;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+    }
+
+    .primary-btn {
+      width: 100%;
+      border: none;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      padding: 14px;
+      border-radius: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 7px 15px rgba(37,99,235,0.20);
+      transition: 0.2s;
+    }
+
+    .primary-btn:active {
+      transform: scale(0.98);
+    }
+
+    .secondary-btn {
+      width: 100%;
+      border: 1px solid #dbe2ea;
+      background: white;
+      color: #334155;
+      padding: 13px;
+      border-radius: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* ================= STATUS ================= */
+
+    .status {
+      display: none;
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .status.success {
+      display: block;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .status.error {
+      display: block;
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .status.info {
+      display: block;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* ================= DASHBOARD ================= */
+
+    .dashboard {
+      display: none;
+    }
+
+    .user-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: #dbeafe;
+      color: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .user-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .user-info h3 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .user-info p {
+      color: #64748b;
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .logout-btn {
+      border: none;
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* ================= STATS ================= */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      background: white;
+      border-radius: 18px;
+      padding: 17px;
+      box-shadow: 0 5px 18px rgba(15,23,42,0.06);
+    }
+
+    .stat-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .stat-title {
+      color: #64748b;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    /* ================= FEATURES ================= */
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .feature {
+      border: none;
+      background: #f8fafc;
+      border-radius: 15px;
+      padding: 17px 12px;
+      text-align: left;
+      cursor: pointer;
+      border: 1px solid #edf1f5;
+    }
+
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .feature h4 {
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .feature p {
+      color: #64748b;
+      font-size: 11px;
+    }
+
+    /* ================= EMPTY ================= */
+
+    .empty-state {
+      text-align: center;
+      padding: 25px 10px;
+      color: #64748b;
+    }
+
+    .empty-icon {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .empty-state h3 {
+      color: #334155;
+      margin-bottom: 5px;
+    }
+
+    .empty-state p {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 11px;
+      padding: 10px 0 25px;
+    }
+
+    /* ================= LOADING ================= */
+
+    .loading {
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.96);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .loading-logo {
+      width: 65px;
+      height: 65px;
+      border-radius: 20px;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 15px;
+      animation: pulse 1.2s infinite;
+    }
+
+    .loading p {
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (min-width: 600px) {
+      .app {
+        box-shadow: 0 0 40px rgba(0,0,0,0.08);
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Mess-Mate is Working! 🎉</h1>
-  <p>GitHub Pages test successful.</p>
+
+  <!-- LOADING -->
+  <div class="loading" id="loadingScreen">
+    <div class="loading-logo">🍽️</div>
+    <p>Loading Mess-Mate...</p>
+  </div>
+
+  <div class="app">
+
+    <!-- HEADER -->
+    <header class="top-header">
+      <div class="brand">
+        <div class="brand-icon">🍽️</div>
+
+        <div>
+          <h1>Mess-Mate</h1>
+          <p>Smart Mess Management</p>
+        </div>
+      </div>
+    </header>
+
+
+    <main>
+
+      <!-- ================= AUTH SECTION ================= -->
+
+      <section id="authSection">
+
+        <div class="welcome">
+          <h2>Welcome 👋</h2>
+          <p>
+            Manage your mess, meals, deposits and expenses
+            from one place.
+          </p>
+        </div>
+
+        <div class="card">
+
+          <div class="auth-tabs">
+
+            <button
+              class="auth-tab active"
+              id="loginTab"
+              onclick="showLogin()"
+            >
+              Login
+            </button>
+
+            <button
+              class="auth-tab"
+              id="signupTab"
+              onclick="showSignup()"
+            >
+              Create Account
+            </button>
+
+          </div>
+
+
+          <div id="statusBox" class="status"></div>
+
+
+          <div class="input-group">
+
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              autocomplete="email"
+            >
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="password">
+              Password
+            </label>
+
+            <input
+              type="password"
+              id="password"
+              placeholder="Minimum 6 characters"
+              autocomplete="current-password"
+            >
+
+          </div>
+
+
+          <button
+            class="primary-btn"
+            id="authButton"
+            onclick="handleAuth()"
+          >
+            Login
+          </button>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="empty-state">
+
+            <div class="empty-icon">
+              🏠
+            </div>
+
+            <h3>One place for your whole mess</h3>
+
+            <p>
+              Meals, market expenses, deposits,
+              members and monthly calculations —
+              everything will be managed here.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= DASHBOARD ================= -->
+
+      <section id="dashboardSection" class="dashboard">
+
+        <div class="card">
+
+          <div class="user-card">
+
+            <div class="avatar" id="userAvatar">
+              U
+            </div>
+
+            <div class="user-info">
+
+              <h3 id="userName">
+                User
+              </h3>
+
+              <p id="userEmail">
+                user@email.com
+              </p>
+
+            </div>
+
+            <button
+              class="logout-btn"
+              onclick="logoutUser()"
+            >
+              Logout
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="welcome">
+
+          <h2>
+            Dashboard 📊
+          </h2>
+
+          <p>
+            Your Mess-Mate account is ready.
+          </p>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats-grid">
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              💰
+            </div>
+
+            <div class="stat-title">
+              Current Balance
+            </div>
+
+            <div class="stat-value">
+              ৳0
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              🍛
+            </div>
+
+            <div class="stat-title">
+              Total Meals
+            </div>
+
+            <div class="stat-value">
+              0
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              🛒
+            </div>
+
+            <div class="stat-title">
+              Total Expense
+            </div>
+
+            <div class="stat-value">
+              ৳0
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              👥
+            </div>
+
+            <div class="stat-title">
+              Members
+            </div>
+
+            <div class="stat-value">
+              0
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <br>
+
+
+        <!-- FEATURES -->
+
+        <div class="card">
+
+          <div class="card-title">
+            Mess Management
+          </div>
+
+          <div class="feature-list">
+
+            <button
+              class="feature"
+              onclick="comingSoon('Meal Management')"
+            >
+
+              <div class="feature-icon">
+                🍛
+              </div>
+
+              <h4>
+                Meals
+              </h4>
+
+              <p>
+                ON / OFF meal
+              </p>
+
+            </button>
+
+
+            <button
+              class="feature"
+              onclick="comingSoon('Expenses')"
+            >
+
+              <div class="feature-icon">
+                🛒
+              </div>
+
+              <h4>
+                Expenses
+              </h4>
+
+              <p>
+                Market & shopping
+              </p>
+
+            </button>
+
+
+            <button
+              class="feature"
+              onclick="comingSoon('Deposits')"
+            >
+
+              <div class="feature-icon">
+                💰
+              </div>
+
+              <h4>
+                Deposits
+              </h4>
+
+              <p>
+                Money deposits
+              </p>
+
+            </button>
+
+
+            <button
+              class="feature"
+              onclick="comingSoon('Members')"
+            >
+
+              <div class="feature-icon">
+                👥
+              </div>
+
+              <h4>
+                Members
+              </h4>
+
+              <p>
+                Mess members
+              </p>
+
+            </button>
+
+
+            <button
+              class="feature"
+              onclick="comingSoon('Reports')"
+            >
+
+              <div class="feature-icon">
+                📊
+              </div>
+
+              <h4>
+                Reports
+              </h4>
+
+              <p>
+                Monthly statistics
+              </p>
+
+            </button>
+
+
+            <button
+              class="feature"
+              onclick="comingSoon('Settings')"
+            >
+
+              <div class="feature-icon">
+                ⚙️
+              </div>
+
+              <h4>
+                Settings
+              </h4>
+
+              <p>
+                Mess settings
+              </p>
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- FIREBASE STATUS -->
+
+        <div class="card">
+
+          <div class="card-title">
+            System Status
+          </div>
+
+          <div
+            id="firebaseStatus"
+            class="status info"
+            style="display:block;"
+          >
+            🔄 Checking Firebase connection...
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <footer>
+        Mess-Mate © 2026
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <!-- ================= FIREBASE ================= -->
+
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+
+    import {
+      getFirestore
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+    /* ================= FIREBASE CONFIG ================= */
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyC1co4VUZoqTJAJnmprEjYE9F3JkFx6YJo",
+
+      authDomain:
+        "mess-mate-2942b.firebaseapp.com",
+
+      projectId:
+        "mess-mate-2942b",
+
+      storageBucket:
+        "mess-mate-2942b.firebasestorage.app",
+
+      messagingSenderId:
+        "661215494906",
+
+      appId:
+        "1:661215494906:web:6b4eb1d938fb7bba11ff43"
+
+    };
+
+
+    /* ================= INITIALIZE ================= */
+
+    const app =
+      initializeApp(firebaseConfig);
+
+
+    const auth =
+      getAuth(app);
+
+
+    const db =
+      getFirestore(app);
+
+
+    /* ================= ELEMENTS ================= */
+
+    const loadingScreen =
+      document.getElementById("loadingScreen");
+
+    const authSection =
+      document.getElementById("authSection");
+
+    const dashboardSection =
+      document.getElementById("dashboardSection");
+
+    const statusBox =
+      document.getElementById("statusBox");
+
+    const firebaseStatus =
+      document.getElementById("firebaseStatus");
+
+    const authButton =
+      document.getElementById("authButton");
+
+
+    let isLoginMode = true;
+
+
+    /* ================= AUTH TAB ================= */
+
+    window.showLogin = function() {
+
+      isLoginMode = true;
+
+      document
+        .getElementById("loginTab")
+        .classList.add("active");
+
+      document
+        .getElementById("signupTab")
+        .classList.remove("active");
+
+      authButton.textContent = "Login";
+
+      clearStatus();
+
+    };
+
+
+    window.showSignup = function() {
+
+      isLoginMode = false;
+
+      document
+        .getElementById("signupTab")
+        .classList.add("active");
+
+      document
+        .getElementById("loginTab")
+        .classList.remove("active");
+
+      authButton.textContent = "Create Account";
+
+      clearStatus();
+
+    };
+
+
+    /* ================= STATUS ================= */
+
+    function showStatus(message, type) {
+
+      statusBox.textContent = message;
+
+      statusBox.className =
+        "status " + type;
+
+    }
+
+
+    function clearStatus() {
+
+      statusBox.textContent = "";
+
+      statusBox.className =
+        "status";
+
+    }
+
+
+    /* ================= AUTH ================= */
+
+    window.handleAuth = async function() {
+
+      const email =
+        document
+          .getElementById("email")
+          .value
+          .trim();
+
+      const password =
+        document
+          .getElementById("password")
+          .value;
+
+
+      if (!email) {
+
+        showStatus(
+          "Please enter your email.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if (!password) {
+
+        showStatus(
+          "Please enter your password.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if (password.length < 6) {
+
+        showStatus(
+          "Password must be at least 6 characters.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      authButton.disabled = true;
+
+      authButton.textContent =
+        isLoginMode
+          ? "Logging in..."
+          : "Creating account...";
+
+
+      try {
+
+        if (isLoginMode) {
+
+          await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+        } else {
+
+          await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+        }
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+        let message =
+          "Something went wrong.";
+
+        if (
+          error.code ===
+          "auth/invalid-credential"
+        ) {
+
+          message =
+            "Email or password is incorrect.";
+
+        }
+
+        else if (
+          error.code ===
+          "auth/email-already-in-use"
+        ) {
+
+          message =
+            "This email is already registered.";
+
+        }
+
+        else if (
+          error.code ===
+          "auth/invalid-email"
+        ) {
+
+          message =
+            "Please enter a valid email.";
+
+        }
+
+        else if (
+          error.code ===
+          "auth/weak-password"
+        ) {
+
+          message =
+            "Password is too weak.";
+
+        }
+
+        else if (
+          error.code ===
+          "auth/too-many-requests"
+        ) {
+
+          message =
+            "Too many attempts. Try again later.";
+
+        }
+
+        showStatus(
+          message,
+          "error"
+        );
+
+      }
+
+      finally {
+
+        authButton.disabled = false;
+
+        authButton.textContent =
+          isLoginMode
+            ? "Login"
+            : "Create Account";
+
+      }
+
+    };
+
+
+    /* ================= LOGOUT ================= */
+
+    window.logoutUser = async function() {
+
+      try {
+
+        await signOut(auth);
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+      }
+
+    };
+
+
+    /* ================= AUTH STATE ================= */
+
+    onAuthStateChanged(
+      auth,
+      (user) => {
+
+        loadingScreen.style.display =
+          "none";
+
+
+        if (user) {
+
+          /* USER LOGGED IN */
+
+          authSection.style.display =
+            "none";
+
+          dashboardSection.style.display =
+            "block";
+
+
+          const email =
+            user.email || "User";
+
+
+          document
+            .getElementById("userEmail")
+            .textContent = email;
+
+
+          document
+            .getElementById("userName")
+            .textContent =
+              email.split("@")[0];
+
+
+          document
+            .getElementById("userAvatar")
+            .textContent =
+              email
+                .charAt(0)
+                .toUpperCase();
+
+
+          firebaseStatus.className =
+            "status success";
+
+          firebaseStatus.style.display =
+            "block";
+
+          firebaseStatus.textContent =
+            "🟢 Firebase connected successfully.";
+
+        }
+
+        else {
+
+          /* USER LOGGED OUT */
+
+          authSection.style.display =
+            "block";
+
+          dashboardSection.style.display =
+            "none";
+
+        }
+
+      }
+
+    );
+
+
+    /* ================= GLOBAL ERROR ================= */
+
+    window.addEventListener(
+      "error",
+      (event) => {
+
+        console.error(
+          "App error:",
+          event.error
+        );
+
+      }
+    );
+
+
+    /* ================= FIREBASE TEST ================= */
+
+    console.log(
+      "Mess-Mate Firebase initialized successfully."
+    );
+
+  </script>
+
+
+  <!-- ================= NORMAL JAVASCRIPT ================= -->
+
+  <script>
+
+    function comingSoon(feature) {
+
+      alert(
+        feature +
+        " module will be added in the next step."
+      );
+
+    }
+
+  </script>
+
 </body>
-</html>
+  </html>
