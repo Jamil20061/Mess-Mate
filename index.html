@@ -1,863 +1,983 @@
 <!DOCTYPE html>
-<html lang="bn">
-
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
-
-<meta name="theme-color"
-content="#2563eb">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
 
 <title>Mess-Mate</title>
 
 <style>
-
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:#f3f6fb;
-color:#172033;
-min-height:100vh;
+  font-family:Arial,sans-serif;
+  background:#f3f6fb;
+  color:#172033;
+  min-height:100vh;
 }
 
-button,input{
-font:inherit;
+button,
+input{
+  font:inherit;
 }
 
 button{
-cursor:pointer;
+  cursor:pointer;
 }
 
 .hidden{
-display:none!important;
+  display:none !important;
 }
 
-.card{
-background:#fff;
-border-radius:20px;
-padding:22px;
-box-shadow:0 8px 30px #0000000c;
+/* =========================
+   AUTH
+========================= */
+
+.auth-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
-.auth{
-width:90%;
-max-width:430px;
-margin:60px auto;
+.auth-card{
+  width:100%;
+  max-width:430px;
+  background:#fff;
+  padding:28px 20px;
+  border-radius:24px;
+  box-shadow:0 10px 40px rgba(0,0,0,.08);
 }
 
 .logo{
-width:68px;
-height:68px;
-border-radius:21px;
-background:#2563eb;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-font-weight:900;
-margin:0 auto 15px;
+  width:70px;
+  height:70px;
+  border-radius:22px;
+  background:#2563eb;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+  font-weight:900;
+  margin:0 auto 15px;
 }
 
-h1{
-text-align:center;
-color:#2563eb;
-font-size:30px;
+.app-title{
+  text-align:center;
+  color:#2563eb;
+  font-size:30px;
+  font-weight:900;
 }
 
-.subtitle{
-text-align:center;
-color:#888;
-font-size:13px;
-margin:7px 0 22px;
+.app-subtitle{
+  text-align:center;
+  color:#8a93a3;
+  font-size:13px;
+  margin-top:7px;
+  margin-bottom:22px;
 }
 
 .tabs{
-display:flex;
-background:#edf2f8;
-padding:4px;
-border-radius:12px;
-margin-bottom:18px;
+  display:flex;
+  gap:4px;
+  padding:4px;
+  background:#edf2f8;
+  border-radius:12px;
+  margin-bottom:18px;
 }
 
 .tab{
-flex:1;
-border:0;
-background:transparent;
-padding:10px;
-border-radius:9px;
-font-weight:700;
-color:#667085;
+  flex:1;
+  border:0;
+  background:transparent;
+  color:#667085;
+  padding:10px;
+  border-radius:9px;
+  font-weight:700;
 }
 
 .tab.active{
-background:#fff;
-color:#2563eb;
-box-shadow:0 2px 8px #0000000d;
+  background:#fff;
+  color:#2563eb;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
-.form{
-margin-bottom:13px;
+.form-group{
+  margin-bottom:14px;
 }
 
-label{
-display:block;
-font-size:12px;
-font-weight:700;
-margin-bottom:6px;
+.form-group label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:6px;
 }
 
 input{
-width:100%;
-padding:13px;
-border:1px solid #dce2eb;
-border-radius:12px;
-outline:none;
-background:#fff;
+  width:100%;
+  border:1px solid #dce2eb;
+  background:#fff;
+  color:#172033;
+  border-radius:12px;
+  padding:13px;
+  outline:none;
 }
 
 input:focus{
-border-color:#2563eb;
-box-shadow:0 0 0 3px #2563eb12;
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.10);
 }
 
 .btn{
-width:100%;
-border:0;
-border-radius:12px;
-padding:13px;
-font-weight:700;
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:13px;
+  font-weight:800;
 }
 
-.primary{
-background:#2563eb;
-color:white;
+.btn-primary{
+  background:#2563eb;
+  color:#fff;
 }
 
-.success{
-background:#16a34a;
-color:white;
+.btn-success{
+  background:#16a34a;
+  color:#fff;
 }
 
-.secondary{
-background:#edf2f8;
-color:#344054;
+.btn-danger{
+  background:#dc2626;
+  color:#fff;
 }
 
-.danger{
-background:#dc2626;
-color:white;
+.btn-secondary{
+  background:#edf2f8;
+  color:#344054;
 }
 
 .status{
-text-align:center;
-font-size:12px;
-color:#777;
-margin-top:15px;
-line-height:1.6;
+  text-align:center;
+  color:#777;
+  font-size:12px;
+  line-height:1.6;
+  margin-top:14px;
 }
 
-.app{
-width:100%;
-max-width:850px;
-margin:auto;
-padding:20px 14px 50px;
-}
-
-.hero{
-background:linear-gradient(
-135deg,
-#2563eb,
-#4f8cff
-);
-color:#fff;
-border-radius:22px;
-padding:23px 18px;
-margin-bottom:15px;
-}
-
-.hero h2{
-font-size:23px;
-margin-bottom:7px;
-}
-
-.hero p{
-font-size:13px;
-opacity:.9;
-}
-
-.title{
-font-size:18px;
-font-weight:800;
-margin-bottom:15px;
-}
-
-.grid2{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
-
-.stat{
-background:#f7f9fd;
-border:1px solid #edf1f6;
-border-radius:15px;
-padding:15px;
-}
-
-.stat small{
-display:block;
-color:#7b8495;
-font-size:11px;
-margin-bottom:7px;
-}
-
-.stat b{
-font-size:20px;
-}
-
-.invite{
-margin-top:15px;
-padding:15px;
-background:#f4f7ff;
-border:1px dashed #9db9f8;
-border-radius:14px;
-}
-
-.code{
-font-size:25px;
-font-weight:900;
-letter-spacing:4px;
-color:#2563eb;
-margin:8px 0 12px;
-}
-
-.muted{
-color:#7b8495;
-font-size:13px;
-line-height:1.5;
-}
+/* =========================
+   TOP BAR
+========================= */
 
 .topbar{
-background:#fff;
-padding:12px 15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid #e5eaf2;
+  background:#fff;
+  border-bottom:1px solid #e5eaf2;
+  padding:11px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .brand{
-display:flex;
-align-items:center;
-gap:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.brandIcon{
-width:40px;
-height:40px;
-border-radius:13px;
-background:#2563eb;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:900;
+.brand-icon{
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  background:#2563eb;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
 }
 
-.brandText b{
-font-size:17px;
+.brand-name{
+  font-size:17px;
+  font-weight:800;
 }
 
-.brandText small{
-display:block;
-font-size:10px;
-color:#8992a3;
-margin-top:2px;
+.brand-sub{
+  display:block;
+  color:#8992a3;
+  font-size:9px;
+  margin-top:2px;
 }
 
 .avatar{
-width:40px;
-height:40px;
-border:0;
-border-radius:50%;
-background:#e8efff;
-color:#2563eb;
-font-weight:900;
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:#e8efff;
+  color:#2563eb;
+  font-weight:900;
 }
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+  width:100%;
+  max-width:850px;
+  margin:auto;
+  padding:18px 14px 50px;
+}
+
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:0 5px 20px rgba(20,40,80,.06);
+}
+
+.hero{
+  background:linear-gradient(135deg,#2563eb,#4f8cff);
+  color:#fff;
+  border-radius:22px;
+  padding:23px 18px;
+  margin-bottom:15px;
+}
+
+.hero h2{
+  font-size:23px;
+  margin-bottom:6px;
+}
+
+.hero p{
+  font-size:13px;
+  opacity:.9;
+}
+
+.section-title{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.muted{
+  color:#7b8495;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.stat{
+  background:#f7f9fd;
+  border:1px solid #edf1f6;
+  border-radius:15px;
+  padding:15px;
+}
+
+.stat small{
+  display:block;
+  color:#7b8495;
+  font-size:11px;
+  margin-bottom:7px;
+}
+
+.stat b{
+  font-size:20px;
+}
+
+.invite-box{
+  margin-top:15px;
+  background:#f4f7ff;
+  border:1px dashed #9db9f8;
+  border-radius:14px;
+  padding:15px;
+}
+
+.invite-label{
+  color:#7b8495;
+  font-size:12px;
+}
+
+.invite-code{
+  color:#2563eb;
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:5px;
+  margin:8px 0 12px;
+}
+
+.role{
+  display:inline-block;
+  background:#e8efff;
+  color:#2563eb;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:800;
+}
+
+/* =========================
+   MESS PAGE
+========================= */
+
+.welcome-icon{
+  font-size:32px;
+}
+
+.logout-btn{
+  margin-top:10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:420px){
 
-.grid2{
-grid-template-columns:1fr 1fr;
-}
+  .grid-2{
+    grid-template-columns:1fr 1fr;
+  }
 
+  .auth-card{
+    padding:25px 17px;
+  }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
+<!-- =====================================
+     AUTH PAGE
+===================================== -->
 
-<!-- =========================
-     HEADER
-========================= -->
+<div id="authPage" class="auth-page">
 
-<header id="header"
-class="topbar hidden">
+  <div class="auth-card">
 
-<div class="brand">
+    <div class="logo">
+      M
+    </div>
 
-<div class="brandIcon">
-M
+    <div class="app-title">
+      Mess-Mate
+    </div>
+
+    <div class="app-subtitle">
+      Smart Mess Management & Meal Tracking
+    </div>
+
+
+    <!-- AUTH TABS -->
+
+    <div class="tabs">
+
+      <button
+        id="loginTab"
+        class="tab active"
+        onclick="switchAuth('login')">
+
+        Login
+
+      </button>
+
+      <button
+        id="signupTab"
+        class="tab"
+        onclick="switchAuth('signup')">
+
+        Sign Up
+
+      </button>
+
+    </div>
+
+
+    <!-- LOGIN FORM -->
+
+    <form id="loginForm">
+
+      <div class="form-group">
+
+        <label>
+          Email
+        </label>
+
+        <input
+          id="loginEmail"
+          type="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+          required>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Password
+        </label>
+
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn btn-primary">
+
+        Login
+
+      </button>
+
+    </form>
+
+
+    <!-- SIGNUP FORM -->
+
+    <form
+      id="signupForm"
+      class="hidden">
+
+      <div class="form-group">
+
+        <label>
+          Full Name
+        </label>
+
+        <input
+          id="signupName"
+          type="text"
+          placeholder="Enter your name"
+          required>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Email
+        </label>
+
+        <input
+          id="signupEmail"
+          type="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+          required>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Password
+        </label>
+
+        <input
+          id="signupPassword"
+          type="password"
+          placeholder="Minimum 6 characters"
+          minlength="6"
+          autocomplete="new-password"
+          required>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn btn-primary">
+
+        Create Account
+
+      </button>
+
+    </form>
+
+
+    <div
+      id="authStatus"
+      class="status">
+
+      Connecting to Firebase...
+
+    </div>
+
+  </div>
+
 </div>
 
-<div class="brandText">
 
-<b>Mess-Mate</b>
+<!-- =====================================
+     TOP BAR
+===================================== -->
 
-<small>
-Smart Mess Management
-</small>
+<header
+  id="topbar"
+  class="topbar hidden">
 
-</div>
+  <div class="brand">
 
-</div>
+    <div class="brand-icon">
+      M
+    </div>
+
+    <div>
+
+      <div class="brand-name">
+        Mess-Mate
+      </div>
+
+      <span class="brand-sub">
+        Smart Mess Management
+      </span>
+
+    </div>
+
+  </div>
 
 
-<button
-id="avatar"
-class="avatar"
-onclick="logout()">
+  <button
+    id="avatarBtn"
+    class="avatar"
+    onclick="logout()">
 
-U
+    U
 
-</button>
+  </button>
 
 </header>
 
 
-
-<!-- =========================
-     AUTH
-========================= -->
+<!-- =====================================
+     NO MESS PAGE
+===================================== -->
 
 <section
-id="authPage">
+  id="noMessPage"
+  class="hidden">
 
-<div class="auth">
+  <main class="container">
 
-<div class="card">
 
+    <div class="hero">
 
-<div class="logo">
-M
-</div>
+      <h2 id="welcomeText">
+        Welcome 👋
+      </h2>
 
+      <p>
+        Create your own mess to get started.
+      </p>
 
-<h1>
-Mess-Mate
-</h1>
+    </div>
 
 
-<div class="subtitle">
-Smart Mess Management & Meal Tracking
-</div>
+    <!-- CREATE MESS -->
 
+    <div class="card">
 
+      <div class="section-title">
+        Create New Mess
+      </div>
 
-<div class="tabs">
+      <p
+        class="muted"
+        style="margin-bottom:15px">
 
-<button
-id="loginTab"
-class="tab active"
-onclick="showAuth('login')">
+        Create a mess and you will automatically
+        become its Admin.
 
-Login
+      </p>
 
-</button>
 
+      <form id="createMessForm">
 
-<button
-id="signupTab"
-class="tab"
-onclick="showAuth('signup')">
+        <div class="form-group">
 
-Sign Up
+          <label>
+            Mess Name
+          </label>
 
-</button>
+          <input
+            id="messName"
+            type="text"
+            placeholder="Example: Jamil Mess"
+            required>
 
-</div>
+        </div>
 
 
+        <div class="grid-2">
 
-<!-- LOGIN -->
+          <div class="form-group">
 
-<form
-id="loginForm">
+            <label>
+              Cycle Start
+            </label>
 
-<div class="form">
+            <input
+              id="cycleStart"
+              type="date"
+              required>
 
-<label>
-Email
-</label>
+          </div>
 
-<input
-id="loginEmail"
-type="email"
-placeholder="your@email.com"
-required>
 
-</div>
+          <div class="form-group">
 
+            <label>
+              Cycle End
+            </label>
 
-<div class="form">
+            <input
+              id="cycleEnd"
+              type="date"
+              required>
 
-<label>
-Password
-</label>
+          </div>
 
-<input
-id="loginPassword"
-type="password"
-placeholder="Password"
-required>
+        </div>
 
-</div>
 
+        <button
+          id="createMessBtn"
+          type="submit"
+          class="btn btn-primary">
 
-<button
-class="btn primary">
+          + Create Mess
 
-Login
+        </button>
 
-</button>
+      </form>
 
-</form>
+    </div>
 
 
+    <!-- RESULT -->
 
-<!-- SIGN UP -->
+    <div
+      id="createdCard"
+      class="card hidden">
 
-<form
-id="signupForm"
-class="hidden">
+      <div class="section-title">
+        🎉 Mess Created Successfully
+      </div>
 
+      <p class="muted">
 
-<div class="form">
+        You are now the Admin of this mess.
 
-<label>
-Name
-</label>
+      </p>
 
-<input
-id="signupName"
-placeholder="Your name"
-required>
 
-</div>
+      <div class="invite-box">
 
+        <div class="invite-label">
+          Invite Code
+        </div>
 
-<div class="form">
+        <div
+          id="createdInviteCode"
+          class="invite-code">
 
-<label>
-Email
-</label>
+          ------
 
-<input
-id="signupEmail"
-type="email"
-placeholder="your@email.com"
-required>
+        </div>
 
-</div>
 
+        <button
+          class="btn btn-secondary"
+          onclick="copyInviteCode()">
 
-<div class="form">
+          Copy Invite Code
 
-<label>
-Password
-</label>
+        </button>
 
-<input
-id="signupPassword"
-type="password"
-placeholder="Minimum 6 characters"
-minlength="6"
-required>
+      </div>
 
-</div>
 
+      <button
+        class="btn btn-primary"
+        style="margin-top:12px"
+        onclick="openMyMess()">
 
-<button
-class="btn primary">
+        Open My Mess
 
-Create Account
+      </button>
 
-</button>
+    </div>
 
-</form>
 
+    <div class="card">
 
+      <div class="section-title">
+        Your Account
+      </div>
 
-<div
-id="status"
-class="status">
+      <div
+        id="noMessAccount"
+        class="muted">
 
-Connecting to Firebase...
+      </div>
 
-</div>
 
+      <button
+        class="btn btn-danger logout-btn"
+        onclick="logout()">
 
-</div>
+        Logout
 
-</div>
+      </button>
+
+    </div>
+
+  </main>
 
 </section>
 
 
-
-<!-- =========================
-     NO MESS
-========================= -->
-
-<section
-id="noMessPage"
-class="hidden">
-
-<div class="app">
-
-
-<div class="hero">
-
-<h2 id="welcome">
-Welcome 👋
-</h2>
-
-<p>
-Create a new mess to get started.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="title">
-Create New Mess
-</div>
-
-
-<form
-id="createMessForm">
-
-
-<div class="form">
-
-<label>
-Mess Name
-</label>
-
-<input
-id="messName"
-placeholder="Example: Jamil Mess"
-required>
-
-</div>
-
-
-<div class="grid2">
-
-<div class="form">
-
-<label>
-Cycle Start
-</label>
-
-<input
-id="cycleStart"
-type="date"
-required>
-
-</div>
-
-
-<div class="form">
-
-<label>
-Cycle End
-</label>
-
-<input
-id="cycleEnd"
-type="date"
-required>
-
-</div>
-
-</div>
-
-
-<button
-class="btn primary">
-
-+ Create Mess
-
-</button>
-
-</form>
-
-</div>
-
-
-
-<div
-id="messCreated"
-class="card hidden">
-
-<div class="title">
-🎉 Mess Created!
-</div>
-
-<p
-class="muted">
-
-Your Mess has been created successfully.
-
-</p>
-
-
-<div class="invite">
-
-<div class="muted">
-Your Invite Code
-</div>
-
-<div
-id="inviteCode"
-class="code">
-
-------
-
-</div>
-
-
-<button
-class="btn secondary"
-onclick="copyCode()">
-
-Copy Invite Code
-
-</button>
-
-</div>
-
-<br>
-
-
-<button
-class="btn primary"
-onclick="location.reload()">
-
-Open My Mess
-
-</button>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
+<!-- =====================================
      MESS DASHBOARD
-========================= -->
+===================================== -->
 
 <section
-id="messPage"
-class="hidden">
+  id="messPage"
+  class="hidden">
 
-<div class="app">
+  <main class="container">
 
 
-<div class="hero">
+    <div class="hero">
 
-<h2
-id="messNameDisplay">
+      <h2
+        id="messTitle">
 
-My Mess
+        My Mess
 
-</h2>
+      </h2>
 
-<p
-id="cycleDisplay">
+      <p
+        id="messCycle">
 
-Current Cycle
+        Current Cycle
 
-</p>
+      </p>
 
-</div>
+      <div style="margin-top:10px">
 
+        <span
+          id="roleBadge"
+          class="role">
 
+          ADMIN
 
-<div class="grid2">
+        </span>
 
+      </div>
 
-<div class="stat">
+    </div>
 
-<small>
-Current Money
-</small>
 
-<b>
-৳0
-</b>
+    <!-- BASIC STATS -->
 
-</div>
+    <div class="grid-2">
 
+      <div class="stat">
 
-<div class="stat">
+        <small>
+          Current Money
+        </small>
 
-<small>
-Total Deposit
-</small>
+        <b id="currentMoney">
+          ৳0
+        </b>
 
-<b>
-৳0
-</b>
+      </div>
 
-</div>
 
+      <div class="stat">
 
-<div class="stat">
+        <small>
+          Total Deposit
+        </small>
 
-<small>
-Total Expense
-</small>
+        <b id="totalDeposit">
+          ৳0
+        </b>
 
-<b>
-৳0
-</b>
+      </div>
 
-</div>
 
+      <div class="stat">
 
-<div class="stat">
+        <small>
+          Total Expense
+        </small>
 
-<small>
-Meal Rate
-</small>
+        <b id="totalExpense">
+          ৳0
+        </b>
 
-<b>
-৳0
-</b>
+      </div>
 
-</div>
 
+      <div class="stat">
 
-</div>
+        <small>
+          Meal Rate
+        </small>
 
+        <b id="mealRate">
+          ৳0
+        </b>
 
+      </div>
 
-<div
-class="card"
-style="margin-top:15px">
+    </div>
 
-<div class="title">
-Mess Information
-</div>
 
+    <!-- MESS INFORMATION -->
 
-<p
-class="muted">
+    <div class="card">
 
-Mess successfully connected with Firebase.
+      <div class="section-title">
+        Mess Information
+      </div>
 
-</p>
+      <div
+        id="messInfo"
+        class="muted">
 
+      </div>
 
-<div
-class="invite">
 
-<div class="muted">
-Invite Code
-</div>
+      <div class="invite-box">
 
-<div
-id="dashboardInvite"
-class="code">
+        <div class="invite-label">
+          Invite Code
+        </div>
 
-------
+        <div
+          id="dashboardInviteCode"
+          class="invite-code">
 
-</div>
+          ------
 
+        </div>
 
-<button
-class="btn secondary"
-onclick="copyDashboardCode()">
 
-Copy Code
+        <button
+          class="btn btn-secondary"
+          onclick="copyDashboardInvite()">
 
-</button>
+          Copy Code
 
-</div>
+        </button>
 
-</div>
+      </div>
 
+    </div>
 
 
-<div class="card">
+    <!-- TODAY -->
 
-<div class="title">
-Account
-</div>
+    <div class="card">
 
+      <div class="section-title">
+        Today's Summary
+      </div>
 
-<p
-id="accountInfo"
-class="muted">
+      <div class="grid-2">
 
-</p>
+        <div class="stat">
 
+          <small>
+            Total Meals
+          </small>
 
-<br>
+          <b id="todayMeals">
+            0
+          </b>
 
+        </div>
 
-<button
-class="btn danger"
-onclick="logout()">
 
-Logout
+        <div class="stat">
 
-</button>
+          <small>
+            Members
+          </small>
 
-</div>
+          <b id="memberCount">
+            1
+          </b>
 
+        </div>
 
-</div>
+      </div>
+
+    </div>
+
+
+    <!-- ACCOUNT -->
+
+    <div class="card">
+
+      <div class="section-title">
+        My Account
+      </div>
+
+      <div
+        id="accountInfo"
+        class="muted">
+
+      </div>
+
+
+      <button
+        class="btn btn-danger logout-btn"
+        onclick="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </main>
 
 </section>
 
 
-
-<!-- =========================
-     FIREBASE
-========================= -->
+<!-- =====================================
+     FIREBASE COMPAT
+===================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-app-compat.js"></script>
 
@@ -868,1036 +988,1026 @@ Logout
 
 <script>
 
-/* =====================================
+/* =====================================================
    FIREBASE CONFIG
-===================================== */
+===================================================== */
 
 const firebaseConfig = {
 
-apiKey:
-"AIzaSyC1co4VUZoqTJAJnmprEjYE9FJ3kFx6YJo",
+  apiKey:
+  "AIzaSyC1co4VUZoqTJAJnmprEjYE9FJ3kFx6YJo",
 
-authDomain:
-"mess-mate-2942b.firebaseapp.com",
+  authDomain:
+  "mess-mate-2942b.firebaseapp.com",
 
-projectId:
-"mess-mate-2942b",
+  projectId:
+  "mess-mate-2942b",
 
-storageBucket:
-"mess-mate-2942b.firebasestorage.app",
+  storageBucket:
+  "mess-mate-2942b.firebasestorage.app",
 
-messagingSenderId:
-"661215494906",
+  messagingSenderId:
+  "661215494906",
 
-appId:
-"1:661215494906:web:6b4eb1d938fb7bba11ff43"
+  appId:
+  "1:661215494906:web:6b4eb1d938fb7bba11ff43"
 
 };
 
 
-firebase.initializeApp(
-firebaseConfig
-);
+/* INITIALIZE */
 
+firebase.initializeApp(firebaseConfig);
 
 const auth =
-firebase.auth();
+  firebase.auth();
 
 const db =
-firebase.firestore();
+  firebase.firestore();
 
 
-let currentUser=null;
+/* GLOBAL */
 
-let currentGroup=null;
+let currentUser = null;
+
+let currentMess = null;
+
+let createdMessCode = "";
 
 
-/* =====================================
+/* =====================================================
    HELPERS
-===================================== */
+===================================================== */
 
 function $(id){
 
-return document.getElementById(id);
+  return document.getElementById(id);
 
 }
 
 
 function today(){
 
-const d=new Date();
+  const d = new Date();
 
-return d.getFullYear()+"-"+
-String(d.getMonth()+1).padStart(2,"0")+"-"+
-String(d.getDate()).padStart(2,"0");
-
-}
-
-
-function randomCode(){
-
-const chars=
-"ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
-let code="";
-
-for(let i=0;i<6;i++){
-
-code+=chars[
-Math.floor(
-Math.random()*chars.length
-)
-];
-
-}
-
-return code;
+  return (
+    d.getFullYear() +
+    "-" +
+    String(d.getMonth()+1).padStart(2,"0") +
+    "-" +
+    String(d.getDate()).padStart(2,"0")
+  );
 
 }
 
 
-function showStatus(text){
+function escapeHTML(value){
 
-$("status").innerHTML=text;
-
-}
-
-
-function errorMessage(error){
-
-if(!error)
-return "Something went wrong.";
-
-if(
-error.code==="auth/email-already-in-use"
-)
-return "This email is already registered.";
-
-if(
-error.code==="auth/invalid-email"
-)
-return "Invalid email address.";
-
-if(
-error.code==="auth/weak-password"
-)
-return "Password must be at least 6 characters.";
-
-if(
-error.code==="auth/invalid-credential"
-)
-return "Email or password is incorrect.";
-
-if(
-error.code==="permission-denied"
-)
-return "Firestore permission denied.";
-
-return error.message ||
-"Something went wrong.";
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
-/* =====================================
-   AUTH TABS
-===================================== */
+function randomInviteCode(){
 
-function showAuth(type){
+  const chars =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
-if(type==="login"){
+  let code = "";
 
-$("loginForm")
-.classList.remove("hidden");
+  for(let i=0;i<6;i++){
 
-$("signupForm")
-.classList.add("hidden");
+    code += chars[
+      Math.floor(
+        Math.random()*chars.length
+      )
+    ];
 
-$("loginTab")
-.classList.add("active");
+  }
 
-$("signupTab")
-.classList.remove("active");
-
-}else{
-
-$("loginForm")
-.classList.add("hidden");
-
-$("signupForm")
-.classList.remove("hidden");
-
-$("loginTab")
-.classList.remove("active");
-
-$("signupTab")
-.classList.add("active");
-
-}
+  return code;
 
 }
 
 
-/* =====================================
+function showAuthStatus(message){
+
+  $("authStatus").innerHTML =
+    message;
+
+}
+
+
+function getErrorMessage(error){
+
+  console.error(error);
+
+  if(!error){
+
+    return "Something went wrong.";
+
+  }
+
+
+  switch(error.code){
+
+    case "auth/email-already-in-use":
+      return "This email is already registered.";
+
+    case "auth/invalid-email":
+      return "Invalid email address.";
+
+    case "auth/weak-password":
+      return "Password must be at least 6 characters.";
+
+    case "auth/invalid-credential":
+      return "Incorrect email or password.";
+
+    case "auth/user-not-found":
+      return "No account found with this email.";
+
+    case "auth/wrong-password":
+      return "Incorrect password.";
+
+    case "permission-denied":
+      return "Firestore permission denied.";
+
+    default:
+      return error.message ||
+        "Something went wrong.";
+
+  }
+
+}
+
+
+/* =====================================================
+   AUTH TAB
+===================================================== */
+
+function switchAuth(type){
+
+  if(type === "login"){
+
+    $("loginForm")
+      .classList.remove("hidden");
+
+    $("signupForm")
+      .classList.add("hidden");
+
+    $("loginTab")
+      .classList.add("active");
+
+    $("signupTab")
+      .classList.remove("active");
+
+    showAuthStatus(
+      "Firebase connected.<br>Login system ready."
+    );
+
+  }
+
+  else{
+
+    $("loginForm")
+      .classList.add("hidden");
+
+    $("signupForm")
+      .classList.remove("hidden");
+
+    $("loginTab")
+      .classList.remove("active");
+
+    $("signupTab")
+      .classList.add("active");
+
+    showAuthStatus(
+      "Create your Mess-Mate account."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
    LOGIN
-===================================== */
+===================================================== */
 
 $("loginForm")
-.addEventListener(
-"submit",
-async function(e){
+.addEventListener("submit",async function(event){
 
-e.preventDefault();
+  event.preventDefault();
 
 
-showStatus(
-"Logging in..."
-);
+  const email =
+    $("loginEmail")
+      .value
+      .trim();
+
+  const password =
+    $("loginPassword")
+      .value;
 
 
-try{
-
-await auth.signInWithEmailAndPassword(
-
-$("loginEmail").value.trim(),
-
-$("loginPassword").value
-
-);
+  showAuthStatus(
+    "Logging in..."
+  );
 
 
-}catch(error){
+  try{
 
-console.error(error);
+    await auth
+      .signInWithEmailAndPassword(
+        email,
+        password
+      );
 
-showStatus(
-"❌ "+
-errorMessage(error)
-);
 
-}
+    showAuthStatus(
+      "✅ Login successful."
+    );
+
+
+  }
+
+  catch(error){
+
+    showAuthStatus(
+      "❌ " +
+      getErrorMessage(error)
+    );
+
+  }
 
 });
 
 
-/* =====================================
+/* =====================================================
    SIGN UP
-===================================== */
+===================================================== */
 
 $("signupForm")
-.addEventListener(
-"submit",
-async function(e){
+.addEventListener("submit",async function(event){
 
-e.preventDefault();
+  event.preventDefault();
 
 
-const name=
-$("signupName")
-.value
-.trim();
+  const name =
+    $("signupName")
+      .value
+      .trim();
 
-const email=
-$("signupEmail")
-.value
-.trim();
+  const email =
+    $("signupEmail")
+      .value
+      .trim();
 
-const password=
-$("signupPassword")
-.value;
-
-
-showStatus(
-"Creating account..."
-);
+  const password =
+    $("signupPassword")
+      .value;
 
 
-try{
+  if(name.length < 2){
+
+    showAuthStatus(
+      "Please enter your name."
+    );
+
+    return;
+
+  }
 
 
-const result=
-await auth.createUserWithEmailAndPassword(
+  if(password.length < 6){
 
-email,
-password
+    showAuthStatus(
+      "Password must be at least 6 characters."
+    );
 
-);
+    return;
+
+  }
 
 
-await result.user.updateProfile({
+  showAuthStatus(
+    "Creating account..."
+  );
 
-displayName:name
+
+  try{
+
+    const result =
+      await auth
+        .createUserWithEmailAndPassword(
+          email,
+          password
+        );
+
+
+    /* PROFILE NAME */
+
+    await result.user
+      .updateProfile({
+
+        displayName:name
+
+      });
+
+
+    /* FIRESTORE USER PROFILE */
+
+    await db
+      .collection("users")
+      .doc(result.user.uid)
+      .set({
+
+        name:name,
+
+        email:email,
+
+        photoURL:"",
+
+        activeGroupId:null,
+
+        pendingGroupId:null,
+
+        createdAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp(),
+
+        updatedAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp()
+
+      });
+
+
+    showAuthStatus(
+      "✅ Account created successfully."
+    );
+
+
+  }
+
+  catch(error){
+
+    showAuthStatus(
+      "❌ " +
+      getErrorMessage(error)
+    );
+
+  }
 
 });
 
 
-await db
-.collection("users")
-.doc(result.user.uid)
-.set({
-
-name:name,
-
-email:email,
-
-photoURL:"",
-
-activeGroupId:null,
-
-pendingGroupId:null,
-
-createdAt:
-firebase.firestore.FieldValue
-.serverTimestamp(),
-
-updatedAt:
-firebase.firestore.FieldValue
-.serverTimestamp()
-
-});
-
-
-showStatus(
-"✅ Account created successfully."
-);
-
-
-}catch(error){
-
-console.error(error);
-
-showStatus(
-"❌ "+
-errorMessage(error)
-);
-
-}
-
-});
-
-
-/* =====================================
+/* =====================================================
    AUTH STATE
-===================================== */
+===================================================== */
 
 auth.onAuthStateChanged(
-async function(user){
+  async function(user){
 
-currentUser=user;
-
-
-if(!user){
-
-$("authPage")
-.classList.remove("hidden");
-
-$("noMessPage")
-.classList.add("hidden");
-
-$("messPage")
-.classList.add("hidden");
-
-$("header")
-.classList.add("hidden");
-
-return;
-
-}
+    currentUser = user;
 
 
-$("authPage")
-.classList.add("hidden");
+    /* NOT LOGGED IN */
 
-$("header")
-.classList.remove("hidden");
+    if(!user){
 
+      $("authPage")
+        .classList.remove("hidden");
 
-$("avatar").textContent=
+      $("topbar")
+        .classList.add("hidden");
 
-(
-user.displayName ||
-user.email ||
-"U"
-)
-.charAt(0)
-.toUpperCase();
+      $("noMessPage")
+        .classList.add("hidden");
 
+      $("messPage")
+        .classList.add("hidden");
 
-$("welcome").textContent=
-"Welcome, "+
-(user.displayName||"User")+
-" 👋";
+      return;
+
+    }
 
 
-try{
+    /* LOGGED IN */
+
+    $("authPage")
+      .classList.add("hidden");
+
+    $("topbar")
+      .classList.remove("hidden");
 
 
-const userSnap=
-await db
-.collection("users")
-.doc(user.uid)
-.get();
+    $("avatarBtn").textContent =
+      (
+        user.displayName ||
+        user.email ||
+        "U"
+      )
+      .charAt(0)
+      .toUpperCase();
 
 
-if(!userSnap.exists){
-
-await db
-.collection("users")
-.doc(user.uid)
-.set({
-
-name:user.displayName||"User",
-
-email:user.email||"",
-
-activeGroupId:null,
-
-pendingGroupId:null,
-
-createdAt:
-firebase.firestore.FieldValue
-.serverTimestamp(),
-
-updatedAt:
-firebase.firestore.FieldValue
-.serverTimestamp()
-
-});
+    $("welcomeText").textContent =
+      "Welcome, " +
+      (
+        user.displayName ||
+        "User"
+      ) +
+      " 👋";
 
 
-$("noMessPage")
-.classList.remove("hidden");
+    $("noMessAccount").innerHTML =
+      "<b>" +
+      escapeHTML(
+        user.displayName || "User"
+      ) +
+      "</b><br>" +
+      escapeHTML(
+        user.email || ""
+      );
 
-return;
 
-}
+    try{
+
+      const userRef =
+        db.collection("users")
+          .doc(user.uid);
 
 
-const userData=
-userSnap.data();
+      const userSnap =
+        await userRef.get();
 
 
-if(userData.activeGroupId){
+      /*
+       * যদি user profile না থাকে,
+       * create করবে
+       */
 
-await loadMess(
-userData.activeGroupId
+      if(!userSnap.exists){
+
+        await userRef.set({
+
+          name:
+            user.displayName ||
+            "User",
+
+          email:
+            user.email || "",
+
+          photoURL:"",
+
+          activeGroupId:null,
+
+          pendingGroupId:null,
+
+          createdAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp(),
+
+          updatedAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp()
+
+        });
+
+
+        showNoMess();
+
+        return;
+
+      }
+
+
+      const userData =
+        userSnap.data();
+
+
+      /*
+       * USER-এর ACTIVE MESS আছে
+       */
+
+      if(userData.activeGroupId){
+
+        await loadMess(
+          userData.activeGroupId
+        );
+
+      }
+
+      else{
+
+        showNoMess();
+
+      }
+
+    }
+
+    catch(error){
+
+      console.error(error);
+
+      showNoMess();
+
+      showAuthStatus(
+        "❌ " +
+        getErrorMessage(error)
+      );
+
+    }
+
+  }
 );
 
-}else{
 
-$("noMessPage")
-.classList.remove("hidden");
+/* =====================================================
+   SHOW NO MESS
+===================================================== */
 
-$("messPage")
-.classList.add("hidden");
+function showNoMess(){
 
-}
+  $("noMessPage")
+    .classList.remove("hidden");
 
-
-}catch(error){
-
-console.error(error);
-
-showStatus(
-"❌ "+
-errorMessage(error)
-);
+  $("messPage")
+    .classList.add("hidden");
 
 }
 
-});
 
-
-/* =====================================
+/* =====================================================
    CREATE MESS
-===================================== */
+===================================================== */
 
 $("createMessForm")
 .addEventListener(
 "submit",
-async function(e){
+async function(event){
 
-e.preventDefault();
+  event.preventDefault();
 
 
-if(!currentUser){
+  if(!currentUser){
 
-return;
+    return;
 
-}
+  }
 
 
-const name=
-$("messName")
-.value
-.trim();
+  const messName =
+    $("messName")
+      .value
+      .trim();
 
-const start=
-$("cycleStart")
-.value;
+  const startDate =
+    $("cycleStart")
+      .value;
 
-const end=
-$("cycleEnd")
-.value;
+  const endDate =
+    $("cycleEnd")
+      .value;
 
 
-if(start>=end){
+  if(!messName){
 
-alert(
-"Cycle End date must be after Start date."
-);
+    alert(
+      "Please enter Mess Name."
+    );
 
-return;
+    return;
 
-}
+  }
 
 
-const button=
-this.querySelector("button");
+  if(!startDate || !endDate){
 
-button.disabled=true;
+    alert(
+      "Please select cycle dates."
+    );
 
-button.textContent=
-"Creating Mess...";
+    return;
 
+  }
 
-try{
 
+  if(startDate >= endDate){
 
-/* GROUP */
+    alert(
+      "Cycle End date must be after Start date."
+    );
 
-const groupRef=
-db.collection("groups").doc();
+    return;
 
-const groupId=
-groupRef.id;
+  }
 
 
-/* INVITE */
+  const button =
+    $("createMessBtn");
 
-const inviteCode=
-randomCode();
 
+  button.disabled = true;
 
-const inviteRef=
-db.collection("inviteCodes")
-.doc(inviteCode);
+  button.textContent =
+    "Creating Mess...";
 
 
-/* MEMBER */
+  try{
 
-const memberRef=
-groupRef
-.collection("members")
-.doc(currentUser.uid);
+    /*
+     * NEW GROUP
+     */
 
+    const groupRef =
+      db.collection("groups")
+        .doc();
 
-/* SETTINGS */
+    const groupId =
+      groupRef.id;
 
-const settingsRef=
-groupRef
-.collection("settings")
-.doc("main");
 
+    /*
+     * INVITE CODE
+     */
 
-/* CYCLE */
+    const inviteCode =
+      randomInviteCode();
 
-const cycleRef=
-groupRef
-.collection("cycles")
-.doc(
-start+"_"+end
-);
 
+    /*
+     * REFERENCES
+     */
 
-/* USER */
+    const memberRef =
+      groupRef
+        .collection("members")
+        .doc(currentUser.uid);
 
-const userRef=
-db.collection("users")
-.doc(currentUser.uid);
 
+    const settingsRef =
+      groupRef
+        .collection("settings")
+        .doc("main");
 
-/* BATCH */
 
-const batch=
-db.batch();
+    const cycleRef =
+      groupRef
+        .collection("cycles")
+        .doc(
+          startDate +
+          "_" +
+          endDate
+        );
 
 
-/* GROUP */
+    const inviteRef =
+      db.collection("inviteCodes")
+        .doc(inviteCode);
 
-batch.set(
-groupRef,
-{
 
-name:name,
+    const userRef =
+      db.collection("users")
+        .doc(currentUser.uid);
 
-adminUid:
-currentUser.uid,
 
-createdBy:
-currentUser.uid,
+    /*
+     * BATCH
+     */
 
-inviteCode:
-inviteCode,
+    const batch =
+      db.batch();
 
-active:true,
 
-createdAt:
-firebase.firestore.FieldValue
-.serverTimestamp(),
+    /*
+     * GROUP
+     */
 
-updatedAt:
-firebase.firestore.FieldValue
-.serverTimestamp()
+    batch.set(
+      groupRef,
+      {
 
-}
-);
+        name:
+          messName,
 
+        adminUid:
+          currentUser.uid,
 
-/* ADMIN MEMBER */
+        createdBy:
+          currentUser.uid,
 
-batch.set(
-memberRef,
-{
+        inviteCode:
+          inviteCode,
 
-uid:
-currentUser.uid,
+        active:true,
 
-name:
-currentUser.displayName ||
-name,
+        createdAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp(),
 
-email:
-currentUser.email ||
-"",
+        updatedAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp()
 
-role:"admin",
+      }
+    );
 
-active:true,
 
-joinedAt:
-firebase.firestore.FieldValue
-.serverTimestamp(),
+    /*
+     * ADMIN MEMBER
+     */
 
-updatedAt:
-firebase.firestore.FieldValue
-.serverTimestamp()
+    batch.set(
+      memberRef,
+      {
 
-}
-);
+        uid:
+          currentUser.uid,
 
+        name:
+          currentUser.displayName ||
+          messName,
 
-/* SETTINGS */
+        email:
+          currentUser.email ||
+          "",
 
-batch.set(
-settingsRef,
-{
+        role:"admin",
 
-mealDeadlineHour:10,
+        active:true,
 
-mealDeadlineMinute:0,
+        joinedAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp(),
 
-breakfastEnabled:true,
+        updatedAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp()
 
-lunchEnabled:true,
+      }
+    );
 
-dinnerEnabled:true,
 
-currency:"BDT",
+    /*
+     * SETTINGS
+     */
 
-createdAt:
-firebase.firestore.FieldValue
-.serverTimestamp(),
+    batch.set(
+      settingsRef,
+      {
 
-updatedAt:
-firebase.firestore.FieldValue
-.serverTimestamp()
+        mealDeadlineHour:10,
 
-}
-);
+        mealDeadlineMinute:0,
 
+        breakfastEnabled:true,
 
-/* CYCLE */
+        lunchEnabled:true,
 
-batch.set(
-cycleRef,
-{
+        dinnerEnabled:true,
 
-name:
-start+
-" - "+
-end,
+        currency:"BDT",
 
-startDate:start,
+        createdAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp(),
 
-endDate:end,
+        updatedAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp()
 
-status:"active",
+      }
+    );
 
-createdBy:
-currentUser.uid,
 
-createdAt:
-firebase.firestore.FieldValue
-.serverTimestamp()
+    /*
+     * CYCLE
+     */
 
-}
-);
+    batch.set(
+      cycleRef,
+      {
 
+        name:
+          startDate +
+          " - " +
+          endDate,
 
-/* INVITE */
+        startDate:
+          startDate,
 
-batch.set(
-inviteRef,
-{
+        endDate:
+          endDate,
 
-code:
-inviteCode,
+        status:"active",
 
-groupId:
-groupId,
+        createdBy:
+          currentUser.uid,
 
-createdBy:
-currentUser.uid,
+        createdAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp()
 
-active:true,
+      }
+    );
 
-createdAt:
-firebase.firestore.FieldValue
-.serverTimestamp()
 
-}
-);
+    /*
+     * INVITE CODE
+     */
 
+    batch.set(
+      inviteRef,
+      {
 
-/* USER */
+        code:
+          inviteCode,
 
-batch.set(
-userRef,
-{
+        groupId:
+          groupId,
 
-name:
-currentUser.displayName ||
-name,
+        createdBy:
+          currentUser.uid,
 
-email:
-currentUser.email ||
-"",
+        active:true,
 
-activeGroupId:
-groupId,
+        createdAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp()
 
-pendingGroupId:null,
+      }
+    );
 
-updatedAt:
-firebase.firestore.FieldValue
-.serverTimestamp()
 
-},
-{merge:true}
-);
+    /*
+     * USER PROFILE
+     */
 
+    batch.set(
+      userRef,
+      {
 
-/* COMMIT */
+        name:
+          currentUser.displayName ||
+          messName,
 
-await batch.commit();
+        email:
+          currentUser.email ||
+          "",
 
+        activeGroupId:
+          groupId,
 
-$("inviteCode")
-.textContent=
-inviteCode;
+        pendingGroupId:null,
 
+        updatedAt:
+          firebase.firestore
+            .FieldValue
+            .serverTimestamp()
 
-$("messCreated")
-.classList.remove("hidden");
+      },
+      {
+        merge:true
+      }
+    );
 
 
-$("createMessForm")
-.classList.add("hidden");
+    /*
+     * COMMIT EVERYTHING
+     */
 
+    await batch.commit();
 
-currentGroup={
-id:groupId,
-name:name,
-inviteCode:inviteCode,
-start:start,
-end:end
-};
 
+    /*
+     * SUCCESS
+     */
 
-}catch(error){
+    createdMessCode =
+      inviteCode;
 
-console.error(error);
 
-alert(
-"Create Mess failed:\n\n"+
-errorMessage(error)
-);
+    $("createdInviteCode")
+      .textContent =
+      inviteCode;
 
-button.disabled=false;
 
-button.textContent=
-"+ Create Mess";
+    $("createdCard")
+      .classList.remove("hidden");
 
-}
+
+    $("createMessForm")
+      .classList.add("hidden");
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "+ Create Mess";
+
+
+    /*
+     * Save locally too
+     */
+
+    currentMess = {
+
+      id:groupId,
+
+      name:messName,
+
+      adminUid:
+        currentUser.uid,
+
+      inviteCode:
+        inviteCode,
+
+      startDate:
+        startDate,
+
+      endDate:
+        endDate,
+
+      role:"admin"
+
+    };
+
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    button.disabled = false;
+
+    button.textContent =
+      "+ Create Mess";
+
+
+    alert(
+      "Create Mess failed:\n\n" +
+      getErrorMessage(error)
+    );
+
+  }
 
 });
 
 
-/* =====================================
+/* =====================================================
    LOAD MESS
-===================================== */
+===================================================== */
 
 async function loadMess(groupId){
 
-try{
+  try{
 
+    /*
+     * GROUP
+     */
 
-const groupSnap=
-await db
-.collection("groups")
-.doc(groupId)
-.get();
+    const groupSnap =
+      await db
+        .collection("groups")
+        .doc(groupId)
+        .get();
 
 
-if(!groupSnap.exists){
+    if(!groupSnap.exists){
 
-await db
-.collection("users")
-.doc(currentUser.uid)
-.set({
+      await db
+        .collection("users")
+        .doc(currentUser.uid)
+        .set({
 
-activeGroupId:null
+          activeGroupId:null,
 
-},
-{merge:true});
+          updatedAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp()
 
-
-$("noMessPage")
-.classList.remove("hidden");
-
-return;
-
-}
-
-
-const group=
-groupSnap.data();
-
-
-const memberSnap=
-await db
-.collection("groups")
-.doc(groupId)
-.collection("members")
-.doc(currentUser.uid)
-.get();
-
-
-if(!memberSnap.exists){
-
-$("noMessPage")
-.classList.remove("hidden");
-
-return;
-
-}
-
-
-const member=
-memberSnap.data();
-
-
-currentGroup={
-
-id:groupId,
-
-...group,
-
-...{
-role:member.role
-}
-
-};
-
-
-$("noMessPage")
-.classList.add("hidden");
-
-$("messPage")
-.classList.remove("hidden");
-
-
-$("messNameDisplay")
-.textContent=
-group.name;
-
-
-$("cycleDisplay")
-.textContent=
-"Invite code: "+
-group.inviteCode;
-
-
-$("dashboardInvite")
-.textContent=
-group.inviteCode;
-
-
-$("accountInfo").innerHTML=
-
-"<b>"+
-(userSafe(currentUser.displayName)||
-"User")+
-"</b><br>"+
-currentUser.email+
-"<br><br>"+
-"Role: "+
-member.role;
-
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Could not load Mess:\n\n"+
-errorMessage(error)
-);
-
-}
-
-}
-
-
-/* =====================================
-   COPY CODE
-===================================== */
-
-function copyCode(){
-
-if(!currentGroup)
-return;
-
-
-navigator.clipboard
-.writeText(
-currentGroup.inviteCode
-)
-.then(function(){
-
-alert(
-"Invite code copied!"
-);
-
-})
-.catch(function(){
-
-alert(
-"Invite Code: "+
-currentGroup.inviteCode
-);
-
-});
-
-}
-
-
-function copyDashboardCode(){
-
-if(!currentGroup)
-return;
-
-
-navigator.clipboard
-.writeText(
-currentGroup.inviteCode
-)
-.then(function(){
-
-alert(
-"Invite code copied!"
-);
-
-});
-
-}
-
-
-/* =====================================
-   SAFE TEXT
-===================================== */
-
-function userSafe(text){
-
-return String(text||"")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;");
-
-}
-
-
-/* =====================================
-   LOGOUT
-===================================== */
-
-async function logout(){
-
-await auth.signOut();
-
-}
-
-
-/* =====================================
-   DEFAULT DATES
-===================================== */
-
-(function(){
-
-const start=
-$("cycleStart");
-
-const end=
-$("cycleEnd");
-
-
-const d=
-new Date();
-
-
-start.value=
-today();
-
-
-d.setMonth(
-d.getMonth()+1
-);
-
-
-end.value=
-d.getFullYear()+
-"-"+
-String(
-d.getMonth()+1
-).padStart(2,"0")+
-"-"+
-String(
-d.getDate()
-).padStart(2,"0");
-
-})();
-
-
-/* =====================================
-   FIREBASE READY
-===================================== */
-
-showStatus(
-"✅ Firebase connected.<br>"+
-"Login system ready."
-);
-
-</script>
-
-</body>
-  </html>
+        },
+        {
+          merge:true
+        });
