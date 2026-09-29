@@ -2,45 +2,122 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mess-Mate Test</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Mess-Mate</title>
 
 <style>
 body{
   margin:0;
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   background:#f3f6fb;
-  font-family:Arial;
+  font-family:Arial,sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.box{
-  background:white;
-  padding:30px 20px;
-  border-radius:20px;
+
+.card{
   width:85%;
   max-width:400px;
-  text-align:center;
+  background:white;
+  padding:25px 20px;
+  border-radius:22px;
   box-shadow:0 8px 30px #0001;
 }
-h1{color:#2563eb}
+
+.logo{
+  width:65px;
+  height:65px;
+  border-radius:20px;
+  background:#2563eb;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:bold;
+  margin:0 auto 15px;
+}
+
+h1{
+  text-align:center;
+  color:#2563eb;
+  margin:0;
+}
+
+.sub{
+  text-align:center;
+  color:#888;
+  font-size:13px;
+  margin:7px 0 22px;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  box-sizing:border-box;
+  border:1px solid #ddd;
+  border-radius:12px;
+  margin-bottom:12px;
+  outline:none;
+}
+
+button{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  font-weight:bold;
+  font-size:15px;
+}
+
 #status{
-  margin-top:20px;
-  line-height:1.8;
+  margin-top:15px;
+  text-align:center;
+  font-size:12px;
+  color:#777;
+  line-height:1.5;
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="box">
+<div class="card">
 
-<h1>Mess-Mate</h1>
+  <div class="logo">
+    M
+  </div>
 
-<div id="status">
-Checking Firebase...
-</div>
+  <h1>Mess-Mate</h1>
+
+  <div class="sub">
+    Smart Mess Management
+  </div>
+
+  <input
+    id="email"
+    type="email"
+    placeholder="Email"
+  >
+
+  <input
+    id="password"
+    type="password"
+    placeholder="Password"
+  >
+
+  <button onclick="login()">
+    Login
+  </button>
+
+  <div id="status">
+    Connecting to Firebase...
+  </div>
 
 </div>
 
@@ -56,114 +133,107 @@ Checking Firebase...
 
 <script>
 
-const status =
-document.getElementById("status");
-
-
 const firebaseConfig = {
 
-apiKey:
-"AIzaSyC1co4VUZoqTJAJnmprEjYE9FJ3kFx6YJo",
+  apiKey:
+  "AIzaSyC1co4VUZoqTJAJnmprEjYE9FJ3kFx6YJo",
 
-authDomain:
-"mess-mate-2942b.firebaseapp.com",
+  authDomain:
+  "mess-mate-2942b.firebaseapp.com",
 
-projectId:
-"mess-mate-2942b",
+  projectId:
+  "mess-mate-2942b",
 
-storageBucket:
-"mess-mate-2942b.firebasestorage.app",
+  storageBucket:
+  "mess-mate-2942b.firebasestorage.app",
 
-messagingSenderId:
-"661215494906",
+  messagingSenderId:
+  "661215494906",
 
-appId:
-"1:661215494906:web:6b4eb1d938fb7bba11ff43"
+  appId:
+  "1:661215494906:web:6b4eb1d938fb7bba11ff43"
 
 };
 
 
-let app;
-let auth;
-let db;
-
-
 try{
 
-firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
 
-auth=firebase.auth();
-
-db=firebase.firestore();
-
-
-status.innerHTML=
-"✅ Firebase initialized<br><br>"+
-"Testing Firestore...";
+  const auth =
+    firebase.auth();
 
 
-/* FIRESTORE TEST */
-
-const testRef=
-db.collection("users")
-.doc("firebase_test_connection");
+  document.getElementById("status").innerHTML =
+    "✅ Firebase connected.<br>" +
+    "Login system ready.";
 
 
-const timeout=
-new Promise((resolve,reject)=>{
+  auth.onAuthStateChanged(function(user){
 
-setTimeout(()=>{
+    if(user){
 
-reject(
-new Error(
-"Firestore request timed out after 8 seconds."
-)
-);
+      document.getElementById("status").innerHTML =
+        "✅ Logged in as:<br>" +
+        user.email;
 
-},8000);
+    }
 
-});
+  });
 
 
-Promise.race([
+  window.login = async function(){
 
-testRef.get(),
+    const email =
+      document.getElementById("email").value.trim();
 
-timeout
+    const password =
+      document.getElementById("password").value;
 
-])
 
-.then(snapshot=>{
+    if(!email || !password){
 
-status.innerHTML=
-"✅ Firebase initialized<br><br>"+
-"✅ Firestore connected successfully.<br><br>"+
-"<b>Database is working.</b>";
+      document.getElementById("status").innerHTML =
+        "Please enter email and password.";
 
-})
+      return;
 
-.catch(error=>{
+    }
 
-console.error(error);
 
-status.innerHTML=
-"❌ Firestore problem<br><br>"+
-"<small>"+
-(error.message||error)+
-"</small>";
+    document.getElementById("status").innerHTML =
+      "Logging in...";
 
-});
+
+    try{
+
+      await auth.signInWithEmailAndPassword(
+        email,
+        password
+      );
+
+
+      document.getElementById("status").innerHTML =
+        "✅ Login successful!";
+
+
+    }catch(error){
+
+      console.error(error);
+
+      document.getElementById("status").innerHTML =
+        "❌ "+error.message;
+
+    }
+
+  };
 
 
 }catch(error){
 
-console.error(error);
-
-status.innerHTML=
-"❌ Firebase initialization error<br><br>"+
-"<small>"+
-(error.message||error)+
-"</small>";
+  document.getElementById("status").innerHTML =
+    "❌ Firebase error:<br>"+
+    error.message;
 
 }
 
