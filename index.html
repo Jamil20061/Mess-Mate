@@ -2,18 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#2563eb">
-
-  <meta
-    name="description"
-    content="Mess-Mate - Smart Mess Management & Meal Tracking App"
-  >
 
   <title>Mess-Mate</title>
 
@@ -36,22 +26,26 @@
       font: inherit;
     }
 
+    button {
+      cursor: pointer;
+    }
+
     .app {
       width: 100%;
       max-width: 520px;
-      margin: auto;
       min-height: 100vh;
+      margin: auto;
       background: #f4f7fb;
     }
 
     /* ================= HEADER ================= */
 
-    .top-header {
+    .header {
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: white;
-      padding: 22px 20px 28px;
+      padding: 22px 20px 26px;
       border-radius: 0 0 28px 28px;
-      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.20);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, .20);
     }
 
     .brand {
@@ -63,8 +57,8 @@
     .brand-icon {
       width: 48px;
       height: 48px;
-      background: rgba(255,255,255,0.18);
       border-radius: 15px;
+      background: rgba(255,255,255,.18);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -73,23 +67,22 @@
 
     .brand h1 {
       font-size: 25px;
-      font-weight: 800;
     }
 
     .brand p {
       font-size: 13px;
-      opacity: 0.85;
+      opacity: .85;
       margin-top: 3px;
     }
 
     /* ================= MAIN ================= */
 
     main {
-      padding: 22px 16px 35px;
+      padding: 20px 16px 35px;
     }
 
     .welcome {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .welcome h2 {
@@ -98,8 +91,8 @@
     }
 
     .welcome p {
-      color: #6b7280;
       font-size: 14px;
+      color: #64748b;
       line-height: 1.5;
     }
 
@@ -110,97 +103,75 @@
       border-radius: 20px;
       padding: 20px;
       margin-bottom: 16px;
-      box-shadow: 0 5px 20px rgba(15, 23, 42, 0.07);
+      box-shadow: 0 5px 20px rgba(15,23,42,.07);
     }
 
     .card-title {
       font-size: 18px;
       font-weight: 700;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
 
-    /* ================= AUTH ================= */
-
-    .auth-tabs {
-      display: flex;
-      background: #eef2ff;
-      border-radius: 13px;
-      padding: 4px;
-      margin-bottom: 20px;
-    }
-
-    .auth-tab {
-      flex: 1;
-      border: none;
-      background: transparent;
-      padding: 11px;
-      border-radius: 10px;
-      color: #64748b;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .auth-tab.active {
-      background: white;
-      color: #2563eb;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
+    /* ================= INPUT ================= */
 
     .input-group {
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
 
     .input-group label {
       display: block;
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 7px;
       color: #475569;
+      margin-bottom: 7px;
     }
 
     .input-group input {
       width: 100%;
-      padding: 14px 15px;
+      padding: 14px;
       border: 1px solid #dbe2ea;
       border-radius: 12px;
-      outline: none;
       background: #f8fafc;
-      color: #172033;
-      transition: 0.2s;
+      outline: none;
     }
 
     .input-group input:focus {
       border-color: #2563eb;
       background: white;
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.10);
     }
+
+    /* ================= BUTTONS ================= */
 
     .primary-btn {
       width: 100%;
       border: none;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: white;
       padding: 14px;
       border-radius: 13px;
+      color: white;
       font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 7px 15px rgba(37,99,235,0.20);
-      transition: 0.2s;
-    }
-
-    .primary-btn:active {
-      transform: scale(0.98);
+      background: linear-gradient(135deg,#2563eb,#1d4ed8);
+      box-shadow: 0 7px 15px rgba(37,99,235,.20);
     }
 
     .secondary-btn {
       width: 100%;
       border: 1px solid #dbe2ea;
-      background: white;
-      color: #334155;
       padding: 13px;
       border-radius: 13px;
+      background: white;
+      color: #334155;
       font-weight: 700;
-      cursor: pointer;
+    }
+
+    .danger-btn {
+      width: 100%;
+      border: none;
+      padding: 13px;
+      border-radius: 13px;
+      background: #fee2e2;
+      color: #dc2626;
+      font-weight: 700;
     }
 
     /* ================= STATUS ================= */
@@ -235,16 +206,44 @@
       border: 1px solid #bfdbfe;
     }
 
+    /* ================= AUTH ================= */
+
+    .auth-tabs {
+      display: flex;
+      background: #eef2ff;
+      padding: 4px;
+      border-radius: 13px;
+      margin-bottom: 20px;
+    }
+
+    .auth-tab {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 11px;
+      border-radius: 10px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .auth-tab.active {
+      background: white;
+      color: #2563eb;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+
     /* ================= DASHBOARD ================= */
 
-    .dashboard {
+    #dashboardSection,
+    #createMessSection,
+    #messSection {
       display: none;
     }
 
     .user-card {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
     }
 
     .avatar {
@@ -256,8 +255,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
       font-weight: 800;
+      font-size: 21px;
     }
 
     .user-info {
@@ -271,11 +270,11 @@
     }
 
     .user-info p {
-      color: #64748b;
       font-size: 12px;
+      color: #64748b;
       overflow: hidden;
-      text-overflow: ellipsis;
       white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .logout-btn {
@@ -286,60 +285,117 @@
       border-radius: 10px;
       font-size: 12px;
       font-weight: 700;
-      cursor: pointer;
     }
 
-    /* ================= STATS ================= */
+    /* ================= MESS CARD ================= */
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+    .mess-main-card {
+      background: linear-gradient(135deg,#2563eb,#1d4ed8);
+      color: white;
+      border-radius: 22px;
+      padding: 21px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 25px rgba(37,99,235,.22);
     }
 
-    .stat {
-      background: white;
-      border-radius: 18px;
-      padding: 17px;
-      box-shadow: 0 5px 18px rgba(15,23,42,0.06);
-    }
-
-    .stat-icon {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .stat-title {
-      color: #64748b;
+    .mess-label {
       font-size: 12px;
+      opacity: .8;
       margin-bottom: 5px;
     }
 
-    .stat-value {
-      font-size: 22px;
+    .mess-name {
+      font-size: 25px;
       font-weight: 800;
+      margin-bottom: 12px;
+      word-break: break-word;
+    }
+
+    .mess-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,.17);
+      padding: 7px 11px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* ================= INVITE ================= */
+
+    .invite-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 13px;
+    }
+
+    .invite-code {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #1d4ed8;
+    }
+
+    .copy-btn {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 9px 12px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* ================= CYCLE ================= */
+
+    .cycle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .cycle-item {
+      background: #f8fafc;
+      border: 1px solid #edf1f5;
+      padding: 14px;
+      border-radius: 14px;
+    }
+
+    .cycle-item span {
+      display: block;
+      color: #64748b;
+      font-size: 11px;
+      margin-bottom: 5px;
+    }
+
+    .cycle-item strong {
+      font-size: 14px;
     }
 
     /* ================= FEATURES ================= */
 
-    .feature-list {
+    .feature-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2,1fr);
       gap: 12px;
     }
 
     .feature {
-      border: none;
+      border: 1px solid #edf1f5;
       background: #f8fafc;
       border-radius: 15px;
-      padding: 17px 12px;
+      padding: 16px 12px;
       text-align: left;
-      cursor: pointer;
-      border: 1px solid #edf1f5;
     }
 
     .feature-icon {
-      font-size: 24px;
+      font-size: 23px;
       margin-bottom: 8px;
     }
 
@@ -353,44 +409,12 @@
       font-size: 11px;
     }
 
-    /* ================= EMPTY ================= */
-
-    .empty-state {
-      text-align: center;
-      padding: 25px 10px;
-      color: #64748b;
-    }
-
-    .empty-icon {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    .empty-state h3 {
-      color: #334155;
-      margin-bottom: 5px;
-    }
-
-    .empty-state p {
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    /* ================= FOOTER ================= */
-
-    footer {
-      text-align: center;
-      color: #94a3b8;
-      font-size: 11px;
-      padding: 10px 0 25px;
-    }
-
     /* ================= LOADING ================= */
 
     .loading {
       position: fixed;
       inset: 0;
-      background: rgba(255,255,255,0.96);
+      background: rgba(255,255,255,.97);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -418,98 +442,220 @@
     }
 
     @keyframes pulse {
-      0%, 100% {
+      0%,100% {
         transform: scale(1);
       }
+
       50% {
         transform: scale(1.08);
       }
     }
 
-    /* ================= RESPONSIVE ================= */
-
-    @media (min-width: 600px) {
-      .app {
-        box-shadow: 0 0 40px rgba(0,0,0,0.08);
-      }
+    footer {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 11px;
+      padding: 10px 0 25px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- LOADING -->
-  <div class="loading" id="loadingScreen">
-    <div class="loading-logo">🍽️</div>
-    <p>Loading Mess-Mate...</p>
-  </div>
+<div class="loading" id="loadingScreen">
+  <div class="loading-logo">🍽️</div>
+  <p>Loading Mess-Mate...</p>
+</div>
 
-  <div class="app">
 
-    <!-- HEADER -->
-    <header class="top-header">
-      <div class="brand">
-        <div class="brand-icon">🍽️</div>
+<div class="app">
 
-        <div>
-          <h1>Mess-Mate</h1>
-          <p>Smart Mess Management</p>
-        </div>
+  <!-- ================= HEADER ================= -->
+
+  <header class="header">
+
+    <div class="brand">
+
+      <div class="brand-icon">
+        🍽️
       </div>
-    </header>
+
+      <div>
+        <h1>Mess-Mate</h1>
+        <p>Smart Mess Management</p>
+      </div>
+
+    </div>
+
+  </header>
 
 
-    <main>
+  <main>
 
-      <!-- ================= AUTH SECTION ================= -->
+    <!-- ================================================= -->
+    <!-- AUTH -->
+    <!-- ================================================= -->
 
-      <section id="authSection">
+    <section id="authSection">
 
-        <div class="welcome">
-          <h2>Welcome 👋</h2>
-          <p>
-            Manage your mess, meals, deposits and expenses
-            from one place.
-          </p>
+      <div class="welcome">
+
+        <h2>Welcome 👋</h2>
+
+        <p>
+          Manage your mess, meals, deposits and expenses
+          from one place.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="auth-tabs">
+
+          <button
+            class="auth-tab active"
+            id="loginTab"
+            onclick="showLogin()"
+          >
+            Login
+          </button>
+
+          <button
+            class="auth-tab"
+            id="signupTab"
+            onclick="showSignup()"
+          >
+            Create Account
+          </button>
+
         </div>
+
+
+        <div id="authStatus" class="status"></div>
+
+
+        <div class="input-group">
+
+          <label>Email</label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>Password</label>
+
+          <input
+            type="password"
+            id="password"
+            placeholder="Minimum 6 characters"
+          >
+
+        </div>
+
+
+        <button
+          class="primary-btn"
+          id="authButton"
+          onclick="handleAuth()"
+        >
+          Login
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- DASHBOARD -->
+    <!-- ================================================= -->
+
+    <section id="dashboardSection">
+
+      <div class="card">
+
+        <div class="user-card">
+
+          <div
+            class="avatar"
+            id="userAvatar"
+          >
+            U
+          </div>
+
+          <div class="user-info">
+
+            <h3 id="userName">
+              User
+            </h3>
+
+            <p id="userEmail">
+              user@email.com
+            </p>
+
+          </div>
+
+          <button
+            class="logout-btn"
+            onclick="logoutUser()"
+          >
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="welcome">
+
+        <h2>
+          Dashboard 📊
+        </h2>
+
+        <p>
+          Manage your mess from here.
+        </p>
+
+      </div>
+
+
+      <!-- CREATE MESS -->
+
+      <section id="createMessSection">
 
         <div class="card">
 
-          <div class="auth-tabs">
-
-            <button
-              class="auth-tab active"
-              id="loginTab"
-              onclick="showLogin()"
-            >
-              Login
-            </button>
-
-            <button
-              class="auth-tab"
-              id="signupTab"
-              onclick="showSignup()"
-            >
-              Create Account
-            </button>
-
+          <div class="card-title">
+            🏠 Create Your Mess
           </div>
 
-
-          <div id="statusBox" class="status"></div>
+          <div
+            id="messStatus"
+            class="status"
+          ></div>
 
 
           <div class="input-group">
 
-            <label for="email">
-              Email
+            <label>
+              Mess Name
             </label>
 
             <input
-              type="email"
-              id="email"
-              placeholder="Enter your email"
-              autocomplete="email"
+              type="text"
+              id="messName"
+              placeholder="Example: Jamil Residence"
+              maxlength="60"
             >
 
           </div>
@@ -517,83 +663,162 @@
 
           <div class="input-group">
 
-            <label for="password">
-              Password
+            <label>
+              Your Name
             </label>
 
             <input
-              type="password"
-              id="password"
-              placeholder="Minimum 6 characters"
-              autocomplete="current-password"
+              type="text"
+              id="adminName"
+              placeholder="Enter your name"
+              maxlength="50"
             >
+
+          </div>
+
+
+          <div class="cycle-grid">
+
+            <div class="input-group">
+
+              <label>
+                Cycle Start
+              </label>
+
+              <input
+                type="date"
+                id="cycleStart"
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                Cycle End
+              </label>
+
+              <input
+                type="date"
+                id="cycleEnd"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="card-title" style="margin-top:10px;">
+            ⏰ Meal Update Window
+          </div>
+
+          <p style="font-size:12px;color:#64748b;margin-bottom:14px;line-height:1.5;">
+            Members can change their meal status only during this time.
+            Admin can change it anytime.
+          </p>
+
+
+          <div class="cycle-grid">
+
+            <div class="input-group">
+
+              <label>
+                Open Time
+              </label>
+
+              <input
+                type="time"
+                id="mealOpen"
+                value="20:00"
+              >
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label>
+                Close Time
+              </label>
+
+              <input
+                type="time"
+                id="mealClose"
+                value="08:00"
+              >
+
+            </div>
 
           </div>
 
 
           <button
             class="primary-btn"
-            id="authButton"
-            onclick="handleAuth()"
+            id="createMessButton"
+            onclick="createMess()"
           >
-            Login
+            Create Mess
           </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="empty-state">
-
-            <div class="empty-icon">
-              🏠
-            </div>
-
-            <h3>One place for your whole mess</h3>
-
-            <p>
-              Meals, market expenses, deposits,
-              members and monthly calculations —
-              everything will be managed here.
-            </p>
-
-          </div>
 
         </div>
 
       </section>
 
 
-      <!-- ================= DASHBOARD ================= -->
+      <!-- ================================================= -->
+      <!-- MESS DASHBOARD -->
+      <!-- ================================================= -->
 
-      <section id="dashboardSection" class="dashboard">
+      <section id="messSection">
+
+        <div class="mess-main-card">
+
+          <div class="mess-label">
+            CURRENT MESS
+          </div>
+
+          <div
+            class="mess-name"
+            id="displayMessName"
+          >
+            My Mess
+          </div>
+
+          <div class="mess-role">
+            👑 Admin
+          </div>
+
+        </div>
+
+
+        <!-- INVITE CODE -->
 
         <div class="card">
 
-          <div class="user-card">
+          <div class="card-title">
+            🔑 Invite Members
+          </div>
 
-            <div class="avatar" id="userAvatar">
-              U
-            </div>
+          <p style="font-size:13px;color:#64748b;margin-bottom:13px;line-height:1.5;">
+            Share this invite code with people who want to
+            join your mess.
+          </p>
 
-            <div class="user-info">
+          <div class="invite-box">
 
-              <h3 id="userName">
-                User
-              </h3>
-
-              <p id="userEmail">
-                user@email.com
-              </p>
-
+            <div
+              class="invite-code"
+              id="displayInviteCode"
+            >
+              ------
             </div>
 
             <button
-              class="logout-btn"
-              onclick="logoutUser()"
+              class="copy-btn"
+              onclick="copyInviteCode()"
             >
-              Logout
+              Copy
             </button>
 
           </div>
@@ -601,94 +826,44 @@
         </div>
 
 
-        <div class="welcome">
+        <!-- CYCLE -->
 
-          <h2>
-            Dashboard 📊
-          </h2>
+        <div class="card">
 
-          <p>
-            Your Mess-Mate account is ready.
-          </p>
-
-        </div>
-
-
-        <!-- STATS -->
-
-        <div class="stats-grid">
-
-          <div class="stat">
-
-            <div class="stat-icon">
-              💰
-            </div>
-
-            <div class="stat-title">
-              Current Balance
-            </div>
-
-            <div class="stat-value">
-              ৳0
-            </div>
-
+          <div class="card-title">
+            📅 Current Cycle
           </div>
 
+          <div class="cycle-grid">
 
-          <div class="stat">
+            <div class="cycle-item">
 
-            <div class="stat-icon">
-              🍛
+              <span>
+                Start
+              </span>
+
+              <strong id="displayCycleStart">
+                -
+              </strong>
+
             </div>
 
-            <div class="stat-title">
-              Total Meals
-            </div>
 
-            <div class="stat-value">
-              0
-            </div>
+            <div class="cycle-item">
 
-          </div>
+              <span>
+                End
+              </span>
 
+              <strong id="displayCycleEnd">
+                -
+              </strong>
 
-          <div class="stat">
-
-            <div class="stat-icon">
-              🛒
-            </div>
-
-            <div class="stat-title">
-              Total Expense
-            </div>
-
-            <div class="stat-value">
-              ৳0
-            </div>
-
-          </div>
-
-
-          <div class="stat">
-
-            <div class="stat-icon">
-              👥
-            </div>
-
-            <div class="stat-title">
-              Members
-            </div>
-
-            <div class="stat-value">
-              0
             </div>
 
           </div>
 
         </div>
-
-
-        <br>
 
 
         <!-- FEATURES -->
@@ -699,12 +874,9 @@
             Mess Management
           </div>
 
-          <div class="feature-list">
+          <div class="feature-grid">
 
-            <button
-              class="feature"
-              onclick="comingSoon('Meal Management')"
-            >
+            <button class="feature">
 
               <div class="feature-icon">
                 🍛
@@ -715,56 +887,13 @@
               </h4>
 
               <p>
-                ON / OFF meal
+                Meal ON / OFF
               </p>
 
             </button>
 
 
-            <button
-              class="feature"
-              onclick="comingSoon('Expenses')"
-            >
-
-              <div class="feature-icon">
-                🛒
-              </div>
-
-              <h4>
-                Expenses
-              </h4>
-
-              <p>
-                Market & shopping
-              </p>
-
-            </button>
-
-
-            <button
-              class="feature"
-              onclick="comingSoon('Deposits')"
-            >
-
-              <div class="feature-icon">
-                💰
-              </div>
-
-              <h4>
-                Deposits
-              </h4>
-
-              <p>
-                Money deposits
-              </p>
-
-            </button>
-
-
-            <button
-              class="feature"
-              onclick="comingSoon('Members')"
-            >
+            <button class="feature">
 
               <div class="feature-icon">
                 👥
@@ -775,36 +904,64 @@
               </h4>
 
               <p>
-                Mess members
+                Manage members
               </p>
 
             </button>
 
 
-            <button
-              class="feature"
-              onclick="comingSoon('Reports')"
-            >
+            <button class="feature">
 
               <div class="feature-icon">
-                📊
+                💰
               </div>
 
               <h4>
-                Reports
+                Deposits
               </h4>
 
               <p>
-                Monthly statistics
+                Track deposits
               </p>
 
             </button>
 
 
-            <button
-              class="feature"
-              onclick="comingSoon('Settings')"
-            >
+            <button class="feature">
+
+              <div class="feature-icon">
+                🛒
+              </div>
+
+              <h4>
+                Expenses
+              </h4>
+
+              <p>
+                Market expenses
+              </p>
+
+            </button>
+
+
+            <button class="feature">
+
+              <div class="feature-icon">
+                📢
+              </div>
+
+              <h4>
+                Notices
+              </h4>
+
+              <p>
+                Mess notices
+              </p>
+
+            </button>
+
+
+            <button class="feature">
 
               <div class="feature-icon">
                 ⚙️
@@ -824,473 +981,1057 @@
 
         </div>
 
-
-        <!-- FIREBASE STATUS -->
-
-        <div class="card">
-
-          <div class="card-title">
-            System Status
-          </div>
-
-          <div
-            id="firebaseStatus"
-            class="status info"
-            style="display:block;"
-          >
-            🔄 Checking Firebase connection...
-          </div>
-
-        </div>
-
       </section>
 
-
-      <footer>
-        Mess-Mate © 2026
-      </footer>
-
-    </main>
-
-  </div>
+    </section>
 
 
-  <!-- ================= FIREBASE ================= -->
+    <footer>
+      Mess-Mate © 2026
+    </footer>
 
-  <script type="module">
+  </main>
 
-    import {
-      initializeApp
-    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
-
-    import {
-      getAuth,
-      createUserWithEmailAndPassword,
-      signInWithEmailAndPassword,
-      signOut,
-      onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+</div>
 
 
-    import {
-      getFirestore
-    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+<!-- ===================================================== -->
+<!-- FIREBASE -->
+<!-- ===================================================== -->
+
+<script type="module">
+
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 
-    /* ================= FIREBASE CONFIG ================= */
-
-    const firebaseConfig = {
-
-      apiKey: "AIzaSyC1co4VUZoqTJAJnmprEjYE9F3JkFx6YJo",
-
-      authDomain:
-        "mess-mate-2942b.firebaseapp.com",
-
-      projectId:
-        "mess-mate-2942b",
-
-      storageBucket:
-        "mess-mate-2942b.firebasestorage.app",
-
-      messagingSenderId:
-        "661215494906",
-
-      appId:
-        "1:661215494906:web:6b4eb1d938fb7bba11ff43"
-
-    };
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 
-    /* ================= INITIALIZE ================= */
+  import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+    collection,
+    query,
+    where,
+    getDocs,
+    serverTimestamp,
+    runTransaction
+  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-    const app =
-      initializeApp(firebaseConfig);
+
+  // =====================================================
+  // FIREBASE CONFIG
+  // =====================================================
+
+  const firebaseConfig = {
+
+    apiKey:
+      "AIzaSyC1co4VUZoqTJAJnmprEjYE9F3JkFx6YJo",
+
+    authDomain:
+      "mess-mate-2942b.firebaseapp.com",
+
+    projectId:
+      "mess-mate-2942b",
+
+    storageBucket:
+      "mess-mate-2942b.firebasestorage.app",
+
+    messagingSenderId:
+      "661215494906",
+
+    appId:
+      "1:661215494906:web:6b4eb1d938fb7bba11ff43"
+
+  };
 
 
-    const auth =
-      getAuth(app);
+  // =====================================================
+  // INITIALIZE
+  // =====================================================
+
+  const app =
+    initializeApp(firebaseConfig);
+
+  const auth =
+    getAuth(app);
+
+  const db =
+    getFirestore(app);
 
 
-    const db =
-      getFirestore(app);
+  let isLoginMode = true;
+
+  let currentUser = null;
+
+  let currentGroupId = null;
 
 
-    /* ================= ELEMENTS ================= */
+  // =====================================================
+  // HELPERS
+  // =====================================================
 
-    const loadingScreen =
-      document.getElementById("loadingScreen");
+  function showAuthStatus(message,type) {
 
-    const authSection =
-      document.getElementById("authSection");
+    const box =
+      document.getElementById("authStatus");
 
-    const dashboardSection =
-      document.getElementById("dashboardSection");
+    box.textContent = message;
 
-    const statusBox =
-      document.getElementById("statusBox");
+    box.className =
+      "status " + type;
+  }
 
-    const firebaseStatus =
-      document.getElementById("firebaseStatus");
 
-    const authButton =
+  function showMessStatus(message,type) {
+
+    const box =
+      document.getElementById("messStatus");
+
+    box.textContent = message;
+
+    box.className =
+      "status " + type;
+  }
+
+
+  function clearMessStatus() {
+
+    const box =
+      document.getElementById("messStatus");
+
+    box.textContent = "";
+
+    box.className = "status";
+  }
+
+
+  function generateInviteCode() {
+
+    const chars =
+      "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    let code = "";
+
+    for(let i = 0; i < 6; i++) {
+
+      code +=
+        chars.charAt(
+          Math.floor(
+            Math.random() * chars.length
+          )
+        );
+
+    }
+
+    return code;
+  }
+
+
+  function minutesFromTime(time) {
+
+    const parts =
+      time.split(":");
+
+    return (
+      Number(parts[0]) * 60
+      + Number(parts[1])
+    );
+  }
+
+
+  function formatDate(value) {
+
+    if(!value) return "-";
+
+    const date =
+      new Date(value + "T00:00:00");
+
+    return date.toLocaleDateString(
+      "en-GB",
+      {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }
+    );
+  }
+
+
+  // =====================================================
+  // AUTH TABS
+  // =====================================================
+
+  window.showLogin = function() {
+
+    isLoginMode = true;
+
+    document
+      .getElementById("loginTab")
+      .classList.add("active");
+
+    document
+      .getElementById("signupTab")
+      .classList.remove("active");
+
+    document
+      .getElementById("authButton")
+      .textContent = "Login";
+
+    document
+      .getElementById("authStatus")
+      .className = "status";
+
+  };
+
+
+  window.showSignup = function() {
+
+    isLoginMode = false;
+
+    document
+      .getElementById("signupTab")
+      .classList.add("active");
+
+    document
+      .getElementById("loginTab")
+      .classList.remove("active");
+
+    document
+      .getElementById("authButton")
+      .textContent =
+        "Create Account";
+
+    document
+      .getElementById("authStatus")
+      .className = "status";
+
+  };
+
+
+  // =====================================================
+  // LOGIN / SIGNUP
+  // =====================================================
+
+  window.handleAuth = async function() {
+
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
+
+    const password =
+      document
+        .getElementById("password")
+        .value;
+
+
+    if(!email) {
+
+      showAuthStatus(
+        "Please enter your email.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    if(password.length < 6) {
+
+      showAuthStatus(
+        "Password must be at least 6 characters.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    const button =
       document.getElementById("authButton");
 
-
-    let isLoginMode = true;
-
-
-    /* ================= AUTH TAB ================= */
-
-    window.showLogin = function() {
-
-      isLoginMode = true;
-
-      document
-        .getElementById("loginTab")
-        .classList.add("active");
-
-      document
-        .getElementById("signupTab")
-        .classList.remove("active");
-
-      authButton.textContent = "Login";
-
-      clearStatus();
-
-    };
+    button.disabled = true;
 
 
-    window.showSignup = function() {
+    try {
 
-      isLoginMode = false;
+      if(isLoginMode) {
 
-      document
-        .getElementById("signupTab")
-        .classList.add("active");
+        await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
 
-      document
-        .getElementById("loginTab")
-        .classList.remove("active");
+      } else {
 
-      authButton.textContent = "Create Account";
+        await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
 
-      clearStatus();
-
-    };
-
-
-    /* ================= STATUS ================= */
-
-    function showStatus(message, type) {
-
-      statusBox.textContent = message;
-
-      statusBox.className =
-        "status " + type;
+      }
 
     }
 
+    catch(error) {
 
-    function clearStatus() {
+      console.error(error);
 
-      statusBox.textContent = "";
+      let message =
+        "Something went wrong.";
 
-      statusBox.className =
-        "status";
+      if(
+        error.code ===
+        "auth/invalid-credential"
+      ) {
+
+        message =
+          "Email or password is incorrect.";
+
+      } else if(
+        error.code ===
+        "auth/email-already-in-use"
+      ) {
+
+        message =
+          "This email is already registered.";
+
+      } else if(
+        error.code ===
+        "auth/invalid-email"
+      ) {
+
+        message =
+          "Please enter a valid email.";
+
+      } else if(
+        error.code ===
+        "auth/weak-password"
+      ) {
+
+        message =
+          "Password is too weak.";
+
+      }
+
+      showAuthStatus(
+        message,
+        "error"
+      );
 
     }
 
+    finally {
 
-    /* ================= AUTH ================= */
+      button.disabled = false;
 
-    window.handleAuth = async function() {
-
-      const email =
-        document
-          .getElementById("email")
-          .value
-          .trim();
-
-      const password =
-        document
-          .getElementById("password")
-          .value;
-
-
-      if (!email) {
-
-        showStatus(
-          "Please enter your email.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      if (!password) {
-
-        showStatus(
-          "Please enter your password.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      if (password.length < 6) {
-
-        showStatus(
-          "Password must be at least 6 characters.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      authButton.disabled = true;
-
-      authButton.textContent =
+      button.textContent =
         isLoginMode
-          ? "Logging in..."
-          : "Creating account...";
+          ? "Login"
+          : "Create Account";
+
+    }
+
+  };
 
 
-      try {
+  // =====================================================
+  // LOGOUT
+  // =====================================================
 
-        if (isLoginMode) {
+  window.logoutUser = async function() {
 
-          await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-          );
+    await signOut(auth);
 
-        } else {
+  };
 
-          await createUserWithEmailAndPassword(
-            auth,
-            email,
-            password
-          );
 
-        }
+  // =====================================================
+  // FIND USER'S MESS
+  // =====================================================
 
-      }
+  async function findUserMess(uid) {
 
-      catch (error) {
+    const membersRef =
+      collection(
+        db,
+        "groups"
+      );
 
-        console.error(error);
+    /*
+      We do not query members subcollections here because
+      Firestore rules are designed for group-isolated access.
 
-        let message =
-          "Something went wrong.";
+      Instead, this version stores the user's active group
+      reference inside the user document.
+    */
 
-        if (
-          error.code ===
-          "auth/invalid-credential"
-        ) {
+    const userRef =
+      doc(
+        db,
+        "users",
+        uid
+      );
 
-          message =
-            "Email or password is incorrect.";
+    const userSnap =
+      await getDoc(userRef);
 
-        }
 
-        else if (
-          error.code ===
-          "auth/email-already-in-use"
-        ) {
+    if(!userSnap.exists()) {
 
-          message =
-            "This email is already registered.";
+      return null;
 
-        }
+    }
 
-        else if (
-          error.code ===
-          "auth/invalid-email"
-        ) {
 
-          message =
-            "Please enter a valid email.";
+    const data =
+      userSnap.data();
 
-        }
 
-        else if (
-          error.code ===
-          "auth/weak-password"
-        ) {
+    if(!data.activeGroupId) {
 
-          message =
-            "Password is too weak.";
+      return null;
 
-        }
+    }
 
-        else if (
-          error.code ===
-          "auth/too-many-requests"
-        ) {
 
-          message =
-            "Too many attempts. Try again later.";
+    const groupRef =
+      doc(
+        db,
+        "groups",
+        data.activeGroupId
+      );
 
-        }
+    const groupSnap =
+      await getDoc(groupRef);
 
-        showStatus(
-          message,
-          "error"
+
+    if(!groupSnap.exists()) {
+
+      return null;
+
+    }
+
+
+    return {
+      id: groupSnap.id,
+      data: groupSnap.data()
+    };
+
+  }
+
+
+  // =====================================================
+  // CREATE MESS
+  // =====================================================
+
+  window.createMess = async function() {
+
+    if(!currentUser) {
+
+      showMessStatus(
+        "Please login first.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const name =
+      document
+        .getElementById("messName")
+        .value
+        .trim();
+
+    const adminName =
+      document
+        .getElementById("adminName")
+        .value
+        .trim();
+
+    const cycleStart =
+      document
+        .getElementById("cycleStart")
+        .value;
+
+    const cycleEnd =
+      document
+        .getElementById("cycleEnd")
+        .value;
+
+    const mealOpen =
+      document
+        .getElementById("mealOpen")
+        .value;
+
+    const mealClose =
+      document
+        .getElementById("mealClose")
+        .value;
+
+
+    if(!name) {
+
+      showMessStatus(
+        "Please enter your mess name.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(!adminName) {
+
+      showMessStatus(
+        "Please enter your name.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(!cycleStart || !cycleEnd) {
+
+      showMessStatus(
+        "Please select cycle start and end dates.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(cycleEnd <= cycleStart) {
+
+      showMessStatus(
+        "Cycle end date must be after start date.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(!mealOpen || !mealClose) {
+
+      showMessStatus(
+        "Please select meal opening and closing times.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const button =
+      document.getElementById(
+        "createMessButton"
+      );
+
+    button.disabled = true;
+
+    button.textContent =
+      "Creating Mess...";
+
+
+    try {
+
+      const groupRef =
+        doc(
+          collection(
+            db,
+            "groups"
+          )
         );
 
+      const groupId =
+        groupRef.id;
+
+
+      const inviteCode =
+        generateInviteCode();
+
+
+      const mealOpenMinute =
+        minutesFromTime(mealOpen);
+
+      const mealCloseMinute =
+        minutesFromTime(mealClose);
+
+
+      const userRef =
+        doc(
+          db,
+          "users",
+          currentUser.uid
+        );
+
+
+      const memberRef =
+        doc(
+          db,
+          "groups",
+          groupId,
+          "members",
+          currentUser.uid
+        );
+
+
+      const settingsRef =
+        doc(
+          db,
+          "groups",
+          groupId,
+          "settings",
+          "main"
+        );
+
+
+      const cycleRef =
+        doc(
+          db,
+          "groups",
+          groupId,
+          "cycles",
+          "current"
+        );
+
+
+      const inviteRef =
+        doc(
+          db,
+          "inviteCodes",
+          inviteCode
+        );
+
+
+      await runTransaction(
+        db,
+        async(transaction) => {
+
+          // GROUP
+
+          transaction.set(
+            groupRef,
+            {
+              name: name,
+              adminUid: currentUser.uid,
+              inviteCode: inviteCode,
+              createdAt: serverTimestamp()
+            }
+          );
+
+
+          // ADMIN MEMBER
+
+          transaction.set(
+            memberRef,
+            {
+              uid: currentUser.uid,
+              name: adminName,
+              email: currentUser.email || "",
+              role: "admin",
+              status: "active",
+              joinedAt: serverTimestamp(),
+              updatedAt: serverTimestamp()
+            }
+          );
+
+
+          // SETTINGS
+
+          transaction.set(
+            settingsRef,
+            {
+              mealWindowEnabled: true,
+              mealOpenMinute: mealOpenMinute,
+              mealCloseMinute: mealCloseMinute,
+              updatedAt: serverTimestamp()
+            }
+          );
+
+
+          // CURRENT CYCLE
+
+          transaction.set(
+            cycleRef,
+            {
+              name: cycleStart + " - " + cycleEnd,
+              startDate: cycleStart,
+              endDate: cycleEnd,
+              status: "active",
+              createdAt: serverTimestamp(),
+              updatedAt: serverTimestamp()
+            }
+          );
+
+
+          // INVITE CODE
+
+          transaction.set(
+            inviteRef,
+            {
+              groupId: groupId,
+              createdAt: serverTimestamp()
+            }
+          );
+
+
+          // USER PROFILE
+
+          transaction.set(
+            userRef,
+            {
+              name: adminName,
+              email: currentUser.email || "",
+              activeGroupId: groupId,
+              updatedAt: serverTimestamp()
+            },
+            {
+              merge: true
+            }
+          );
+
+        }
+      );
+
+
+      currentGroupId =
+        groupId;
+
+
+      showMessStatus(
+        "Mess created successfully! 🎉",
+        "success"
+      );
+
+
+      await loadMess(
+        groupId
+      );
+
+    }
+
+    catch(error) {
+
+      console.error(
+        "Create mess error:",
+        error
+      );
+
+      showMessStatus(
+        "Could not create mess. Please try again.",
+        "error"
+      );
+
+    }
+
+    finally {
+
+      button.disabled = false;
+
+      button.textContent =
+        "Create Mess";
+
+    }
+
+  };
+
+
+  // =====================================================
+  // LOAD MESS
+  // =====================================================
+
+  async function loadMess(groupId) {
+
+    const groupRef =
+      doc(
+        db,
+        "groups",
+        groupId
+      );
+
+
+    const groupSnap =
+      await getDoc(groupRef);
+
+
+    if(!groupSnap.exists()) {
+
+      return;
+
+    }
+
+
+    const group =
+      groupSnap.data();
+
+
+    currentGroupId =
+      groupId;
+
+
+    document
+      .getElementById("createMessSection")
+      .style.display = "none";
+
+
+    document
+      .getElementById("messSection")
+      .style.display = "block";
+
+
+    document
+      .getElementById("displayMessName")
+      .textContent =
+        group.name || "My Mess";
+
+
+    document
+      .getElementById("displayInviteCode")
+      .textContent =
+        group.inviteCode || "------";
+
+
+    // CURRENT CYCLE
+
+    const cycleRef =
+      doc(
+        db,
+        "groups",
+        groupId,
+        "cycles",
+        "current"
+      );
+
+
+    const cycleSnap =
+      await getDoc(cycleRef);
+
+
+    if(cycleSnap.exists()) {
+
+      const cycle =
+        cycleSnap.data();
+
+
+      document
+        .getElementById("displayCycleStart")
+        .textContent =
+          formatDate(
+            cycle.startDate
+          );
+
+
+      document
+        .getElementById("displayCycleEnd")
+        .textContent =
+          formatDate(
+            cycle.endDate
+          );
+
+    }
+
+  }
+
+
+  // =====================================================
+  // COPY INVITE CODE
+  // =====================================================
+
+  window.copyInviteCode = async function() {
+
+    const code =
+      document
+        .getElementById(
+          "displayInviteCode"
+        )
+        .textContent;
+
+
+    try {
+
+      await navigator.clipboard.writeText(
+        code
+      );
+
+      alert(
+        "Invite code copied: " + code
+      );
+
+    }
+
+    catch(error) {
+
+      alert(
+        "Invite code: " + code
+      );
+
+    }
+
+  };
+
+
+  // =====================================================
+  // AUTH STATE
+  // =====================================================
+
+  onAuthStateChanged(
+    auth,
+    async(user) => {
+
+      document
+        .getElementById(
+          "loadingScreen"
+        )
+        .style.display = "none";
+
+
+      if(!user) {
+
+        currentUser = null;
+
+        document
+          .getElementById(
+            "authSection"
+          )
+          .style.display = "block";
+
+        document
+          .getElementById(
+            "dashboardSection"
+          )
+          .style.display = "none";
+
+        return;
+
       }
 
-      finally {
 
-        authButton.disabled = false;
-
-        authButton.textContent =
-          isLoginMode
-            ? "Login"
-            : "Create Account";
-
-      }
-
-    };
+      currentUser =
+        user;
 
 
-    /* ================= LOGOUT ================= */
+      document
+        .getElementById(
+          "authSection"
+        )
+        .style.display = "none";
 
-    window.logoutUser = async function() {
+
+      document
+        .getElementById(
+          "dashboardSection"
+        )
+        .style.display = "block";
+
+
+      document
+        .getElementById(
+          "userEmail"
+        )
+        .textContent =
+          user.email || "";
+
+
+      document
+        .getElementById(
+          "userName"
+        )
+        .textContent =
+          user.email
+            ? user.email.split("@")[0]
+            : "User";
+
+
+      document
+        .getElementById(
+          "userAvatar"
+        )
+        .textContent =
+          user.email
+            ? user.email
+                .charAt(0)
+                .toUpperCase()
+            : "U";
+
 
       try {
 
-        await signOut(auth);
-
-      }
-
-      catch (error) {
-
-        console.error(error);
-
-      }
-
-    };
+        const mess =
+          await findUserMess(
+            user.uid
+          );
 
 
-    /* ================= AUTH STATE ================= */
+        if(mess) {
 
-    onAuthStateChanged(
-      auth,
-      (user) => {
-
-        loadingScreen.style.display =
-          "none";
-
-
-        if (user) {
-
-          /* USER LOGGED IN */
-
-          authSection.style.display =
-            "none";
-
-          dashboardSection.style.display =
-            "block";
-
-
-          const email =
-            user.email || "User";
-
-
-          document
-            .getElementById("userEmail")
-            .textContent = email;
-
-
-          document
-            .getElementById("userName")
-            .textContent =
-              email.split("@")[0];
-
-
-          document
-            .getElementById("userAvatar")
-            .textContent =
-              email
-                .charAt(0)
-                .toUpperCase();
-
-
-          firebaseStatus.className =
-            "status success";
-
-          firebaseStatus.style.display =
-            "block";
-
-          firebaseStatus.textContent =
-            "🟢 Firebase connected successfully.";
+          await loadMess(
+            mess.id
+          );
 
         }
 
         else {
 
-          /* USER LOGGED OUT */
+          document
+            .getElementById(
+              "createMessSection"
+            )
+            .style.display = "block";
 
-          authSection.style.display =
-            "block";
-
-          dashboardSection.style.display =
-            "none";
+          document
+            .getElementById(
+              "messSection"
+            )
+            .style.display = "none";
 
         }
 
       }
 
-    );
-
-
-    /* ================= GLOBAL ERROR ================= */
-
-    window.addEventListener(
-      "error",
-      (event) => {
+      catch(error) {
 
         console.error(
-          "App error:",
-          event.error
+          "Loading mess:",
+          error
         );
 
+        document
+          .getElementById(
+            "createMessSection"
+          )
+          .style.display = "block";
+
       }
-    );
-
-
-    /* ================= FIREBASE TEST ================= */
-
-    console.log(
-      "Mess-Mate Firebase initialized successfully."
-    );
-
-  </script>
-
-
-  <!-- ================= NORMAL JAVASCRIPT ================= -->
-
-  <script>
-
-    function comingSoon(feature) {
-
-      alert(
-        feature +
-        " module will be added in the next step."
-      );
 
     }
+  );
 
-  </script>
+</script>
 
 </body>
-  </html>
+              </html>
