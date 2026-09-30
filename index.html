@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2563eb">
@@ -8,14 +9,23 @@
 <title>Mess-Mate</title>
 
 <style>
+
+/* ==============================
+   RESET
+============================== */
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  font-family:Arial,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   background:#f3f6fb;
   color:#172033;
   min-height:100vh;
@@ -30,13 +40,19 @@ button{
   cursor:pointer;
 }
 
+button:disabled{
+  opacity:.65;
+  cursor:not-allowed;
+}
+
 .hidden{
   display:none !important;
 }
 
-/* =========================
-   AUTH
-========================= */
+
+/* ==============================
+   AUTH PAGE
+============================== */
 
 .auth-page{
   min-height:100vh;
@@ -84,6 +100,11 @@ button{
   margin-bottom:22px;
 }
 
+
+/* ==============================
+   AUTH TABS
+============================== */
+
 .tabs{
   display:flex;
   gap:4px;
@@ -98,7 +119,7 @@ button{
   border:0;
   background:transparent;
   color:#667085;
-  padding:10px;
+  padding:11px;
   border-radius:9px;
   font-weight:700;
 }
@@ -108,6 +129,11 @@ button{
   color:#2563eb;
   box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
+
+
+/* ==============================
+   FORMS
+============================== */
 
 .form-group{
   margin-bottom:14px;
@@ -134,6 +160,11 @@ input:focus{
   border-color:#2563eb;
   box-shadow:0 0 0 3px rgba(37,99,235,.10);
 }
+
+
+/* ==============================
+   BUTTONS
+============================== */
 
 .btn{
   width:100%;
@@ -163,17 +194,36 @@ input:focus{
   color:#344054;
 }
 
+
+/* ==============================
+   STATUS
+============================== */
+
 .status{
   text-align:center;
   color:#777;
   font-size:12px;
   line-height:1.6;
   margin-top:14px;
+  min-height:20px;
 }
 
-/* =========================
+.status.success{
+  color:#15803d;
+}
+
+.status.error{
+  color:#dc2626;
+}
+
+.status.info{
+  color:#2563eb;
+}
+
+
+/* ==============================
    TOP BAR
-========================= */
+============================== */
 
 .topbar{
   background:#fff;
@@ -227,9 +277,10 @@ input:focus{
   font-weight:900;
 }
 
-/* =========================
+
+/* ==============================
    MAIN
-========================= */
+============================== */
 
 .container{
   width:100%;
@@ -331,40 +382,56 @@ input:focus{
   font-weight:800;
 }
 
-/* =========================
-   MESS PAGE
-========================= */
-
-.welcome-icon{
-  font-size:32px;
+.warning-box{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  border-radius:14px;
+  padding:13px;
+  font-size:12px;
+  line-height:1.6;
+  margin-top:14px;
 }
 
-.logout-btn{
-  margin-top:10px;
+.success-box{
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  color:#166534;
+  border-radius:14px;
+  padding:13px;
+  font-size:12px;
+  line-height:1.6;
+  margin-top:14px;
 }
 
-/* =========================
+
+/* ==============================
    RESPONSIVE
-========================= */
+============================== */
 
 @media(max-width:420px){
+
+  .auth-card{
+    padding:25px 17px;
+  }
 
   .grid-2{
     grid-template-columns:1fr 1fr;
   }
 
-  .auth-card{
-    padding:25px 17px;
-  }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- =====================================
+
+<!-- =====================================================
      AUTH PAGE
-===================================== -->
+===================================================== -->
 
 <div id="authPage" class="auth-page">
 
@@ -388,18 +455,19 @@ input:focus{
     <div class="tabs">
 
       <button
+        type="button"
         id="loginTab"
-        class="tab active"
-        onclick="switchAuth('login')">
+        class="tab active">
 
         Login
 
       </button>
 
+
       <button
+        type="button"
         id="signupTab"
-        class="tab"
-        onclick="switchAuth('signup')">
+        class="tab">
 
         Sign Up
 
@@ -408,7 +476,7 @@ input:focus{
     </div>
 
 
-    <!-- LOGIN FORM -->
+    <!-- LOGIN -->
 
     <form id="loginForm">
 
@@ -445,6 +513,7 @@ input:focus{
 
 
       <button
+        id="loginBtn"
         type="submit"
         class="btn btn-primary">
 
@@ -455,7 +524,7 @@ input:focus{
     </form>
 
 
-    <!-- SIGNUP FORM -->
+    <!-- SIGN UP -->
 
     <form
       id="signupForm"
@@ -510,6 +579,7 @@ input:focus{
 
 
       <button
+        id="signupBtn"
         type="submit"
         class="btn btn-primary">
 
@@ -522,7 +592,7 @@ input:focus{
 
     <div
       id="authStatus"
-      class="status">
+      class="status info">
 
       Connecting to Firebase...
 
@@ -533,9 +603,10 @@ input:focus{
 </div>
 
 
-<!-- =====================================
+
+<!-- =====================================================
      TOP BAR
-===================================== -->
+===================================================== -->
 
 <header
   id="topbar"
@@ -563,9 +634,9 @@ input:focus{
 
 
   <button
+    type="button"
     id="avatarBtn"
-    class="avatar"
-    onclick="logout()">
+    class="avatar">
 
     U
 
@@ -574,9 +645,10 @@ input:focus{
 </header>
 
 
-<!-- =====================================
+
+<!-- =====================================================
      NO MESS PAGE
-===================================== -->
+===================================================== -->
 
 <section
   id="noMessPage"
@@ -605,6 +677,7 @@ input:focus{
       <div class="section-title">
         Create New Mess
       </div>
+
 
       <p
         class="muted"
@@ -679,7 +752,7 @@ input:focus{
     </div>
 
 
-    <!-- RESULT -->
+    <!-- CREATED -->
 
     <div
       id="createdCard"
@@ -689,10 +762,9 @@ input:focus{
         🎉 Mess Created Successfully
       </div>
 
+
       <p class="muted">
-
         You are now the Admin of this mess.
-
       </p>
 
 
@@ -701,6 +773,7 @@ input:focus{
         <div class="invite-label">
           Invite Code
         </div>
+
 
         <div
           id="createdInviteCode"
@@ -712,8 +785,9 @@ input:focus{
 
 
         <button
-          class="btn btn-secondary"
-          onclick="copyInviteCode()">
+          type="button"
+          id="copyInviteBtn"
+          class="btn btn-secondary">
 
           Copy Invite Code
 
@@ -723,9 +797,10 @@ input:focus{
 
 
       <button
+        type="button"
+        id="openMessBtn"
         class="btn btn-primary"
-        style="margin-top:12px"
-        onclick="openMyMess()">
+        style="margin-top:12px">
 
         Open My Mess
 
@@ -734,11 +809,14 @@ input:focus{
     </div>
 
 
+    <!-- ACCOUNT -->
+
     <div class="card">
 
       <div class="section-title">
         Your Account
       </div>
+
 
       <div
         id="noMessAccount"
@@ -748,8 +826,10 @@ input:focus{
 
 
       <button
-        class="btn btn-danger logout-btn"
-        onclick="logout()">
+        type="button"
+        id="logoutNoMessBtn"
+        class="btn btn-danger"
+        style="margin-top:12px">
 
         Logout
 
@@ -762,9 +842,10 @@ input:focus{
 </section>
 
 
-<!-- =====================================
+
+<!-- =====================================================
      MESS DASHBOARD
-===================================== -->
+===================================================== -->
 
 <section
   id="messPage"
@@ -775,19 +856,15 @@ input:focus{
 
     <div class="hero">
 
-      <h2
-        id="messTitle">
-
+      <h2 id="messTitle">
         My Mess
-
       </h2>
 
-      <p
-        id="messCycle">
 
+      <p id="messCycle">
         Current Cycle
-
       </p>
+
 
       <div style="margin-top:10px">
 
@@ -804,7 +881,7 @@ input:focus{
     </div>
 
 
-    <!-- BASIC STATS -->
+    <!-- STATS -->
 
     <div class="grid-2">
 
@@ -862,13 +939,14 @@ input:focus{
     </div>
 
 
-    <!-- MESS INFORMATION -->
+    <!-- MESS INFO -->
 
     <div class="card">
 
       <div class="section-title">
         Mess Information
       </div>
+
 
       <div
         id="messInfo"
@@ -883,6 +961,7 @@ input:focus{
           Invite Code
         </div>
 
+
         <div
           id="dashboardInviteCode"
           class="invite-code">
@@ -893,8 +972,9 @@ input:focus{
 
 
         <button
-          class="btn btn-secondary"
-          onclick="copyDashboardInvite()">
+          type="button"
+          id="copyDashboardInviteBtn"
+          class="btn btn-secondary">
 
           Copy Code
 
@@ -912,6 +992,7 @@ input:focus{
       <div class="section-title">
         Today's Summary
       </div>
+
 
       <div class="grid-2">
 
@@ -953,6 +1034,7 @@ input:focus{
         My Account
       </div>
 
+
       <div
         id="accountInfo"
         class="muted">
@@ -961,8 +1043,10 @@ input:focus{
 
 
       <button
-        class="btn btn-danger logout-btn"
-        onclick="logout()">
+        type="button"
+        id="logoutMessBtn"
+        class="btn btn-danger"
+        style="margin-top:12px">
 
         Logout
 
@@ -975,9 +1059,10 @@ input:focus{
 </section>
 
 
-<!-- =====================================
-     FIREBASE COMPAT
-===================================== -->
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-app-compat.js"></script>
 
@@ -995,38 +1080,35 @@ input:focus{
 const firebaseConfig = {
 
   apiKey:
-  "AIzaSyC1co4VUZoqTJAJnmprEjYE9FJ3kFx6YJo",
+    "AIzaSyC1co4VUZoqTJAJnmprEjYE9FJ3kFx6YJo",
 
   authDomain:
-  "mess-mate-2942b.firebaseapp.com",
+    "mess-mate-2942b.firebaseapp.com",
 
   projectId:
-  "mess-mate-2942b",
+    "mess-mate-2942b",
 
   storageBucket:
-  "mess-mate-2942b.firebasestorage.app",
+    "mess-mate-2942b.firebasestorage.app",
 
   messagingSenderId:
-  "661215494906",
+    "661215494906",
 
   appId:
-  "1:661215494906:web:6b4eb1d938fb7bba11ff43"
+    "1:661215494906:web:6b4eb1d938fb7bba11ff43"
 
 };
 
 
-/* INITIALIZE */
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
 
-firebase.initializeApp(firebaseConfig);
+let firebaseReady = false;
 
-const auth =
-  firebase.auth();
+let auth = null;
 
-const db =
-  firebase.firestore();
-
-
-/* GLOBAL */
+let db = null;
 
 let currentUser = null;
 
@@ -1036,7 +1118,7 @@ let createdMessCode = "";
 
 
 /* =====================================================
-   HELPERS
+   SHORT SELECTOR
 ===================================================== */
 
 function $(id){
@@ -1046,75 +1128,44 @@ function $(id){
 }
 
 
-function today(){
+/* =====================================================
+   AUTH STATUS
+===================================================== */
 
-  const d = new Date();
+function showAuthStatus(message,type="info"){
 
-  return (
-    d.getFullYear() +
-    "-" +
-    String(d.getMonth()+1).padStart(2,"0") +
-    "-" +
-    String(d.getDate()).padStart(2,"0")
-  );
+  const el = $("authStatus");
 
-}
-
-
-function escapeHTML(value){
-
-  return String(value || "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-function randomInviteCode(){
-
-  const chars =
-    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
-  let code = "";
-
-  for(let i=0;i<6;i++){
-
-    code += chars[
-      Math.floor(
-        Math.random()*chars.length
-      )
-    ];
-
+  if(!el){
+    return;
   }
 
-  return code;
+  el.innerHTML = message;
+
+  el.className =
+    "status " + type;
 
 }
 
 
-function showAuthStatus(message){
-
-  $("authStatus").innerHTML =
-    message;
-
-}
-
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
 
 function getErrorMessage(error){
 
-  console.error(error);
+  console.error("Mess-Mate Error:",error);
 
   if(!error){
-
     return "Something went wrong.";
-
   }
 
 
-  switch(error.code){
+  const code =
+    error.code || "";
+
+
+  switch(code){
 
     case "auth/email-already-in-use":
       return "This email is already registered.";
@@ -1134,10 +1185,23 @@ function getErrorMessage(error){
     case "auth/wrong-password":
       return "Incorrect password.";
 
+    case "auth/api-key-not-valid-please-pass-a-valid-api-key":
+      return "Firebase API key is not valid. Check Google Cloud API key.";
+
+    case "auth/network-request-failed":
+      return "Network error. Check your internet connection.";
+
     case "permission-denied":
       return "Firestore permission denied.";
 
+    case "failed-precondition":
+      return "Firestore failed precondition.";
+
+    case "unavailable":
+      return "Firebase service is temporarily unavailable.";
+
     default:
+
       return error.message ||
         "Something went wrong.";
 
@@ -1147,47 +1211,77 @@ function getErrorMessage(error){
 
 
 /* =====================================================
-   AUTH TAB
+   FIREBASE INITIALIZATION
 ===================================================== */
 
-function switchAuth(type){
+function initializeFirebase(){
 
-  if(type === "login"){
+  try{
 
-    $("loginForm")
-      .classList.remove("hidden");
+    if(
+      typeof firebase === "undefined"
+    ){
 
-    $("signupForm")
-      .classList.add("hidden");
+      throw new Error(
+        "Firebase SDK did not load."
+      );
 
-    $("loginTab")
-      .classList.add("active");
+    }
 
-    $("signupTab")
-      .classList.remove("active");
+
+    if(
+      !firebase.apps.length
+    ){
+
+      firebase.initializeApp(
+        firebaseConfig
+      );
+
+    }
+
+
+    auth =
+      firebase.auth();
+
+    db =
+      firebase.firestore();
+
+
+    firebaseReady = true;
+
 
     showAuthStatus(
-      "Firebase connected.<br>Login system ready."
+      "Firebase connected.<br>Login system ready.",
+      "success"
     );
+
+
+    console.log(
+      "Firebase initialized successfully."
+    );
+
+
+    startAuthListener();
 
   }
 
-  else{
+  catch(error){
 
-    $("loginForm")
-      .classList.add("hidden");
+    firebaseReady = false;
 
-    $("signupForm")
-      .classList.remove("hidden");
+    console.error(
+      "Firebase initialization failed:",
+      error
+    );
 
-    $("loginTab")
-      .classList.remove("active");
-
-    $("signupTab")
-      .classList.add("active");
 
     showAuthStatus(
-      "Create your Mess-Mate account."
+      "⚠️ Firebase connection failed.<br>" +
+      escapeHTML(
+        error.message ||
+        "Unknown Firebase error."
+      ),
+      "error"
     );
 
   }
@@ -1196,56 +1290,283 @@ function switchAuth(type){
 
 
 /* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+  return String(value || "")
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   TODAY
+===================================================== */
+
+function today(){
+
+  const d =
+    new Date();
+
+  return (
+
+    d.getFullYear() +
+
+    "-" +
+
+    String(
+      d.getMonth()+1
+    ).padStart(2,"0") +
+
+    "-" +
+
+    String(
+      d.getDate()
+    ).padStart(2,"0")
+
+  );
+
+}
+
+
+/* =====================================================
+   RANDOM INVITE CODE
+===================================================== */
+
+function randomInviteCode(){
+
+  const chars =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+  let code = "";
+
+
+  for(
+    let i=0;
+    i<6;
+    i++
+  ){
+
+    code +=
+      chars[
+        Math.floor(
+          Math.random() *
+          chars.length
+        )
+      ];
+
+  }
+
+
+  return code;
+
+}
+
+
+/* =====================================================
+   AUTH TAB SYSTEM
+===================================================== */
+
+function showLogin(){
+
+  $("loginForm")
+    .classList.remove("hidden");
+
+  $("signupForm")
+    .classList.add("hidden");
+
+
+  $("loginTab")
+    .classList.add("active");
+
+  $("signupTab")
+    .classList.remove("active");
+
+
+  if(firebaseReady){
+
+    showAuthStatus(
+      "Firebase connected.<br>Login system ready.",
+      "success"
+    );
+
+  }
+
+  else{
+
+    showAuthStatus(
+      "Firebase is connecting...",
+      "info"
+    );
+
+  }
+
+}
+
+
+function showSignup(){
+
+  $("loginForm")
+    .classList.add("hidden");
+
+  $("signupForm")
+    .classList.remove("hidden");
+
+
+  $("loginTab")
+    .classList.remove("active");
+
+  $("signupTab")
+    .classList.add("active");
+
+
+  if(firebaseReady){
+
+    showAuthStatus(
+      "Create your Mess-Mate account.",
+      "info"
+    );
+
+  }
+
+  else{
+
+    showAuthStatus(
+      "⚠️ Firebase is not ready yet.",
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   TAB BUTTONS
+===================================================== */
+
+$("loginTab")
+.addEventListener(
+  "click",
+  function(){
+
+    showLogin();
+
+  }
+);
+
+
+$("signupTab")
+.addEventListener(
+  "click",
+  function(){
+
+    showSignup();
+
+  }
+);
+
+
+/* =====================================================
    LOGIN
 ===================================================== */
 
 $("loginForm")
-.addEventListener("submit",async function(event){
+.addEventListener(
+  "submit",
+  async function(event){
 
-  event.preventDefault();
-
-
-  const email =
-    $("loginEmail")
-      .value
-      .trim();
-
-  const password =
-    $("loginPassword")
-      .value;
+    event.preventDefault();
 
 
-  showAuthStatus(
-    "Logging in..."
-  );
+    if(!firebaseReady){
 
-
-  try{
-
-    await auth
-      .signInWithEmailAndPassword(
-        email,
-        password
+      showAuthStatus(
+        "❌ Firebase is not connected yet.",
+        "error"
       );
 
+      return;
+
+    }
+
+
+    const email =
+      $("loginEmail")
+        .value
+        .trim();
+
+    const password =
+      $("loginPassword")
+        .value;
+
+
+    const button =
+      $("loginBtn");
+
+
+    button.disabled = true;
+
+    button.textContent =
+      "Logging in...";
+
 
     showAuthStatus(
-      "✅ Login successful."
+      "Logging in...",
+      "info"
     );
 
 
+    try{
+
+      await auth
+        .signInWithEmailAndPassword(
+          email,
+          password
+        );
+
+
+      showAuthStatus(
+        "✅ Login successful.",
+        "success"
+      );
+
+    }
+
+    catch(error){
+
+      showAuthStatus(
+        "❌ " +
+        escapeHTML(
+          getErrorMessage(error)
+        ),
+        "error"
+      );
+
+    }
+
+    finally{
+
+      button.disabled = false;
+
+      button.textContent =
+        "Login";
+
+    }
+
   }
-
-  catch(error){
-
-    showAuthStatus(
-      "❌ " +
-      getErrorMessage(error)
-    );
-
-  }
-
-});
+);
 
 
 /* =====================================================
@@ -1253,224 +1574,140 @@ $("loginForm")
 ===================================================== */
 
 $("signupForm")
-.addEventListener("submit",async function(event){
+.addEventListener(
+  "submit",
+  async function(event){
 
-  event.preventDefault();
-
-
-  const name =
-    $("signupName")
-      .value
-      .trim();
-
-  const email =
-    $("signupEmail")
-      .value
-      .trim();
-
-  const password =
-    $("signupPassword")
-      .value;
+    event.preventDefault();
 
 
-  if(name.length < 2){
+    if(!firebaseReady){
 
-    showAuthStatus(
-      "Please enter your name."
-    );
-
-    return;
-
-  }
-
-
-  if(password.length < 6){
-
-    showAuthStatus(
-      "Password must be at least 6 characters."
-    );
-
-    return;
-
-  }
-
-
-  showAuthStatus(
-    "Creating account..."
-  );
-
-
-  try{
-
-    const result =
-      await auth
-        .createUserWithEmailAndPassword(
-          email,
-          password
-        );
-
-
-    /* PROFILE NAME */
-
-    await result.user
-      .updateProfile({
-
-        displayName:name
-
-      });
-
-
-    /* FIRESTORE USER PROFILE */
-
-    await db
-      .collection("users")
-      .doc(result.user.uid)
-      .set({
-
-        name:name,
-
-        email:email,
-
-        photoURL:"",
-
-        activeGroupId:null,
-
-        pendingGroupId:null,
-
-        createdAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp(),
-
-        updatedAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp()
-
-      });
-
-
-    showAuthStatus(
-      "✅ Account created successfully."
-    );
-
-
-  }
-
-  catch(error){
-
-    showAuthStatus(
-      "❌ " +
-      getErrorMessage(error)
-    );
-
-  }
-
-});
-
-
-/* =====================================================
-   AUTH STATE
-===================================================== */
-
-auth.onAuthStateChanged(
-  async function(user){
-
-    currentUser = user;
-
-
-    /* NOT LOGGED IN */
-
-    if(!user){
-
-      $("authPage")
-        .classList.remove("hidden");
-
-      $("topbar")
-        .classList.add("hidden");
-
-      $("noMessPage")
-        .classList.add("hidden");
-
-      $("messPage")
-        .classList.add("hidden");
+      showAuthStatus(
+        "❌ Firebase is not connected yet.",
+        "error"
+      );
 
       return;
 
     }
 
 
-    /* LOGGED IN */
+    const name =
+      $("signupName")
+        .value
+        .trim();
 
-    $("authPage")
-      .classList.add("hidden");
+    const email =
+      $("signupEmail")
+        .value
+        .trim();
 
-    $("topbar")
-      .classList.remove("hidden");
-
-
-    $("avatarBtn").textContent =
-      (
-        user.displayName ||
-        user.email ||
-        "U"
-      )
-      .charAt(0)
-      .toUpperCase();
+    const password =
+      $("signupPassword")
+        .value;
 
 
-    $("welcomeText").textContent =
-      "Welcome, " +
-      (
-        user.displayName ||
-        "User"
-      ) +
-      " 👋";
+    if(name.length < 2){
 
-
-    $("noMessAccount").innerHTML =
-      "<b>" +
-      escapeHTML(
-        user.displayName || "User"
-      ) +
-      "</b><br>" +
-      escapeHTML(
-        user.email || ""
+      showAuthStatus(
+        "Please enter your full name.",
+        "error"
       );
+
+      return;
+
+    }
+
+
+    if(password.length < 6){
+
+      showAuthStatus(
+        "Password must be at least 6 characters.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const button =
+      $("signupBtn");
+
+
+    button.disabled = true;
+
+    button.textContent =
+      "Creating Account...";
+
+
+    showAuthStatus(
+      "Creating account...",
+      "info"
+    );
 
 
     try{
 
-      const userRef =
-        db.collection("users")
-          .doc(user.uid);
+      /* CREATE AUTH USER */
+
+      const result =
+        await auth
+          .createUserWithEmailAndPassword(
+            email,
+            password
+          );
 
 
-      const userSnap =
-        await userRef.get();
+      const user =
+        result.user;
 
 
-      /*
-       * যদি user profile না থাকে,
-       * create করবে
-       */
+      /* PROFILE NAME */
 
-      if(!userSnap.exists){
+      try{
 
-        await userRef.set({
+        await user.updateProfile({
+
+          displayName:
+            name
+
+        });
+
+      }
+
+      catch(profileError){
+
+        console.warn(
+          "Profile update failed:",
+          profileError
+        );
+
+      }
+
+
+      /* FIRESTORE PROFILE */
+
+      await db
+        .collection("users")
+        .doc(user.uid)
+        .set({
 
           name:
-            user.displayName ||
-            "User",
+            name,
 
           email:
-            user.email || "",
+            email,
 
-          photoURL:"",
+          photoURL:
+            "",
 
-          activeGroupId:null,
+          activeGroupId:
+            null,
 
-          pendingGroupId:null,
+          pendingGroupId:
+            null,
 
           createdAt:
             firebase.firestore
@@ -1485,52 +1722,265 @@ auth.onAuthStateChanged(
         });
 
 
-        showNoMess();
+      showAuthStatus(
+        "✅ Account created successfully.",
+        "success"
+      );
+
+
+    }
+
+    catch(error){
+
+      showAuthStatus(
+        "❌ " +
+        escapeHTML(
+          getErrorMessage(error)
+        ),
+        "error"
+      );
+
+    }
+
+    finally{
+
+      button.disabled = false;
+
+      button.textContent =
+        "Create Account";
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   AUTH STATE LISTENER
+===================================================== */
+
+function startAuthListener(){
+
+  if(!auth){
+    return;
+  }
+
+
+  auth.onAuthStateChanged(
+    async function(user){
+
+      currentUser =
+        user;
+
+
+      if(!user){
+
+        showLoggedOut();
 
         return;
 
       }
 
 
-      const userData =
-        userSnap.data();
+      showLoggedInHeader(
+        user
+      );
 
 
-      /*
-       * USER-এর ACTIVE MESS আছে
-       */
+      try{
 
-      if(userData.activeGroupId){
-
-        await loadMess(
-          userData.activeGroupId
+        await loadUserProfile(
+          user
         );
 
       }
 
-      else{
+      catch(error){
+
+        console.error(error);
 
         showNoMess();
+
+
+        showAuthStatus(
+          "❌ " +
+          escapeHTML(
+            getErrorMessage(error)
+          ),
+          "error"
+        );
 
       }
 
     }
+  );
 
-    catch(error){
+}
 
-      console.error(error);
 
-      showNoMess();
+/* =====================================================
+   LOGGED OUT UI
+===================================================== */
 
-      showAuthStatus(
-        "❌ " +
-        getErrorMessage(error)
+function showLoggedOut(){
+
+  $("authPage")
+    .classList.remove("hidden");
+
+  $("topbar")
+    .classList.add("hidden");
+
+  $("noMessPage")
+    .classList.add("hidden");
+
+  $("messPage")
+    .classList.add("hidden");
+
+}
+
+
+/* =====================================================
+   LOGGED IN HEADER
+===================================================== */
+
+function showLoggedInHeader(user){
+
+  $("authPage")
+    .classList.add("hidden");
+
+  $("topbar")
+    .classList.remove("hidden");
+
+
+  const display =
+    user.displayName ||
+    user.email ||
+    "User";
+
+
+  $("avatarBtn")
+    .textContent =
+      display
+        .charAt(0)
+        .toUpperCase();
+
+
+  $("welcomeText")
+    .textContent =
+      "Welcome, " +
+      (
+        user.displayName ||
+        "User"
+      ) +
+      " 👋";
+
+
+  $("noMessAccount")
+    .innerHTML =
+      "<b>" +
+      escapeHTML(
+        user.displayName ||
+        "User"
+      ) +
+      "</b><br>" +
+      escapeHTML(
+        user.email ||
+        ""
       );
 
-    }
+
+  $("accountInfo")
+    .innerHTML =
+      "<b>" +
+      escapeHTML(
+        user.displayName ||
+        "User"
+      ) +
+      "</b><br>" +
+      escapeHTML(
+        user.email ||
+        ""
+      );
+
+}
+
+
+/* =====================================================
+   LOAD USER PROFILE
+===================================================== */
+
+async function loadUserProfile(user){
+
+  const userRef =
+    db
+      .collection("users")
+      .doc(user.uid);
+
+
+  const userSnap =
+    await userRef.get();
+
+
+  if(!userSnap.exists){
+
+    await userRef.set({
+
+      name:
+        user.displayName ||
+        "User",
+
+      email:
+        user.email ||
+        "",
+
+      photoURL:
+        "",
+
+      activeGroupId:
+        null,
+
+      pendingGroupId:
+        null,
+
+      createdAt:
+        firebase.firestore
+          .FieldValue
+          .serverTimestamp(),
+
+      updatedAt:
+        firebase.firestore
+          .FieldValue
+          .serverTimestamp()
+
+    });
+
+
+    showNoMess();
+
+    return;
 
   }
-);
+
+
+  const data =
+    userSnap.data();
+
+
+  if(data.activeGroupId){
+
+    await loadMess(
+      data.activeGroupId
+    );
+
+  }
+
+  else{
+
+    showNoMess();
+
+  }
+
+}
 
 
 /* =====================================================
@@ -1545,6 +1995,24 @@ function showNoMess(){
   $("messPage")
     .classList.add("hidden");
 
+
+  if(currentUser){
+
+    $("noMessAccount")
+      .innerHTML =
+        "<b>" +
+        escapeHTML(
+          currentUser.displayName ||
+          "User"
+        ) +
+        "</b><br>" +
+        escapeHTML(
+          currentUser.email ||
+          ""
+        );
+
+  }
+
 }
 
 
@@ -1554,149 +2022,369 @@ function showNoMess(){
 
 $("createMessForm")
 .addEventListener(
-"submit",
-async function(event){
+  "submit",
+  async function(event){
 
-  event.preventDefault();
-
-
-  if(!currentUser){
-
-    return;
-
-  }
+    event.preventDefault();
 
 
-  const messName =
-    $("messName")
-      .value
-      .trim();
+    if(!currentUser){
 
-  const startDate =
-    $("cycleStart")
-      .value;
+      alert(
+        "Please login first."
+      );
 
-  const endDate =
-    $("cycleEnd")
-      .value;
+      return;
+
+    }
 
 
-  if(!messName){
+    if(!firebaseReady){
 
-    alert(
-      "Please enter Mess Name."
-    );
+      alert(
+        "Firebase is not connected."
+      );
 
-    return;
+      return;
 
-  }
-
-
-  if(!startDate || !endDate){
-
-    alert(
-      "Please select cycle dates."
-    );
-
-    return;
-
-  }
+    }
 
 
-  if(startDate >= endDate){
+    const messName =
+      $("messName")
+        .value
+        .trim();
 
-    alert(
-      "Cycle End date must be after Start date."
-    );
+    const startDate =
+      $("cycleStart")
+        .value;
 
-    return;
-
-  }
-
-
-  const button =
-    $("createMessBtn");
-
-
-  button.disabled = true;
-
-  button.textContent =
-    "Creating Mess...";
+    const endDate =
+      $("cycleEnd")
+        .value;
 
 
-  try{
+    if(!messName){
 
-    /*
-     * NEW GROUP
-     */
+      alert(
+        "Please enter Mess Name."
+      );
 
-    const groupRef =
-      db.collection("groups")
-        .doc();
+      return;
 
-    const groupId =
-      groupRef.id;
+    }
 
 
-    /*
-     * INVITE CODE
-     */
+    if(!startDate || !endDate){
 
-    const inviteCode =
-      randomInviteCode();
+      alert(
+        "Please select cycle dates."
+      );
 
+      return;
 
-    /*
-     * REFERENCES
-     */
-
-    const memberRef =
-      groupRef
-        .collection("members")
-        .doc(currentUser.uid);
+    }
 
 
-    const settingsRef =
-      groupRef
-        .collection("settings")
-        .doc("main");
+    if(startDate >= endDate){
+
+      alert(
+        "Cycle End date must be after Start date."
+      );
+
+      return;
+
+    }
 
 
-    const cycleRef =
-      groupRef
-        .collection("cycles")
-        .doc(
-          startDate +
-          "_" +
-          endDate
-        );
+    const button =
+      $("createMessBtn");
 
 
-    const inviteRef =
-      db.collection("inviteCodes")
-        .doc(inviteCode);
+    button.disabled = true;
+
+    button.textContent =
+      "Creating Mess...";
 
 
-    const userRef =
-      db.collection("users")
-        .doc(currentUser.uid);
+    try{
+
+      /* GROUP */
+
+      const groupRef =
+        db
+          .collection("groups")
+          .doc();
 
 
-    /*
-     * BATCH
-     */
-
-    const batch =
-      db.batch();
+      const groupId =
+        groupRef.id;
 
 
-    /*
-     * GROUP
-     */
+      /* INVITE CODE */
 
-    batch.set(
-      groupRef,
-      {
+      const inviteCode =
+        randomInviteCode();
+
+
+      /* REFERENCES */
+
+      const memberRef =
+        groupRef
+          .collection("members")
+          .doc(
+            currentUser.uid
+          );
+
+
+      const settingsRef =
+        groupRef
+          .collection("settings")
+          .doc("main");
+
+
+      const cycleRef =
+        groupRef
+          .collection("cycles")
+          .doc(
+            startDate +
+            "_" +
+            endDate
+          );
+
+
+      const inviteRef =
+        db
+          .collection("inviteCodes")
+          .doc(inviteCode);
+
+
+      const userRef =
+        db
+          .collection("users")
+          .doc(
+            currentUser.uid
+          );
+
+
+      /* BATCH */
+
+      const batch =
+        db.batch();
+
+
+      /* GROUP */
+
+      batch.set(
+        groupRef,
+        {
+
+          name:
+            messName,
+
+          adminUid:
+            currentUser.uid,
+
+          createdBy:
+            currentUser.uid,
+
+          inviteCode:
+            inviteCode,
+
+          active:
+            true,
+
+          createdAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp(),
+
+          updatedAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp()
+
+        }
+      );
+
+
+      /* ADMIN MEMBER */
+
+      batch.set(
+        memberRef,
+        {
+
+          uid:
+            currentUser.uid,
+
+          name:
+            currentUser.displayName ||
+            messName,
+
+          email:
+            currentUser.email ||
+            "",
+
+          role:
+            "admin",
+
+          active:
+            true,
+
+          joinedAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp(),
+
+          updatedAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp()
+
+        }
+      );
+
+
+      /* SETTINGS */
+
+      batch.set(
+        settingsRef,
+        {
+
+          mealDeadlineHour:
+            10,
+
+          mealDeadlineMinute:
+            0,
+
+          breakfastEnabled:
+            true,
+
+          lunchEnabled:
+            true,
+
+          dinnerEnabled:
+            true,
+
+          currency:
+            "BDT",
+
+          createdAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp(),
+
+          updatedAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp()
+
+        }
+      );
+
+
+      /* CYCLE */
+
+      batch.set(
+        cycleRef,
+        {
+
+          name:
+            startDate +
+            " - " +
+            endDate,
+
+          startDate:
+            startDate,
+
+          endDate:
+            endDate,
+
+          status:
+            "active",
+
+          createdBy:
+            currentUser.uid,
+
+          createdAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp()
+
+        }
+      );
+
+
+      /* INVITE */
+
+      batch.set(
+        inviteRef,
+        {
+
+          code:
+            inviteCode,
+
+          groupId:
+            groupId,
+
+          createdBy:
+            currentUser.uid,
+
+          active:
+            true,
+
+          createdAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp()
+
+        }
+      );
+
+
+      /* USER */
+
+      batch.set(
+        userRef,
+        {
+
+          name:
+            currentUser.displayName ||
+            messName,
+
+          email:
+            currentUser.email ||
+            "",
+
+          activeGroupId:
+            groupId,
+
+          pendingGroupId:
+            null,
+
+          updatedAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp()
+
+        },
+        {
+          merge:true
+        }
+      );
+
+
+      /* COMMIT */
+
+      await batch.commit();
+
+
+      /* SAVE CURRENT MESS */
+
+      currentMess = {
+
+        id:
+          groupId,
 
         name:
           messName,
@@ -1704,111 +2392,8 @@ async function(event){
         adminUid:
           currentUser.uid,
 
-        createdBy:
-          currentUser.uid,
-
         inviteCode:
           inviteCode,
-
-        active:true,
-
-        createdAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp(),
-
-        updatedAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp()
-
-      }
-    );
-
-
-    /*
-     * ADMIN MEMBER
-     */
-
-    batch.set(
-      memberRef,
-      {
-
-        uid:
-          currentUser.uid,
-
-        name:
-          currentUser.displayName ||
-          messName,
-
-        email:
-          currentUser.email ||
-          "",
-
-        role:"admin",
-
-        active:true,
-
-        joinedAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp(),
-
-        updatedAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp()
-
-      }
-    );
-
-
-    /*
-     * SETTINGS
-     */
-
-    batch.set(
-      settingsRef,
-      {
-
-        mealDeadlineHour:10,
-
-        mealDeadlineMinute:0,
-
-        breakfastEnabled:true,
-
-        lunchEnabled:true,
-
-        dinnerEnabled:true,
-
-        currency:"BDT",
-
-        createdAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp(),
-
-        updatedAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp()
-
-      }
-    );
-
-
-    /*
-     * CYCLE
-     */
-
-    batch.set(
-      cycleRef,
-      {
-
-        name:
-          startDate +
-          " - " +
-          endDate,
 
         startDate:
           startDate,
@@ -1816,162 +2401,66 @@ async function(event){
         endDate:
           endDate,
 
-        status:"active",
+        role:
+          "admin"
 
-        createdBy:
-          currentUser.uid,
-
-        createdAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp()
-
-      }
-    );
+      };
 
 
-    /*
-     * INVITE CODE
-     */
-
-    batch.set(
-      inviteRef,
-      {
-
-        code:
-          inviteCode,
-
-        groupId:
-          groupId,
-
-        createdBy:
-          currentUser.uid,
-
-        active:true,
-
-        createdAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp()
-
-      }
-    );
+      createdMessCode =
+        inviteCode;
 
 
-    /*
-     * USER PROFILE
-     */
-
-    batch.set(
-      userRef,
-      {
-
-        name:
-          currentUser.displayName ||
-          messName,
-
-        email:
-          currentUser.email ||
-          "",
-
-        activeGroupId:
-          groupId,
-
-        pendingGroupId:null,
-
-        updatedAt:
-          firebase.firestore
-            .FieldValue
-            .serverTimestamp()
-
-      },
-      {
-        merge:true
-      }
-    );
+      $("createdInviteCode")
+        .textContent =
+          inviteCode;
 
 
-    /*
-     * COMMIT EVERYTHING
-     */
-
-    await batch.commit();
-
-
-    /*
-     * SUCCESS
-     */
-
-    createdMessCode =
-      inviteCode;
+      $("createdCard")
+        .classList.remove(
+          "hidden"
+        );
 
 
-    $("createdInviteCode")
-      .textContent =
-      inviteCode;
+      $("createMessForm")
+        .classList.add(
+          "hidden"
+        );
 
 
-    $("createdCard")
-      .classList.remove("hidden");
+      button.disabled =
+        false;
+
+      button.textContent =
+        "+ Create Mess";
 
 
-    $("createMessForm")
-      .classList.add("hidden");
+    }
+
+    catch(error){
+
+      console.error(
+        "Create Mess error:",
+        error
+      );
 
 
-    button.disabled = false;
+      button.disabled =
+        false;
 
-    button.textContent =
-      "+ Create Mess";
+      button.textContent =
+        "+ Create Mess";
 
 
-    /*
-     * Save locally too
-     */
+      alert(
+        "Create Mess failed:\n\n" +
+        getErrorMessage(error)
+      );
 
-    currentMess = {
-
-      id:groupId,
-
-      name:messName,
-
-      adminUid:
-        currentUser.uid,
-
-      inviteCode:
-        inviteCode,
-
-      startDate:
-        startDate,
-
-      endDate:
-        endDate,
-
-      role:"admin"
-
-    };
-
+    }
 
   }
-
-  catch(error){
-
-    console.error(error);
-
-    button.disabled = false;
-
-    button.textContent =
-      "+ Create Mess";
-
-
-    alert(
-      "Create Mess failed:\n\n" +
-      getErrorMessage(error)
-    );
-
-  }
-
-});
+);
 
 
 /* =====================================================
@@ -1982,9 +2471,7 @@ async function loadMess(groupId){
 
   try{
 
-    /*
-     * GROUP
-     */
+    /* GROUP */
 
     const groupSnap =
       await db
@@ -2000,14 +2487,530 @@ async function loadMess(groupId){
         .doc(currentUser.uid)
         .set({
 
-          activeGroupId:null,
+          activeGroupId:
+            null,
 
           updatedAt:
             firebase.firestore
               .FieldValue
               .serverTimestamp()
 
-        },
-        {
+        },{
           merge:true
         });
+
+
+      currentMess =
+        null;
+
+
+      showNoMess();
+
+      return;
+
+    }
+
+
+    const group =
+      groupSnap.data();
+
+
+    /* MEMBER */
+
+    const memberSnap =
+      await db
+        .collection("groups")
+        .doc(groupId)
+        .collection("members")
+        .doc(currentUser.uid)
+        .get();
+
+
+    if(!memberSnap.exists){
+
+      await db
+        .collection("users")
+        .doc(currentUser.uid)
+        .set({
+
+          activeGroupId:
+            null,
+
+          updatedAt:
+            firebase.firestore
+              .FieldValue
+              .serverTimestamp()
+
+        },{
+          merge:true
+        });
+
+
+      currentMess =
+        null;
+
+
+      showNoMess();
+
+      return;
+
+    }
+
+
+    const member =
+      memberSnap.data();
+
+
+    /* CURRENT MESS */
+
+    currentMess = {
+
+      id:
+        groupId,
+
+      name:
+        group.name ||
+
+        "My Mess",
+
+      adminUid:
+        group.adminUid ||
+
+        "",
+
+      inviteCode:
+        group.inviteCode ||
+
+        "",
+
+      role:
+        member.role ||
+
+        "member"
+
+    };
+
+
+    /* DASHBOARD */
+
+    $("messPage")
+      .classList.remove(
+        "hidden"
+      );
+
+
+    $("noMessPage")
+      .classList.add(
+        "hidden"
+      );
+
+
+    $("messTitle")
+      .textContent =
+        group.name ||
+        "My Mess";
+
+
+    $("roleBadge")
+      .textContent =
+        (
+          member.role ||
+          "member"
+        )
+        .toUpperCase();
+
+
+    $("dashboardInviteCode")
+      .textContent =
+        group.inviteCode ||
+        "------";
+
+
+    $("messInfo")
+      .innerHTML =
+
+      "<b>Mess:</b> " +
+      escapeHTML(
+        group.name ||
+        "My Mess"
+      ) +
+
+      "<br><br>" +
+
+      "<b>Role:</b> " +
+      escapeHTML(
+        member.role ||
+        "member"
+      );
+
+
+    $("accountInfo")
+      .innerHTML =
+
+      "<b>" +
+      escapeHTML(
+        currentUser.displayName ||
+        "User"
+      ) +
+
+      "</b><br>" +
+
+      escapeHTML(
+        currentUser.email ||
+        ""
+      );
+
+
+    /* CYCLE */
+
+    try{
+
+      const cycleSnap =
+        await db
+          .collection("groups")
+          .doc(groupId)
+          .collection("cycles")
+          .where(
+            "status",
+            "==",
+            "active"
+          )
+          .limit(1)
+          .get();
+
+
+      if(!cycleSnap.empty){
+
+        const cycle =
+          cycleSnap
+            .docs[0]
+            .data();
+
+
+        $("messCycle")
+          .textContent =
+            "Cycle: " +
+            (
+              cycle.startDate ||
+              ""
+            ) +
+            " → " +
+            (
+              cycle.endDate ||
+              ""
+            );
+
+      }
+
+      else{
+
+        $("messCycle")
+          .textContent =
+            "Current Cycle";
+
+      }
+
+    }
+
+    catch(cycleError){
+
+      console.warn(
+        "Cycle loading failed:",
+        cycleError
+      );
+
+
+      $("messCycle")
+        .textContent =
+          "Current Cycle";
+
+    }
+
+
+    /* MEMBER COUNT */
+
+    try{
+
+      const membersSnap =
+        await db
+          .collection("groups")
+          .doc(groupId)
+          .collection("members")
+          .where(
+            "active",
+            "==",
+            true
+          )
+          .get();
+
+
+      $("memberCount")
+        .textContent =
+          membersSnap.size || 0;
+
+    }
+
+    catch(memberError){
+
+      console.warn(
+        "Member count failed:",
+        memberError
+      );
+
+
+      $("memberCount")
+        .textContent =
+          "—";
+
+    }
+
+
+    /* DEFAULT STATS */
+
+    $("currentMoney")
+      .textContent =
+        "৳0";
+
+
+    $("totalDeposit")
+      .textContent =
+        "৳0";
+
+
+    $("totalExpense")
+      .textContent =
+        "৳0";
+
+
+    $("mealRate")
+      .textContent =
+        "৳0";
+
+
+    $("todayMeals")
+      .textContent =
+        "0";
+
+  }
+
+  catch(error){
+
+    console.error(
+      "Load mess error:",
+      error
+    );
+
+
+    showNoMess();
+
+
+    alert(
+      "Could not load mess:\n\n" +
+      getErrorMessage(error)
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   OPEN MESS
+===================================================== */
+
+$("openMessBtn")
+.addEventListener(
+  "click",
+  async function(){
+
+    if(!currentUser){
+
+      return;
+
+    }
+
+
+    try{
+
+      const userSnap =
+        await db
+          .collection("users")
+          .doc(currentUser.uid)
+          .get();
+
+
+      const data =
+        userSnap.data() || {};
+
+
+      if(data.activeGroupId){
+
+        await loadMess(
+          data.activeGroupId
+        );
+
+      }
+
+    }
+
+    catch(error){
+
+      alert(
+        getErrorMessage(error)
+      );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   COPY INVITE
+===================================================== */
+
+async function copyText(text){
+
+  try{
+
+    await navigator.clipboard
+      .writeText(text);
+
+
+    alert(
+      "Copied: " +
+      text
+    );
+
+  }
+
+  catch(error){
+
+    alert(
+      "Copy failed. Code: " +
+      text
+    );
+
+  }
+
+}
+
+
+$("copyInviteBtn")
+.addEventListener(
+  "click",
+  function(){
+
+    copyText(
+      createdMessCode
+    );
+
+  }
+);
+
+
+$("copyDashboardInviteBtn")
+.addEventListener(
+  "click",
+  function(){
+
+    if(
+      currentMess &&
+      currentMess.inviteCode
+    ){
+
+      copyText(
+        currentMess.inviteCode
+      );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+  if(!auth){
+
+    return;
+
+  }
+
+
+  try{
+
+    await auth.signOut();
+
+    currentUser =
+      null;
+
+    currentMess =
+      null;
+
+    showLoggedOut();
+
+    showLogin();
+
+  }
+
+  catch(error){
+
+    alert(
+      getErrorMessage(error)
+    );
+
+  }
+
+}
+
+
+$("avatarBtn")
+.addEventListener(
+  "click",
+  logout
+);
+
+
+$("logoutNoMessBtn")
+.addEventListener(
+  "click",
+  logout
+);
+
+
+$("logoutMessBtn")
+.addEventListener(
+  "click",
+  logout
+);
+
+
+/* =====================================================
+   INITIAL UI
+===================================================== */
+
+showLogin();
+
+
+/* =====================================================
+   START FIREBASE
+===================================================== */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    initializeFirebase();
+
+  }
+);
+
+</script>
+
+</body>
+  </html>
