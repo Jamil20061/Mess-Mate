@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mess-Mate Firebase Diagnostic</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .box {
+      max-width: 650px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.1);
+    }
+
+    h1 {
+      color: #2563eb;
+      font-size: 24px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    pre {
+      background: #111827;
+      color: #22c55e;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin-top: 20px;
+    }
+
+    .ok {
+      color: green;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <h1>Mess-Mate Firebase Diagnostic</h1>
+
+  <p id="status">Checking Firebase...</p>
+
+  <button onclick="testFirebaseAuth()">
+    Test Firebase Authentication
+  </button>
+
+  <pre id="result">Waiting for test...</pre>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script>
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC1co4VUZoqTJAJnmprEjYE9FJ3kFx6YJo",
+  authDomain: "mess-mate-2942b.firebaseapp.com",
+  projectId: "mess-mate-2942b",
+  storageBucket: "mess-mate-2942b.firebasestorage.app",
+  messagingSenderId: "661215494906",
+  appId: "1:661215494906:web:6b4eb1d938fb7bba11ff43"
+};
+
+const statusBox = document.getElementById("status");
+const resultBox = document.getElementById("result");
+
+try {
+
+  firebase.initializeApp(firebaseConfig);
+
+  statusBox.innerHTML =
+    '<span class="ok">✓ Firebase SDK initialized successfully</span>';
+
+} catch (error) {
+
+  statusBox.innerHTML =
+    '<span class="error">✗ Firebase initialization failed</span>';
+
+  resultBox.textContent =
+    error.code + "\n\n" + error.message;
+}
+
+
+async function testFirebaseAuth() {
+
+  resultBox.textContent = "Testing Firebase Authentication...\n\nPlease wait...";
+
+  try {
+
+    const auth = firebase.auth();
+
+    /*
+      We intentionally use a fake email/password.
+      The purpose is NOT to create an account.
+      We only want Firebase's raw API response.
+    */
+
+    await auth.signInWithEmailAndPassword(
+      "diagnostic-invalid-test@example.com",
+      "InvalidPassword123!"
+    );
+
+    resultBox.innerHTML =
+      "Unexpected result: Login succeeded.";
+
+  } catch (error) {
+
+    let output = "";
+
+    output += "Firebase Error\n";
+    output += "====================\n\n";
+
+    output += "Code:\n";
+    output += error.code + "\n\n";
+
+    output += "Message:\n";
+    output += error.message + "\n\n";
+
+    output += "Name:\n";
+    output += error.name + "\n\n";
+
+    output += "Full error:\n";
+    output += JSON.stringify(error, null, 2);
+
+    resultBox.textContent = output;
+  }
+
+}
+
+</script>
+
+</body>
+</html>
